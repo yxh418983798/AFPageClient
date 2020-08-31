@@ -1,0 +1,6 @@
+framework module Pods_AFPageClient_Example {
+  umbrella header "Pods-AFPageClient_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "AFPageClient",
+  "version": "0.1.0",
+  "summary": "A short description of AFPageClient.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/yxh418983798/AFPageClient",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "yxh418983798": "418983798@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/yxh418983798/AFPageClient.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "AFPageClient/Classes/**/*",
+  "dependencies": {
+    "Masonry": [
+
+    ]
+  }
+}

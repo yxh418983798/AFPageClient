@@ -1,0 +1,6 @@
+framework module AFPageClient {
+  umbrella header "AFPageClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

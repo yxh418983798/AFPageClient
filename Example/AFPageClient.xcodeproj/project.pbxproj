@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31F74B8324FB3B5400159A9E /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B7B24FB3B5400159A9E /* NSString+Hash.m */; };
+		31F74B8424FB3B5400159A9E /* EncryptionTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B7F24FB3B5400159A9E /* EncryptionTools.m */; };
+		31F74B8524FB3B5400159A9E /* RSACryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B8224FB3B5400159A9E /* RSACryptor.m */; };
+		31F74BB124FBA0A300159A9E /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = 31F74BAF24FBA0A300159A9E /* public_key.der */; };
 		57955DDEAD8BFC00490EB926 /* Pods_AFPageClient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5152E73D85276463121B8787 /* Pods_AFPageClient_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -37,10 +41,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F6AD7ECC1148071C07F56C3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0F6AD7ECC1148071C07F56C3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		233E07B5090188B800A750A2 /* Pods-AFPageClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFPageClient_Tests.debug.xcconfig"; path = "Target Support Files/Pods-AFPageClient_Tests/Pods-AFPageClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3159202B55CB97A83242F84D /* Pods_AFPageClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33541B2C1FAB9644BC169D9C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		31F74B7B24FB3B5400159A9E /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		31F74B7C24FB3B5400159A9E /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		31F74B7E24FB3B5400159A9E /* EncryptionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptionTools.h; sourceTree = "<group>"; };
+		31F74B7F24FB3B5400159A9E /* EncryptionTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptionTools.m; sourceTree = "<group>"; };
+		31F74B8124FB3B5400159A9E /* RSACryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSACryptor.h; sourceTree = "<group>"; };
+		31F74B8224FB3B5400159A9E /* RSACryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSACryptor.m; sourceTree = "<group>"; };
+		31F74BAF24FBA0A300159A9E /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
+		31F74BB324FBA1F600159A9E /* private_key.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.p12; sourceTree = "<group>"; };
+		33541B2C1FAB9644BC169D9C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		5152E73D85276463121B8787 /* Pods_AFPageClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* AFPageClient_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFPageClient_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,7 +73,7 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		65F86BE5DD9417C72C5F58D0 /* AFPageClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = AFPageClient.podspec; path = ../AFPageClient.podspec; sourceTree = "<group>"; };
+		65F86BE5DD9417C72C5F58D0 /* AFPageClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AFPageClient.podspec; path = ../AFPageClient.podspec; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8857584283E8F64983A2829A /* Pods-AFPageClient_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFPageClient_Example.release.xcconfig"; path = "Target Support Files/Pods-AFPageClient_Example/Pods-AFPageClient_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +107,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31F74B7924FB3B5400159A9E /* XHSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				31F74B7A24FB3B5400159A9E /* Security */,
+				31F74B7D24FB3B5400159A9E /* Cipher */,
+				31F74B8024FB3B5400159A9E /* Cipher-RSA */,
+			);
+			path = XHSecurity;
+			sourceTree = "<group>";
+		};
+		31F74B7A24FB3B5400159A9E /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				31F74B7B24FB3B5400159A9E /* NSString+Hash.m */,
+				31F74B7C24FB3B5400159A9E /* NSString+Hash.h */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		31F74B7D24FB3B5400159A9E /* Cipher */ = {
+			isa = PBXGroup;
+			children = (
+				31F74B7E24FB3B5400159A9E /* EncryptionTools.h */,
+				31F74B7F24FB3B5400159A9E /* EncryptionTools.m */,
+			);
+			path = Cipher;
+			sourceTree = "<group>";
+		};
+		31F74B8024FB3B5400159A9E /* Cipher-RSA */ = {
+			isa = PBXGroup;
+			children = (
+				31F74B8124FB3B5400159A9E /* RSACryptor.h */,
+				31F74B8224FB3B5400159A9E /* RSACryptor.m */,
+			);
+			path = "Cipher-RSA";
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +181,9 @@
 		6003F593195388D20070C39A /* Example for AFPageClient */ = {
 			isa = PBXGroup;
 			children = (
+				31F74BAF24FBA0A300159A9E /* public_key.der */,
+				31F74BB324FBA1F600159A9E /* private_key.p12 */,
+				31F74B7924FB3B5400159A9E /* XHSecurity */,
 				6003F59C195388D20070C39A /* AFAppDelegate.h */,
 				6003F59D195388D20070C39A /* AFAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -193,7 +245,6 @@
 				233E07B5090188B800A750A2 /* Pods-AFPageClient_Tests.debug.xcconfig */,
 				C1E9EB27E29CBA063AF7D56F /* Pods-AFPageClient_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +309,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -279,6 +331,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				31F74BB124FBA0A300159A9E /* public_key.der in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -347,10 +400,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AFPageClient_Example/Pods-AFPageClient_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFPageClient/AFPageClient.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFPageClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -364,7 +419,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31F74B8524FB3B5400159A9E /* RSACryptor.m in Sources */,
 				6003F59E195388D20070C39A /* AFAppDelegate.m in Sources */,
+				31F74B8324FB3B5400159A9E /* NSString+Hash.m in Sources */,
+				31F74B8424FB3B5400159A9E /* EncryptionTools.m in Sources */,
 				6003F5A7195388D20070C39A /* AFViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
