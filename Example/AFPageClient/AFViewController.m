@@ -26,12 +26,20 @@
 @end
 
 @implementation AFViewController
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:AFSegmentConfiguration.new];
+    AFSegmentConfiguration *s = AFSegmentConfiguration.new;
+    s.insets = UIEdgeInsetsMake(0, 100, 0, 100);
+    self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:s];
     self.pageClient.delegate = self;
     [self.pageClient reloadData];
 //
@@ -75,7 +83,7 @@
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 5;
+    return 2;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
@@ -83,6 +91,7 @@
     AFPageItem *item = AFPageItem.new;
     item.childViewController = AFPageViewController.new;
     item.content = [NSString stringWithFormat:@"第%d个item", index];
+    item.backgroundColor = UIColor.grayColor;
     NSLog(@"-------------------------- itemForSegmentAtIndex：%d --------------------------", index);
     return item;
 }
@@ -94,10 +103,16 @@
 }
 
 /// 自定义leftView
-- (UIView *)leftViewForSegment:(AFSegmentView *)segmentView {
-    UIView *leftView = [[UIView alloc] initWithFrame:(CGRectMake(0, 0, 50, 50))];
-    leftView.backgroundColor = UIColor.blackColor;
-    return leftView;
+- (UIView *)leftViewForSegmentInPageClient:(AFPageClient *)pageClient {
+    UIButton *btn = [UIButton new];
+    btn.frame = CGRectMake(0, 0, 50, 50);
+    [btn setTitle:@"返回" forState:(UIControlStateNormal)];
+    [btn addTarget:self action:@selector(popAction) forControlEvents:(UIControlEventTouchUpInside)];
+    return btn;
+}
+
+- (void)popAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /// 自定义rightView
@@ -107,4 +122,7 @@
     return leftView;
 }
 
+- (void)dealloc {
+    NSLog(@"-------------------------- 控制器释放 --------------------------");
+} 
 @end

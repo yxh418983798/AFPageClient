@@ -160,7 +160,7 @@ static NSInteger AFPageChildViewTag = 66661201;
     for (AFPageItem *item in self.pageItems.allValues) {
         [item.childViewController.view removeFromSuperview];
         [item.childViewController removeFromParentViewController];
-        NSLog(@"-------------------------- 释放:%@ --------------------------", item.childViewController);
+//        NSLog(@"-------------------------- 释放:%@ --------------------------", item.childViewController);
     }
     [self.pageItems removeAllObjects];
     [self update];

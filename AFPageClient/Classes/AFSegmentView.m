@@ -90,7 +90,6 @@ static CGFloat ScrollBar_W = 6.f;
     return _lineView;
 }
 
-
 #pragma mark - 数据
 - (AFSegmentConfiguration *)configuration {
     if (!_configuration) {
@@ -104,6 +103,7 @@ static CGFloat ScrollBar_W = 6.f;
         _flowLayout= [[AFCollectionViewFlowLayout.new makeLayoutStyle:(AFFlowLayoutStyleWaterfallHorizantal)] makeNumberOfLines:1];
         _flowLayout.delegate = self;
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        _flowLayout.sectionInset = self.configuration.insets;
     }
     return _flowLayout;
 }
@@ -152,7 +152,6 @@ static CGFloat ScrollBar_W = 6.f;
         _current_index = _default_index;
     }
     
-    self.flowLayout.sectionInset = self.configuration.insets;
     [self.flowLayout attachAllLinesFixedSize:self.frame.size.height];
     [self insertSubview:self.collectionView atIndex:0];
     
@@ -295,6 +294,11 @@ static CGFloat ScrollBar_W = 6.f;
 //    CGFloat toValue =  toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2;
 //    [self.scrollBar interactionScrollFromValue:fromValue toValue:toValue percent:fabs(offX/scrollView.frame.size.width)];
 }
+
+
+//- (void)dealloc {
+//    NSLog(@"-------------------------- segmentView释放 --------------------------");
+//}
 
 
 @end

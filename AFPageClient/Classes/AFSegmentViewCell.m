@@ -105,8 +105,8 @@
 
 #pragma mark - 绑定item
 - (void)setItem:(AFPageItem *)item {
-    
     _item = item;
+    self.contentView.backgroundColor = item.backgroundColor;
     if ([item.content isKindOfClass:NSString.class]) {
         if (self.itemView != self.titleLb) {
             [self.itemView removeFromSuperview];

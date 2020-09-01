@@ -7,12 +7,17 @@
 //
 
 #import "AFAppDelegate.h"
+#import "AFViewController.h"
+#import "AFHAHAViewController.h"
 
 @implementation AFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:AFHAHAViewController.new];
+    navi.navigationBar.translucent = NO;
+    self.window.rootViewController = navi;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

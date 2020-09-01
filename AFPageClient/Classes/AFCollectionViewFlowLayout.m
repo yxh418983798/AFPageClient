@@ -130,7 +130,7 @@
 //设置某一行的固定 宽/高度
 - (void)attachFixedSize:(CGFloat)size inLine:(NSInteger)line {
     if (line > self.datasouce.count - 1) {
-        NSLog(@"<------------------------------ 数组越界，line:%lu, dataCount:%lu ------------------------------>", line, self.datasouce.count);
+//        NSLog(@"<------------------------------ 数组越界，line:%lu, dataCount:%lu ------------------------------>", line, self.datasouce.count);
         return;
     }
     

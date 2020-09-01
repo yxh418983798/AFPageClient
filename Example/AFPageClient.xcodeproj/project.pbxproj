@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31F6FB2C24FE3FB200703C1A /* AFHAHAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F6FB2B24FE3FB200703C1A /* AFHAHAViewController.m */; };
 		31F74B8324FB3B5400159A9E /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B7B24FB3B5400159A9E /* NSString+Hash.m */; };
 		31F74B8424FB3B5400159A9E /* EncryptionTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B7F24FB3B5400159A9E /* EncryptionTools.m */; };
 		31F74B8524FB3B5400159A9E /* RSACryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B8224FB3B5400159A9E /* RSACryptor.m */; };
@@ -45,6 +46,8 @@
 		0F6AD7ECC1148071C07F56C3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		233E07B5090188B800A750A2 /* Pods-AFPageClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFPageClient_Tests.debug.xcconfig"; path = "Target Support Files/Pods-AFPageClient_Tests/Pods-AFPageClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3159202B55CB97A83242F84D /* Pods_AFPageClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31F6FB2A24FE3FB200703C1A /* AFHAHAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFHAHAViewController.h; sourceTree = "<group>"; };
+		31F6FB2B24FE3FB200703C1A /* AFHAHAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFHAHAViewController.m; sourceTree = "<group>"; };
 		31F74B7B24FB3B5400159A9E /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		31F74B7C24FB3B5400159A9E /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
 		31F74B7E24FB3B5400159A9E /* EncryptionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptionTools.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				6003F594195388D20070C39A /* Supporting Files */,
 				31F74BBE24FD0EC300159A9E /* AFPageViewController.h */,
 				31F74BBF24FD0EC300159A9E /* AFPageViewController.m */,
+				31F6FB2A24FE3FB200703C1A /* AFHAHAViewController.h */,
+				31F6FB2B24FE3FB200703C1A /* AFHAHAViewController.m */,
 			);
 			name = "Example for AFPageClient";
 			path = AFPageClient;
@@ -425,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F74B8524FB3B5400159A9E /* RSACryptor.m in Sources */,
+				31F6FB2C24FE3FB200703C1A /* AFHAHAViewController.m in Sources */,
 				31F74BC024FD0EC400159A9E /* AFPageViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AFAppDelegate.m in Sources */,
 				31F74B8324FB3B5400159A9E /* NSString+Hash.m in Sources */,
@@ -561,7 +567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -578,7 +584,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

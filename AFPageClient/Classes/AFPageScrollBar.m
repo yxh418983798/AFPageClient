@@ -98,7 +98,7 @@ static CGFloat Max_W = 60.f;
 
 - (void)timerAction {
 //    CGFloat distance = fmax(fabs(_toValue - _fromValue)/100, 0.2);
-    CGFloat distance = fmax(fabs(_toValue - _fromValue)/20, 3.f);
+    CGFloat distance = fmax(fabs(_toValue - _fromValue)/15, 3.f);
     CGRect frame = self.frame;
     // 右滑
     if (self.direction == AFPageScrollBarDirectionRight) {
@@ -252,4 +252,7 @@ static CGFloat Max_W = 60.f;
 
 
 
+//- (void)dealloc {
+//    NSLog(@"-------------------------- svrollbar释放 --------------------------");
+//}
 @end
