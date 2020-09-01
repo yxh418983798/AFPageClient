@@ -6,12 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AFSegmentItem;
+@class AFPageItem;
 
 @interface AFSegmentViewCell : UICollectionViewCell
 
 /** 布局样式 */
-@property (strong, nonatomic) AFSegmentItem      *item;
+@property (strong, nonatomic) AFPageItem        *item;
 
 @property (copy, nonatomic) id                  title;
 

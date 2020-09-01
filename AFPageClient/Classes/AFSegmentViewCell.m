@@ -7,7 +7,7 @@
 
 #import "AFSegmentViewCell.h"
 #import <Masonry/Masonry.h>
-#import "AFSegmentItem.h"
+#import "AFPageItem.h"
 
 @interface AFSegmentViewCell ()
 
@@ -104,13 +104,14 @@
 
 
 #pragma mark - 绑定item
-- (void)setItem:(AFSegmentItem *)item {
+- (void)setItem:(AFPageItem *)item {
     
     _item = item;
     if ([item.content isKindOfClass:NSString.class]) {
         if (self.itemView != self.titleLb) {
             [self.itemView removeFromSuperview];
             self.itemView = self.titleLb;
+            self.titleLb.lineBreakMode = item.lineBreakMode;
         }
         self.titleLb.text = item.content;
     } else if ([item.content isKindOfClass:NSAttributedString.class]) {
@@ -118,6 +119,7 @@
             [self.itemView removeFromSuperview];
             self.itemView = self.titleLb;
         }
+        self.titleLb.lineBreakMode = item.lineBreakMode;
         self.titleLb.attributedText = item.content;
     } else if ([item.content isKindOfClass:UIView.class]) {
         UIView *itemView = (UIView *)item.content;

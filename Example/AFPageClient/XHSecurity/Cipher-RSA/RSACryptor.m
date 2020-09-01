@@ -221,7 +221,10 @@ static const uint8_t privateKeyIdentifier[]		= kPrivateKeyTag;
  */
 - (void)loadPrivateKey:(NSString *)privateKeyPath password:(NSString *)password {
     
-    NSAssert(privateKeyPath.length != 0, @"私钥路径为空");
+    if (!privateKeyPath.length) {
+        NSLog(@"-------------------------- 私钥路径为空 --------------------------");
+        return;
+    }
     
     // 删除当前私钥
     if (privateKeyRef) CFRelease(privateKeyRef);

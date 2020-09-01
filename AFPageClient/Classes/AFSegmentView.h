@@ -8,27 +8,16 @@
 #import <UIKit/UIKit.h>
 
 @class AFSegmentView;
-@class AFSegmentItem;
+@class AFPageItem;
 @class AFSegmentConfiguration;
 
 @protocol AFSegmentViewDelegate <NSObject>
-
-@optional;
-
-/// 自定义leftView
-- (UIView *)leftViewForSegment:(AFSegmentView *)segmentView;
-
-/// 自定义rightView
-- (UIView *)rightViewForSegment:(AFSegmentView *)segmentView;
 
 /// item的数量
 - (NSInteger)numberOfItemsInSegmentView:(AFSegmentView *)segmentView;
  
 /// 自定义每个item的数据源
-- (AFSegmentItem *)segmentView:(AFSegmentView *)segmentView itemForSegmentAtIndex:(NSInteger)index;
-
-/// 自定义itemSize，如果不实现 && 没设置configuration的itemSize，默认自适应
-- (CGSize)segmentView:(AFSegmentView *)segmentView sizeForItemAtIndex:(NSInteger)index;
+- (AFPageItem *)segmentView:(AFSegmentView *)segmentView itemForSegmentAtIndex:(NSInteger)index;
 
 /// 选中Item的回调
 - (void)segmentView:(AFSegmentView *)segmentView didSelectItemAtIndex:(NSInteger)index;
@@ -38,36 +27,34 @@
 
 @interface AFSegmentView : UIView
 
-/** 布局样式 */
-@property (strong, nonatomic) AFSegmentConfiguration        *configuration;
+/** 配置 */
+@property (strong, nonatomic) AFSegmentConfiguration   *configuration;
 
 /** 控制器 */
-@property (weak, nonatomic) UIViewController     *pageController;
+@property (weak, nonatomic) UIViewController           *pageController;
 
 /** 代理 */
-@property (weak, nonatomic) id <AFSegmentViewDelegate>  delegate;
-
-/** AFSegmentItem */
-@property (nonatomic, strong) NSArray            *items;
+@property (weak, nonatomic) id <AFSegmentViewDelegate> delegate;
 
 /** leftView */
-@property (strong, nonatomic) UIView            *leftView;
+@property (strong, nonatomic) UIView                   *leftView;
 
 /** rightView */
-@property (strong, nonatomic) UIView            *rightView;
-
-//更新
-- (instancetype)update;
-
-//手动选中
-- (void)selectedAtIndex:(NSInteger)index;
+@property (strong, nonatomic) UIView                   *rightView;
 
 /** 记录index */
 @property (assign, nonatomic) NSInteger            last_index;
-
 @property (assign, nonatomic) NSInteger            current_index;
-
 @property (assign, nonatomic) NSInteger            default_index;
+
+/// 更新
+- (void)update;
+
+/// 手动选中
+- (void)selectedAtIndex:(NSInteger)index;
+
+/// 监听滑动，实时更新UI
+- (void)pageScrollViewDidScroll:(UIScrollView *)scrollView;
 
 
 

@@ -17,7 +17,6 @@
         self.textColor = UIColor.blackColor;
         self.selectedTextColor = UIColor.blackColor;
         self.backgroundColor = UIColor.whiteColor;
-        self.numberOfLines = 1;
     }
     return self;
 }

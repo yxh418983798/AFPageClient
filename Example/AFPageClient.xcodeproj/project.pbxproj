@@ -11,6 +11,7 @@
 		31F74B8424FB3B5400159A9E /* EncryptionTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B7F24FB3B5400159A9E /* EncryptionTools.m */; };
 		31F74B8524FB3B5400159A9E /* RSACryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74B8224FB3B5400159A9E /* RSACryptor.m */; };
 		31F74BB124FBA0A300159A9E /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = 31F74BAF24FBA0A300159A9E /* public_key.der */; };
+		31F74BC024FD0EC400159A9E /* AFPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74BBF24FD0EC300159A9E /* AFPageViewController.m */; };
 		57955DDEAD8BFC00490EB926 /* Pods_AFPageClient_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5152E73D85276463121B8787 /* Pods_AFPageClient_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -52,6 +53,8 @@
 		31F74B8224FB3B5400159A9E /* RSACryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSACryptor.m; sourceTree = "<group>"; };
 		31F74BAF24FBA0A300159A9E /* public_key.der */ = {isa = PBXFileReference; lastKnownFileType = file; path = public_key.der; sourceTree = "<group>"; };
 		31F74BB324FBA1F600159A9E /* private_key.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = private_key.p12; sourceTree = "<group>"; };
+		31F74BBE24FD0EC300159A9E /* AFPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFPageViewController.h; sourceTree = "<group>"; };
+		31F74BBF24FD0EC300159A9E /* AFPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFPageViewController.m; sourceTree = "<group>"; };
 		33541B2C1FAB9644BC169D9C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		5152E73D85276463121B8787 /* Pods_AFPageClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* AFPageClient_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFPageClient_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +195,8 @@
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				31F74BBE24FD0EC300159A9E /* AFPageViewController.h */,
+				31F74BBF24FD0EC300159A9E /* AFPageViewController.m */,
 			);
 			name = "Example for AFPageClient";
 			path = AFPageClient;
@@ -420,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F74B8524FB3B5400159A9E /* RSACryptor.m in Sources */,
+				31F74BC024FD0EC400159A9E /* AFPageViewController.m in Sources */,
 				6003F59E195388D20070C39A /* AFAppDelegate.m in Sources */,
 				31F74B8324FB3B5400159A9E /* NSString+Hash.m in Sources */,
 				31F74B8424FB3B5400159A9E /* EncryptionTools.m in Sources */,
@@ -555,6 +561,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
+				MARKETING_VERSION = 1.0.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -571,6 +578,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
+				MARKETING_VERSION = 1.0.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

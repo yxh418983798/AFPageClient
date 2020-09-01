@@ -8,15 +8,20 @@
 
 #import "AFViewController.h"
 #import "AFSegmentView.h"
-#import "AFSegmentItem.h"
+#import "AFPageItem.h"
 #import "AFSegmentConfiguration.h"
 #import "EncryptionTools.h"
 #import "RSACryptor.h"
+#import "AFPageClient.h"
+#import "AFPageViewController.h"
 
-@interface AFViewController () <AFSegmentViewDelegate>
+@interface AFViewController () <AFPageClientDelegate>
 
 /** AFSegmentView */
 @property (nonatomic, strong) AFSegmentView            *segmentView;
+
+/** AFPageClient */
+@property (nonatomic, strong) AFPageClient             *pageClient;
 
 @end
 
@@ -25,12 +30,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AFSegmentView *segmentView = AFSegmentView.new;
-    segmentView.configuration.backgroundColor = UIColor.grayColor;
-    segmentView.delegate = self;
-    segmentView.configuration.frame = CGRectMake(0, 100, self.view.frame.size.width, 50);
-    [self.view addSubview:segmentView];
-    [segmentView update];
+    
+    self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:AFSegmentConfiguration.new];
+    self.pageClient.delegate = self;
+    [self.pageClient reloadData];
+//
+//    AFSegmentView *segmentView = AFSegmentView.new;
+//    segmentView.configuration.backgroundColor = UIColor.grayColor;
+//    segmentView.delegate = self;
+//    segmentView.configuration.frame = CGRectMake(0, 100, self.view.frame.size.width, 50);
+//    [self.view addSubview:segmentView];
+//    [segmentView update];
     
     
     // AES CBC对称加密
@@ -61,23 +71,40 @@
 //
 //}
 
-/// item的数量
-- (NSInteger)numberOfItemsInSegmentView:(AFSegmentView *)segmentView {
+
+
+/// 返回item的数量
+- (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
     return 5;
 }
 
-/// 自定义每个item的数据源
-- (AFSegmentItem *)segmentView:(AFSegmentView *)segmentView itemForSegmentAtIndex:(NSInteger)index {
-    AFSegmentItem *item = AFSegmentItem.new;
+/// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
+- (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index {
+    AFPageItem *item = AFPageItem.new;
+    item.childViewController = AFPageViewController.new;
     item.content = [NSString stringWithFormat:@"第%d个item", index];
     NSLog(@"-------------------------- itemForSegmentAtIndex：%d --------------------------", index);
     return item;
 }
 
+
 /// 选中Item的回调
-- (void)segmentView:(AFSegmentView *)segmentView didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"-------------------------- 来了：%d --------------------------", index);
+- (void)pageClient:(AFPageClient *)pageClient didSelectItemAtIndex:(NSInteger)index {
+//    NSLog(@"-------------------------- 来了：%d --------------------------", index);
 }
 
+/// 自定义leftView
+- (UIView *)leftViewForSegment:(AFSegmentView *)segmentView {
+    UIView *leftView = [[UIView alloc] initWithFrame:(CGRectMake(0, 0, 50, 50))];
+    leftView.backgroundColor = UIColor.blackColor;
+    return leftView;
+}
+
+/// 自定义rightView
+- (UIView *)rightViewForSegment:(AFSegmentView *)segmentView {
+    UIView *leftView = [[UIView alloc] initWithFrame:(CGRectMake(0, 0, 50, 50))];
+    leftView.backgroundColor = UIColor.blackColor;
+    return leftView;
+}
 
 @end

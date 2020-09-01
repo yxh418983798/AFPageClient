@@ -22,7 +22,7 @@ pod 'AFPageClient'
 
 ## Author
 
-yxh418983798, 418983798@qq.com
+Alfie, 418983798@qq.com
 
 ## License
 
