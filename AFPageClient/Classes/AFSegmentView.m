@@ -208,12 +208,23 @@ static CGFloat ScrollBar_W = 6.f;
 
 
 - (void)selectedAtIndex:(NSInteger)index  {
+    
+    if (self.current_index == index) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+        if (self.configuration.showScrollBar) {
+            NSLog(@"--------------------------!!!! current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
+            [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
+        }
+        return;
+    }
     self.last_index = self.current_index;
     self.current_index = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:(UICollectionViewScrollPositionCenteredHorizontally)];
-    UICollectionViewCell  *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
     if (self.configuration.showScrollBar) {
+        NSLog(@"-------------------------- current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
         [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
     }
 }
@@ -281,18 +292,22 @@ static CGFloat ScrollBar_W = 6.f;
 
 #pragma mark - 监听滑动，实时更新UI
 - (void)pageScrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat offX = scrollView.contentOffset.x - scrollView.frame.size.width * self.current_index;
-//    NSInteger toIndex;
-//    if (offX >= 0) {
-//        toIndex = fmin(self.current_index+1, [self.delegate numberOfItemsInSegmentView:self]);
-//    } else {
-//        toIndex = fmax(self.current_index-1, 0);
-//    }
-//    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.current_index inSection:0]];
-//    UICollectionViewCell *toCell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
-//    CGFloat fromValue = cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2;
-//    CGFloat toValue =  toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2;
-//    [self.scrollBar interactionScrollFromValue:fromValue toValue:toValue percent:fabs(offX/scrollView.frame.size.width)];
+    
+    if (!scrollView.dragging) return;
+    CGFloat offX = scrollView.contentOffset.x - scrollView.frame.size.width * self.current_index;
+    NSInteger toIndex;
+    if (offX >= 0) {
+        toIndex = fmin(self.current_index+1, [self.delegate numberOfItemsInSegmentView:self]);
+    } else {
+        toIndex = fmax(self.current_index-1, 0);
+    }
+    if (toIndex >= [self.delegate numberOfItemsInSegmentView:self] || toIndex == self.current_index) return;
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.current_index inSection:0]];
+    UICollectionViewCell *toCell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
+    CGFloat fromValue = cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2;
+    CGFloat toValue =  toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2;
+//    NSLog(@"--------------------------offX:%g current_index:%d -- toIndex:%d -- from:%g -- to：%g -- percent：%g  --------------------------",offX, self.current_index, toIndex, fromValue, toValue, fabs(offX/scrollView.frame.size.width));
+    [self.scrollBar interactionScrollFromValue:fromValue toValue:toValue percent:fabs(offX/scrollView.frame.size.width)];
 }
 
 

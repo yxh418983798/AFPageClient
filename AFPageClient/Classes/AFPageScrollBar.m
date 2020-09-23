@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
     AFPageScrollBarDirectionUnknow,  /// 未知
     AFPageScrollBarDirectionLeft,    /// 左滑
     AFPageScrollBarDirectionRight,   /// 右滑
+    AFPageScrollBarDirectionBack,    /// 复位
 };
 
 
@@ -68,15 +69,19 @@ static CGFloat Max_W = 60.f;
 
 #pragma mark - 动画
 - (void)scrollFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue {
-    if (fabs(fromValue - toValue) < 5 && self.status == AFPageScrollBarStatusNormal) return;
+    if (fabs(fromValue - toValue) < 5 && self.status == AFPageScrollBarStatusNormal) {
+        if (self.frame.size.width == Min_W && self.frame.origin.x == toValue) {
+            return;
+        }
+    }
     self.fromValue = fromValue;
     self.toValue = toValue;
-    if (_toValue > _fromValue) {
+    if (_toValue - _fromValue > 5) {
         self.direction = AFPageScrollBarDirectionRight;
-    } else if (_toValue < fromValue) {
+    } else if (_toValue - fromValue < -5) {
         self.direction = AFPageScrollBarDirectionLeft;
     } else {
-        
+        self.direction = AFPageScrollBarDirectionBack;
     }
     
     if (self.frame.size.width < Max_W) {
@@ -212,7 +217,6 @@ static CGFloat Max_W = 60.f;
 
 #pragma mark - 手势交互滑动，实时更新
 - (void)interactionScrollFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue percent:(CGFloat)percent {
-
     AFPageScrollBarDirection direction;
     AFPageScrollBarStatus status = AFPageScrollBarStatusNormal;
     if (toValue > fromValue) {
@@ -224,11 +228,13 @@ static CGFloat Max_W = 60.f;
     }
     
     CGRect frame = self.frame;
-    CGFloat stretchPercent = fabs((Max_W - Min_W)/(toValue - fromValue));
-    CGFloat shortenPercent = 1 - stretchPercent;
-
+    CGFloat totalDistance = fabs(toValue - fromValue) + Max_W - Min_W*2; // 总共要移动的距离
+    CGFloat stretchPercent = (Max_W - Min_W)/totalDistance; // 整个伸长过程 要移动的距离百分比
+    CGFloat shortenPercent = 1 - stretchPercent; // 开始缩短 所要移动的百分比
+ 
     if (percent < stretchPercent) {
         // 拉伸
+//        NSLog(@"-------------------------- 拉伸：%g -- %g --------------------------", stretchPercent, shortenPercent);
         frame.size.width = fmin(Min_W + (percent/stretchPercent) * (Max_W - Min_W), Max_W);
         if (toValue < fromValue) {
             frame.origin.x = fromValue - frame.size.width;
@@ -236,16 +242,18 @@ static CGFloat Max_W = 60.f;
     } else if (percent < shortenPercent) {
         // 移动
         if (toValue > fromValue) {
-            frame.origin.x += fabs(toValue - fromValue) * (percent - stretchPercent)/(1 - stretchPercent);
+            frame.origin.x = fromValue + (toValue - fromValue - Max_W) * (percent - stretchPercent)/(shortenPercent - stretchPercent);
         } else {
-            frame.origin.x -= fabs(toValue - fromValue) * (percent - stretchPercent)/(1 - stretchPercent);
+            frame.origin.x = fromValue - Max_W - (fromValue - toValue - Max_W) * (percent - stretchPercent)/(shortenPercent - stretchPercent);
         }
+//        NSLog(@"-------------------------- 移动：%g -- %g -- %g--------------------------", stretchPercent, (percent - stretchPercent)/(shortenPercent - stretchPercent), frame.origin.x);
     } else {
         // 缩短
-        frame.size.width = fmax((Max_W - (percent - shortenPercent)/shortenPercent) * (Max_W - Min_W), Min_W);
+        frame.size.width = fmax(Max_W - (percent - shortenPercent)/stretchPercent * (Max_W - Min_W), Min_W);
         if (toValue > fromValue) {
             frame.origin.x = toValue - frame.size.width;
         }
+//        NSLog(@"-------------------------- 缩短：%g -- %g -- %g--------------------------", stretchPercent, (percent - stretchPercent)/(shortenPercent - stretchPercent), frame.size.width);
     }
     self.frame = frame;
 }

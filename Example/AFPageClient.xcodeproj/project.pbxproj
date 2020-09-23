@@ -309,6 +309,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = yxh418983798;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 7NB4473WK6;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -564,12 +567,13 @@
 			baseConfigurationReference = 8A67041E0A25FBDA684A2F17 /* Pods-AFPageClient_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7NB4473WK6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
 				MARKETING_VERSION = 1.0.1;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
@@ -581,12 +585,13 @@
 			baseConfigurationReference = 8857584283E8F64983A2829A /* Pods-AFPageClient_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 7NB4473WK6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
 				MARKETING_VERSION = 1.0.1;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;

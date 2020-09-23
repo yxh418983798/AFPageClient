@@ -264,16 +264,16 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 #pragma mark - 监听滚动事件
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if (scrollView == self.collectionView) {
-        NSInteger page = (NSInteger)(scrollView.contentOffset.x / self.collectionView.frame.size.width);
-        if (_selectedIndex != page) {
-            _selectedIndex = page;
-            [self.segmentView selectedAtIndex:page];
-            if ([self.delegate respondsToSelector:@selector(pageClient:didSelectItemAtIndex:)]) {
-                [self.delegate pageClient:self didSelectItemAtIndex:page];
-            }
-        }
-    }
+//    if (scrollView == self.collectionView) {
+//        NSInteger page = (NSInteger)(scrollView.contentOffset.x / self.collectionView.frame.size.width);
+//        if (_selectedIndex != page) {
+//            _selectedIndex = page;
+//            [self.segmentView selectedAtIndex:page];
+//            if ([self.delegate respondsToSelector:@selector(pageClient:didSelectItemAtIndex:)]) {
+//                [self.delegate pageClient:self didSelectItemAtIndex:page];
+//            }
+//        }
+//    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -283,6 +283,25 @@ static NSInteger AFPageChildViewTag = 66661201;
 //            [self.delegate pageCollectionViewDidScroll:self.collectionView];
 //        }
     }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if (scrollView == self.collectionView) {
+        CGFloat offX = targetContentOffset->x;
+        NSInteger page = (NSInteger)(offX / self.collectionView.frame.size.width);
+        [self.segmentView selectedAtIndex:page];
+        if (_selectedIndex != page) {
+            _selectedIndex = page;
+            if ([self.delegate respondsToSelector:@selector(pageClient:didSelectItemAtIndex:)]) {
+                [self.delegate pageClient:self didSelectItemAtIndex:page];
+            }
+        }
+    }
+//    NSLog(@"-------------------------- 离开手指，%d --------------------------", scrollView.decelerating);
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    NSLog(@"-------------------------- 动画结束，%d --------------------------", scrollView.decelerating);
 }
 
 

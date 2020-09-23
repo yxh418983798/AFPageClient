@@ -51,15 +51,21 @@
 //    [segmentView update];
     
     
-    // AES CBC对称加密
-//    NSString *key = @"asdfasdfasdfasdf";
-//    NSData *data = [key dataUsingEncoding:(NSUTF8StringEncoding)];
-//    NSString *str = [EncryptionTools.sharedEncryptionTools encryptString:@"测试加密数据" keyString:key iv:data];
-//    NSLog(@"-------------------------- 加密后：%@--------------------------", str);
-//    str = [EncryptionTools.sharedEncryptionTools decryptString:str keyString:key iv:data];
-//    NSLog(@"-------------------------- 解密后：%@ --------------------------", str);
+//     AES CBC对称加密
+    NSString *key = @"htfvjredhjhghpsy";
+    NSData *data = [key dataUsingEncoding:(NSUTF8StringEncoding)];
+    NSDictionary *aa = @{@"sdjfl": @(1231232), @"data":@"http://www.baidu.com"};
+    NSString *rr = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:aa options:0 error:NULL] encoding:NSUTF8StringEncoding];
+    
+    NSString *str = [EncryptionTools.sharedEncryptionTools encryptString:@"{\"sdjfl\": 1231232, \"data\":\"http://www.baidu.com\"}" keyString:key iv:data];
+    NSLog(@"-------------------------- 加密后：%@--------------------------", str);
+    str = [EncryptionTools.sharedEncryptionTools decryptString:@"FeYaUjUlqonYJf740RqInLvzhFuqdS9WM45L1yCIVbzRTjtgthOVCyGcBf2VJGW2" keyString:key iv:data];
+    NSLog(@"-------------------------- 解密后：%@ --------------------------", str);
 
-    //
+    
+//    NSData *dd = [@"d/MgQA4W3jhoN/ApNto40zPMMIGPdTs0O9hpwy9+XIxSq/UG6FAhxQvNe7WVJjHDm/W8T/w/w8s6\nj40INJWsfcG1CDKWYsC/3uhv5l17xy8vhbQCFfurQqk0XaSb/Q6VdJX0ej4rrDXg/se/fh5I/BZV\nqcS65UA9NIDg/bAQVIxhfVkgkB6wmfugwBRferkw\n" dataUsingEncoding:4];
+
+    
 //    [RSACryptor.sharedRSACryptor generateKeyPair:1024];
 //    [RSACryptor.sharedRSACryptor loadPublicKey:[NSBundle.mainBundle pathForResource:@"public_key.der" ofType:nil]];
 //    [RSACryptor.sharedRSACryptor loadPrivateKey:[NSBundle.mainBundle pathForResource:@"private_key.p12" ofType:nil] password:@"mostone0717"];

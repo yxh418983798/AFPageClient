@@ -48,7 +48,7 @@
 - (NSString *)encryptString:(NSString *)string keyString:(NSString *)keyString iv:(NSData *)iv {
     
     // 设置秘钥
-    NSData *keyData = [keyString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *keyData = [keyString isKindOfClass:NSData.class] ? keyString : [keyString dataUsingEncoding:NSUTF8StringEncoding];
     uint8_t cKey[self.keySize];
     bzero(cKey, sizeof(cKey));
     [keyData getBytes:cKey length:self.keySize];
