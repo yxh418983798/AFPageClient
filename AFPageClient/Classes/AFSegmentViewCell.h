@@ -17,6 +17,9 @@
 
 @property (copy, nonatomic) id                  selectTitle;
 
+/// 根据手势交互，更新字体大小和颜色
+- (void)updateScrollPercent:(CGFloat)percent animated:(BOOL)animated;
+
 @end
 
 

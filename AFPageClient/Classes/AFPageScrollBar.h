@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)interactionScrollFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue percent:(CGFloat)percent;
 
 
+/// 停止
+- (void)stop;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -95,6 +95,10 @@
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
 - (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index {
     AFPageItem *item = AFPageItem.new;
+    item.textColor = UIColor.redColor;
+    item.selectedTextColor = UIColor.blackColor;
+    item.font = [UIFont systemFontOfSize:12];
+    item.selectedFont = [UIFont systemFontOfSize:18];
     item.childViewController = AFPageViewController.new;
     item.content = [NSString stringWithFormat:@"第%d个item", index];
     item.backgroundColor = UIColor.grayColor;

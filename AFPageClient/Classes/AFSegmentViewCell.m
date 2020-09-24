@@ -142,4 +142,28 @@
     }
 }
 
+
+#pragma mark - 根据手势交互，更新字体大小和颜色
+- (void)updateScrollPercent:(CGFloat)percent animated:(BOOL)animated {
+    if (!self.titleLb.text.length) return;
+    if (animated) {
+        CGFloat selectedPointSize = self.item.selectedFont.pointSize;
+        CGFloat normalPointSize = self.item.font.pointSize;
+//        NSLog(@"-------------------------- !!!! selectedPointSize:%g --------------------------", percent);
+        [UIView animateWithDuration:0.25 animations:^{
+            self.titleLb.font = percent == 1 ? self.item.selectedFont : self.item.font;
+            self.titleLb.textColor  = percent == 1 ? self.item.selectedTextColor : self.item.textColor;
+        }];
+    } else {
+        CGFloat selectedPointSize = self.item.selectedFont.pointSize;
+        CGFloat normalPointSize = self.item.font.pointSize;
+//        NSLog(@"-------------------------- selectedPointSize:%g ---------------------------", percent);
+        self.titleLb.font = [self.titleLb.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+        CGFloat startR,startG,startB,startA,endR,endG,endB,endA;
+        [self.item.textColor getRed:&startR green:&startG blue:&startB alpha:&startA];
+        [self.item.selectedTextColor getRed:&endR green:&endG blue:&endB alpha:&endA];
+        self.titleLb.textColor = [UIColor colorWithRed:startR + (endR - startR) * percent green:startG + (endG - startG) * percent blue:startB + (endB - startB) * percent alpha:startA + (endA - startA) * percent];
+    }
+}
+
 @end

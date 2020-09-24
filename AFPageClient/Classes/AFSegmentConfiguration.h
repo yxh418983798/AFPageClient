@@ -13,6 +13,9 @@
 /** 是否显示滚动条 默认YES */
 @property (assign, nonatomic) BOOL showScrollBar;
 
+/** 切换Item时，字体是否动画变化，默认YES */
+@property (assign, nonatomic) BOOL animatedEnable;
+
 /** 是否显示底部分割线 默认NO */
 @property (assign, nonatomic) BOOL showBottomLine;
 

@@ -274,6 +274,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 //            }
 //        }
 //    }
+    NSLog(@"-------------------------- 停了：%g --------------------------", self.segmentView.scrollBar.frame.origin.x);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -282,6 +283,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 //        if ([self.delegate respondsToSelector:@selector(pageCollectionViewDidScroll:)]) {
 //            [self.delegate pageCollectionViewDidScroll:self.collectionView];
 //        }
+
     }
 }
 
@@ -297,12 +299,16 @@ static NSInteger AFPageChildViewTag = 66661201;
             }
         }
     }
-//    NSLog(@"-------------------------- 离开手指，%d --------------------------", scrollView.decelerating);
+    NSLog(@"-------------------------- 离开手指，%d --------------------------", scrollView.decelerating);
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    NSLog(@"-------------------------- 动画结束，%d --------------------------", scrollView.decelerating);
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"-------------------------- 结束了 --------------------------");
 }
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.segmentView.scrollBar stop];
+}
+
 
 
 #pragma mark -- 手动设置显示的控制器

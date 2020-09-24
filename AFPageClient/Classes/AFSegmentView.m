@@ -8,7 +8,6 @@
 #import "AFSegmentView.h"
 #import <Masonry/Masonry.h>
 #import "AFSegmentViewCell.h"
-#import "AFPageScrollBar.h"
 #import "AFPageItem.h"
 #import "AFSegmentConfiguration.h"
 #import "AFCollectionViewFlowLayout.h"
@@ -34,9 +33,6 @@ static CGFloat ScrollBar_W = 6.f;
 
 /** 记录自适应宽度的补充宽度 */
 //@property (assign, nonatomic) CGFloat                   supplement_W;
-
-/** scrollBar */
-@property (nonatomic, strong) AFPageScrollBar            *scrollBar;
 
 @end
 
@@ -210,14 +206,29 @@ static CGFloat ScrollBar_W = 6.f;
 - (void)selectedAtIndex:(NSInteger)index  {
     
     if (self.current_index == index) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
-        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+        CGFloat offX = self.collectionView.contentOffset.x - self.collectionView.frame.size.width * self.current_index;
+        NSInteger toIndex;
+        if (offX >= 0) {
+            toIndex = fmin(self.current_index+1, [self.delegate numberOfItemsInSegmentView:self]);
+        } else {
+            toIndex = fmax(self.current_index-1, 0);
+        }
+        AFSegmentViewCell *cell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+        [cell updateScrollPercent:1 animated:YES];
+        if (toIndex >= [self.delegate numberOfItemsInSegmentView:self] || toIndex == self.current_index) {
+            toIndex = index;
+        } else {
+            AFSegmentViewCell *toCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
+            [cell updateScrollPercent:1 animated:YES];
+            [toCell updateScrollPercent:0 animated:YES];
+        }
         if (self.configuration.showScrollBar) {
             NSLog(@"--------------------------!!!! current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
             [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
         }
         return;
     }
+    [self animatedFromIndex:self.current_index toIndex:index];
     self.last_index = self.current_index;
     self.current_index = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
@@ -226,6 +237,19 @@ static CGFloat ScrollBar_W = 6.f;
     if (self.configuration.showScrollBar) {
         NSLog(@"-------------------------- current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
         [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
+    }
+}
+
+- (void)animatedFromIndex:(NSInteger)index toIndex:(NSInteger)toIndex {
+    if (!self.configuration.animatedEnable) return;
+    if (toIndex >= [self.delegate numberOfItemsInSegmentView:self]) return;
+    AFSegmentViewCell *cell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    if (toIndex == index) {
+        [cell updateScrollPercent:1 animated:YES];
+    } else {
+        AFSegmentViewCell *toCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
+        [cell updateScrollPercent:0 animated:YES];
+        [toCell updateScrollPercent:1 animated:YES];
     }
 }
 
@@ -293,7 +317,7 @@ static CGFloat ScrollBar_W = 6.f;
 #pragma mark - 监听滑动，实时更新UI
 - (void)pageScrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (!scrollView.dragging) return;
+    if (!scrollView.tracking || !scrollView.dragging) return;
     CGFloat offX = scrollView.contentOffset.x - scrollView.frame.size.width * self.current_index;
     NSInteger toIndex;
     if (offX >= 0) {
@@ -302,12 +326,17 @@ static CGFloat ScrollBar_W = 6.f;
         toIndex = fmax(self.current_index-1, 0);
     }
     if (toIndex >= [self.delegate numberOfItemsInSegmentView:self] || toIndex == self.current_index) return;
-    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.current_index inSection:0]];
-    UICollectionViewCell *toCell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
+    AFSegmentViewCell *cell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.current_index inSection:0]];
+    AFSegmentViewCell *toCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
     CGFloat fromValue = cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2;
     CGFloat toValue =  toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2;
 //    NSLog(@"--------------------------offX:%g current_index:%d -- toIndex:%d -- from:%g -- to：%g -- percent：%g  --------------------------",offX, self.current_index, toIndex, fromValue, toValue, fabs(offX/scrollView.frame.size.width));
-    [self.scrollBar interactionScrollFromValue:fromValue toValue:toValue percent:fabs(offX/scrollView.frame.size.width)];
+    CGFloat percent = fabs(offX/scrollView.frame.size.width);
+    // 实时更新滚动条
+    [self.scrollBar interactionScrollFromValue:fromValue toValue:toValue percent:percent];
+    // 实时更新字体大小
+    [cell updateScrollPercent:1-percent animated:NO];
+    [toCell updateScrollPercent:percent animated:NO];
 }
 
 

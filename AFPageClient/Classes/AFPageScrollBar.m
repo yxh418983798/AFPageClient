@@ -82,6 +82,9 @@ static CGFloat Max_W = 60.f;
         self.direction = AFPageScrollBarDirectionLeft;
     } else {
         self.direction = AFPageScrollBarDirectionBack;
+        self.status = AFPageScrollBarStatusShorten;
+        if (!_displayLink) [self.displayLink addToRunLoop:NSRunLoop.currentRunLoop forMode:NSRunLoopCommonModes];
+        return;
     }
     
     if (self.frame.size.width < Max_W) {
@@ -109,7 +112,7 @@ static CGFloat Max_W = 60.f;
     if (self.direction == AFPageScrollBarDirectionRight) {
         switch (self.status) {
             case AFPageScrollBarStatusStretch:
-                if (frame.origin.x + frame.size.width >= _toValue) {
+                if (frame.origin.x + frame.size.width >= _toValue + Min_W) {
                     self.status = AFPageScrollBarStatusShorten;
                     break;
                 }
@@ -117,25 +120,30 @@ static CGFloat Max_W = 60.f;
                 if (frame.size.width >= Max_W) {
                     self.status = AFPageScrollBarStatusMove;
                 }
+//                NSLog(@"-------------------------- 右滑拉伸：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             case AFPageScrollBarStatusMove:
-                frame.origin.x = fmin(frame.origin.x + distance, _toValue - Max_W);
-                if (frame.origin.x + frame.size.width >= _toValue) {
+                frame.origin.x = fmin(frame.origin.x + distance, _toValue + Min_W - Max_W);
+                frame.size.width =  Max_W;
+                if (frame.origin.x + frame.size.width >= _toValue + Min_W) {
                     self.status = AFPageScrollBarStatusShorten;
                 }
+//                NSLog(@"-------------------------- 右滑移动：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             case AFPageScrollBarStatusShorten:
                 frame.size.width = fmax(frame.size.width - distance, Min_W);
-                frame.origin.x = _toValue - frame.size.width;
+                frame.origin.x = _toValue + Min_W - frame.size.width;
                 if (frame.size.width <= Min_W) {
                     self.status = AFPageScrollBarStatusNormal;
                     [_displayLink invalidate];
                     _displayLink = nil;
                 }
+                NSLog(@"-------------------------- 右滑缩短：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             default:
                 [_displayLink invalidate];
                 _displayLink = nil;
+                NSLog(@"-------------------------- 右滑结束：%g -- %g --------------------------", frame.origin.x, frame.size.width);;
                 return;
         }
         self.frame = frame;
@@ -153,12 +161,15 @@ static CGFloat Max_W = 60.f;
                 if (frame.size.width >= Max_W) {
                     self.status = AFPageScrollBarStatusMove;
                 }
+                NSLog(@"-------------------------- 左滑拉伸：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             case AFPageScrollBarStatusMove:
                 frame.origin.x = fmax(frame.origin.x - distance, _toValue);
+                frame.size.width =  Max_W;
                 if (frame.origin.x <= _toValue) {
                     self.status = AFPageScrollBarStatusShorten;
                 }
+                NSLog(@"-------------------------- 左滑移动：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             case AFPageScrollBarStatusShorten:
                 frame.origin.x = _toValue;
@@ -168,10 +179,12 @@ static CGFloat Max_W = 60.f;
                     [_displayLink invalidate];
                     _displayLink = nil;
                 }
+                NSLog(@"-------------------------- 左滑缩短：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             default:
                 [_displayLink invalidate];
                 _displayLink = nil;
+                NSLog(@"-------------------------- 左滑结束：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 return;
         }
         self.frame = frame;
@@ -189,25 +202,31 @@ static CGFloat Max_W = 60.f;
                 if (frame.size.width >= Max_W) {
                     self.status = AFPageScrollBarStatusMove;
                 }
+                NSLog(@"-------------------------- 复位拉伸：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             case AFPageScrollBarStatusMove:
                 frame.origin.x = fmax(frame.origin.x - distance, _toValue);
+                frame.size.width =  Max_W;
                 if (frame.origin.x <= _toValue) {
                     self.status = AFPageScrollBarStatusShorten;
                 }
+                NSLog(@"-------------------------- 复位移动：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             case AFPageScrollBarStatusShorten:
                 frame.origin.x = _toValue;
+//                frame.size.width = fmax(frame.size.width - distance, Min_W);
                 frame.size.width = fmax(frame.size.width - distance, Min_W);
                 if (frame.size.width <= Min_W) {
                     self.status = AFPageScrollBarStatusNormal;
                     [_displayLink invalidate];
                     _displayLink = nil;
                 }
+                NSLog(@"-------------------------- 复位缩短：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 break;
             default:
                 [_displayLink invalidate];
                 _displayLink = nil;
+                NSLog(@"-------------------------- 复位结束：%g -- %g --------------------------", frame.origin.x, frame.size.width);
                 return;
         }
         self.frame = frame;
@@ -240,6 +259,7 @@ static CGFloat Max_W = 60.f;
             frame.origin.x = fromValue - frame.size.width;
         }
     } else if (percent < shortenPercent) {
+        frame.size.width =  Max_W;
         // 移动
         if (toValue > fromValue) {
             frame.origin.x = fromValue + (toValue - fromValue - Max_W) * (percent - stretchPercent)/(shortenPercent - stretchPercent);
@@ -253,12 +273,17 @@ static CGFloat Max_W = 60.f;
         if (toValue > fromValue) {
             frame.origin.x = toValue - frame.size.width;
         }
-//        NSLog(@"-------------------------- 缩短：%g -- %g -- %g--------------------------", stretchPercent, (percent - stretchPercent)/(shortenPercent - stretchPercent), frame.size.width);
+        NSLog(@"-------------------------- 缩短：%g -- %g -- %g--------------------------", stretchPercent, (percent - stretchPercent)/(shortenPercent - stretchPercent), frame.size.width);
     }
     self.frame = frame;
 }
 
 
+#pragma mark - 停止
+- (void)stop {
+    [_displayLink invalidate];
+    _displayLink = nil;
+}
 
 //- (void)dealloc {
 //    NSLog(@"-------------------------- svrollbar释放 --------------------------");

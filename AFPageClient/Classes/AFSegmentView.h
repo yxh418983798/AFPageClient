@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFPageScrollBar.h"
 
 @class AFSegmentView;
 @class AFPageItem;
@@ -26,6 +27,9 @@
 
 
 @interface AFSegmentView : UIView
+
+/** scrollBar */
+@property (nonatomic, strong) AFPageScrollBar          *scrollBar;
 
 /** 配置 */
 @property (strong, nonatomic) AFSegmentConfiguration   *configuration;
