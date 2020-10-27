@@ -88,7 +88,7 @@ static NSInteger AFPageChildViewTag = 66661201;
     if (!_contentCell && !self.isFixed) {
         _contentCell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"AFPageContentCell"];
         _contentCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [_contentCell addSubview:self.collectionView];
+        [_contentCell.contentView addSubview:self.collectionView];
     }
     return _contentCell;
 }
