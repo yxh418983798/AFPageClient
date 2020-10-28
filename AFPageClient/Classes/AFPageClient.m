@@ -124,7 +124,7 @@ static NSInteger AFPageChildViewTag = 66661201;
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator   = NO;
-        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.backgroundColor = self.configuration.backgroundColor;
 //        _collectionView.gestureShouldRecognizer = YES;
 //        _collectionView.responseDelegate = self;
     }

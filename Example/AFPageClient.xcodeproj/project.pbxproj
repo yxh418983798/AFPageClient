@@ -571,7 +571,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -589,7 +589,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
