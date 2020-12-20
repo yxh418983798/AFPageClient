@@ -161,8 +161,12 @@
         }
         self.imageView.image = item.content;
     }
+}
+
+// 显示角标
+- (void)displayBadge:(AFPageItemBadge *)badge {
     
-    if (!item.displayBadge) {
+    if (!badge.content) {
         // 隐藏角标
         if (_badgeView.superview) {
             [_badgeView removeFromSuperview];
@@ -170,37 +174,37 @@
         }
     } else {
         // 显示小红点
-        self.badgeView.layer.backgroundColor = item.badgeBackgroundColor.CGColor;
-        self.badgeView.layer.cornerRadius = item.badgeCornerRadius;
+        self.badgeView.layer.backgroundColor = badge.backgroundColor.CGColor;
+        self.badgeView.layer.cornerRadius = badge.cornerRadius;
         self.badgeView.layer.masksToBounds = YES;
-        self.badgeLb.text = item.displayBadge;
-        self.badgeLb.font = item.badgeTitleFont;
-        self.badgeLb.textColor = item.badgeTitleColor;
+        self.badgeLb.text = badge.content;
+        self.badgeLb.font = badge.font;
+        self.badgeLb.textColor = badge.textColor;
 
-        if (item.displayBadge.length) {
-            CGSize size = [item.displayBadge boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
-                                                             options:NSStringDrawingUsesLineFragmentOrigin
-                                                          attributes:@{NSFontAttributeName : item.badgeTitleFont}
-                                                             context:nil].size;
+        if (badge.content.length) {
+            CGSize size = [badge.content boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
+                                                      options:NSStringDrawingUsesLineFragmentOrigin
+                                                   attributes:@{NSFontAttributeName : badge.font}
+                                                      context:nil].size;
             [self.badgeView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 
-                make.right.offset(item.badgeOffset.x);
-                make.top.offset(item.badgeOffset.y);
-                make.width.offset(size.width + item.badgeTitleInsets.left + item.badgeTitleInsets.right);
-                make.height.offset(size.height + item.badgeTitleInsets.top + item.badgeTitleInsets.bottom);
+                make.right.offset(badge.offset.x);
+                make.top.offset(badge.offset.y);
+                make.width.offset(size.width + badge.contentInsets.left + badge.contentInsets.right);
+                make.height.offset(size.height + badge.contentInsets.top + badge.contentInsets.bottom);
             }];
             [self.badgeLb mas_remakeConstraints:^(MASConstraintMaker *make) {
                 
-                make.right.offset(-item.badgeTitleInsets.right);
-                make.left.offset(item.badgeTitleInsets.left);
+                make.right.offset(-badge.contentInsets.right);
+                make.left.offset(badge.contentInsets.left);
                 make.centerY.offset(0);
             }];
         } else {
             [self.badgeView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 
-                make.right.offset(item.badgeOffset.x);
-                make.top.offset(item.badgeOffset.y);
-                make.width.height.offset(item.badgeCornerRadius * 2);
+                make.right.offset(badge.offset.x);
+                make.top.offset(badge.offset.y);
+                make.width.height.offset(badge.cornerRadius * 2);
             }];
         }
     }

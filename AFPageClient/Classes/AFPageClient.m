@@ -153,6 +153,20 @@ static NSInteger AFPageChildViewTag = 66661201;
     return [self.delegate numberOfItemsInPageClient:self];
 }
 
+/// 获取item
+- (AFPageItem *)itemAtIndex:(NSInteger)index {
+    NSString *key = [NSString stringWithFormat:@"AFPageItemIndex_%ld", index];
+    AFPageItem *item = [self.pageItems valueForKey:key];
+    if (!item) {
+        item = [self.delegate pageClient:self itemForPageAtIndex:index];
+        if ([self.delegate respondsToSelector:@selector(pageClient:badgeForItemAtIndex:)]) {
+            item.badge = [self.delegate pageClient:self badgeForItemAtIndex:index];
+        }
+        [self.pageItems setValue:item forKey:key];
+    }
+    return item;
+}
+
 
 #pragma mark - 刷新
 - (void)reloadData {
@@ -166,9 +180,24 @@ static NSInteger AFPageChildViewTag = 66661201;
     [self update];
 }
 
-/// 刷新SegmentView
-- (void)reloadSegment {
-    [self.segmentView reloadData];
+/// 刷新角标
+- (void)reloadBadge {
+    if ([self.delegate respondsToSelector:@selector(pageClient:badgeForItemAtIndex:)]) {
+        for (int i = 0; i < self.pageItems.count; i++) {
+            AFPageItem *item = [self itemAtIndex:i];
+            item.badge = [self.delegate pageClient:self badgeForItemAtIndex:i];
+        }
+        [self.segmentView reloadData];
+    }
+}
+
+/// 刷新某个index的角标
+- (void)reloadBadgeAtIndex:(NSInteger)index {
+    if ([self.delegate respondsToSelector:@selector(pageClient:badgeForItemAtIndex:)]) {
+        AFPageItem *item = [self itemAtIndex:index];
+        item.badge = [self.delegate pageClient:self badgeForItemAtIndex:index];
+        [self.segmentView reloadData];
+    }
 }
 
 - (void)update {
@@ -248,13 +277,7 @@ static NSInteger AFPageChildViewTag = 66661201;
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AFPageChildViewControllerCell" forIndexPath:indexPath];
     [[cell.contentView viewWithTag:AFPageChildViewTag] removeFromSuperview];
-    NSString *key = [NSString stringWithFormat:@"AFPageItemIndex_%ld", indexPath.item];
-    AFPageItem *item = [self.pageItems valueForKey:key];
-    if (!item) {
-        item = [self.delegate pageClient:self itemForPageAtIndex:indexPath.item];
-        [self.pageItems setValue:item forKey:key];
-    }
-    
+    AFPageItem *item = [self itemAtIndex:indexPath.item];
     UIViewController *childVc = item.childViewController;
     [self.parentViewController addChildViewController:childVc];
     [childVc didMoveToParentViewController:self.parentViewController];
@@ -341,12 +364,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 }
 
 - (UIViewController *)currentVc {
-    NSString *key = [NSString stringWithFormat:@"AFPageItemIndex_%ld", self.selectedIndex];
-    AFPageItem *item = [self.pageItems valueForKey:key];
-    if (!item) {
-        item = [self.delegate pageClient:self itemForPageAtIndex:self.selectedIndex];
-        [self.pageItems setValue:item forKey:key];
-    }
+    AFPageItem *item = [self itemAtIndex:self.selectedIndex];
     return item.childViewController;
 }
 
@@ -359,13 +377,7 @@ static NSInteger AFPageChildViewTag = 66661201;
  
 /// 自定义每个item的数据源
 - (AFPageItem *)segmentView:(AFSegmentView *)segmentView itemForSegmentAtIndex:(NSInteger)index {
-    NSString *key = [NSString stringWithFormat:@"AFPageItemIndex_%ld", index];
-    AFPageItem *item = [self.pageItems valueForKey:key];
-    if (!item) {
-        item = [self.delegate pageClient:self itemForPageAtIndex:index];
-        [self.pageItems setValue:item forKey:key];
-    }
-    return item;
+    return [self itemAtIndex:index];
 }
 
 /// 选中Item的回调

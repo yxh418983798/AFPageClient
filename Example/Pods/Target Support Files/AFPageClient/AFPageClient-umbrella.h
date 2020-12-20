@@ -14,6 +14,7 @@
 #import "AFPageClient.h"
 #import "AFPageCollectionView.h"
 #import "AFPageItem.h"
+#import "AFPageItemBadge.h"
 #import "AFPageScrollBar.h"
 #import "AFSegmentConfiguration.h"
 #import "AFSegmentView.h"

@@ -273,6 +273,7 @@ static CGFloat ScrollBar_W = 6.f;
     AFPageItem *item = [self.delegate segmentView:self itemForSegmentAtIndex:indexPath.item];
     cell.item = item;
     cell.selected = (indexPath.item == self.current_index);
+    [cell displayBadge:item.badge];
     return cell;
 }
 

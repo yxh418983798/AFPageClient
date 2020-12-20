@@ -107,15 +107,24 @@
     item.childViewController = AFPageViewController.new;
     item.content = [NSString stringWithFormat:@"第%d个item", index];
 //    item.backgroundColor = UIColor.grayColor;
-    item.displayBadge = @"";
-    item.badgeOffset = CGPointMake(0, 10);
     if (index == 0) {
         self.item = item;
     }
-    NSLog(@"-------------------------- itemForSegmentAtIndex：%d --------------------------", index);
+//    NSLog(@"-------------------------- itemForSegmentAtIndex：%d --------------------------", index);
     return item;
 }
 
+static NSString *content = AFPageItemBadgeRedDot;
+- (AFPageItemBadge *)pageClient:(AFPageClient *)pageClient badgeForItemAtIndex:(NSInteger)index {
+    if (index == 0) {
+        return nil;
+    }
+    AFPageItemBadge *badge = AFPageItemBadge.new;
+    badge.offset = CGPointMake(0, 10);
+    content = content == AFPageItemBadgeRedDot ? @"12" : AFPageItemBadgeRedDot;
+    badge.content = content;
+    return badge;
+}
 
 /// 选中Item的回调
 - (void)pageClient:(AFPageClient *)pageClient didSelectItemAtIndex:(NSInteger)index {
@@ -132,8 +141,7 @@
 }
 
 - (void)popAction {
-    self.item.displayBadge = self.item.displayBadge != @"" ? @"" : @"12";
-    [self.pageClient reloadSegment];
+    [self.pageClient reloadBadge];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

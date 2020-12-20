@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"
+#import "AFPageItemBadge.h"
 #import "AFSegmentConfiguration.h"
 
 @class AFPageClient;
@@ -19,11 +20,13 @@
 /// 必须实现，构造item数据源，内部会自动缓存item以提升性能，如果需要更新数据源，需要调用reloadData
 - (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index;
 
-
 @optional;
 
 /// 选中Item的回调
 - (void)pageClient:(AFPageClient *)pageClient didSelectItemAtIndex:(NSInteger)index;
+
+/// 返回item的角标
+- (AFPageItemBadge *)pageClient:(AFPageClient *)pageClient badgeForItemAtIndex:(NSInteger)index;
 
 /// 自定义Segment的leftView
 - (UIView *)leftViewForSegmentInPageClient:(AFPageClient *)pageClient;
@@ -49,11 +52,17 @@
 + (instancetype)new  NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame parentController:(UIViewController *)viewController configuration:(AFSegmentConfiguration *)configuration;
 
+/// 获取item
+- (AFPageItem *)itemAtIndex:(NSInteger)index;
+
 /// 刷新整个PageClient
 - (void)reloadData;
 
-/// 刷新SegmentView
-- (void)reloadSegment;
+/// 刷新角标
+- (void)reloadBadge;
+
+/// 刷新某个index的角标
+- (void)reloadBadgeAtIndex:(NSInteger)index;
 
 /// 获取当前Vc
 - (UIViewController *)currentVc;

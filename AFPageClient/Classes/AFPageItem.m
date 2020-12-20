@@ -17,12 +17,6 @@
         self.textColor = UIColor.blackColor;
         self.selectedTextColor = UIColor.blackColor;
         self.backgroundColor = UIColor.whiteColor;
-        
-        self.badgeTitleColor = UIColor.whiteColor;
-        self.badgeTitleFont = [UIFont systemFontOfSize:10];
-        self.badgeCornerRadius = 3.f;
-        self.badgeBackgroundColor = UIColor.redColor;
-        self.badgeTitleInsets = UIEdgeInsetsMake(0, 2, 0, 2);
     }
     return self;
 }

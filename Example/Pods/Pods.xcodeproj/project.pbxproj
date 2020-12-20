@@ -8,60 +8,62 @@
 
 /* Begin PBXBuildFile section */
 		00795890442BDC52E306EE41B7F42795 /* Pods-AFPageClient_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BA6B48E96A9BC63FD4BB822DFD954D /* Pods-AFPageClient_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		007A2DB6ED32EC20354FB5595805CAAB /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A85AE9E36F67A1B513CB8DA940771B4F /* Masonry-dummy.m */; };
-		03E44A120A07C233C0705931189F0C9F /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 02CA69FDFD4D7BB11F8E3E2E7A0B9879 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0F53DEDA5ACF7AEE88B53F1FADB645B5 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C5CD1265270E95A8A89443C727427 /* MASConstraintMaker.m */; };
-		1D5BBA98F46BCE5EC8059A461FAADA94 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 342C4D9B5E1E36390E7AF01E35444998 /* ViewController+MASAdditions.m */; };
-		1FF20693BC8BD37A66898283A7178D6A /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E12E3D2779B5C7A8301A94F715DB4C /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06699408D8C2E4FFA9CF9C46C218C597 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EEE0A3CE36E163E09EA7F7915F1DE /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		1623C195DC5F4CC704CBF39B27444C72 /* AFPageItemBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = A2434C8570DC983EAED1387EE7E25FF2 /* AFPageItemBadge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22FDA20628FA466698EC0630142D6D7F /* AFPageItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A236EE5B7D91DEFE40F9328A83307ECC /* AFPageItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24BF82B573B458890387FA1886525116 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BCCE8C6C17F326AFEDF4357C62ADAF /* MASViewAttribute.m */; };
 		29F92F217E6AA5E938A4FC82A242F38A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28147EF640D73DD5BE8B797CFD199606 /* Foundation.framework */; };
-		2BA725B15CD28227C84F9A23B6612585 /* AFPageScrollBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 527908DE30C90315668254E2B3DB3416 /* AFPageScrollBar.m */; };
-		2F5BF5A3FE3853C0936E276F810985C0 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4497913DB548AE2E03103D3A97F34F /* View+MASAdditions.m */; };
-		35463E8BDCAF931316970C6B4C7137FD /* AFSegmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2121ADC7CB58F7B7599A8101FC7F6B2C /* AFSegmentViewCell.m */; };
-		3579737BC3E7119A49726D56D9ACCA01 /* AFPageScrollBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 11271FBA982B0206FD7038F426AC0B5B /* AFPageScrollBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35910309568188BB92D013B594E346F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28147EF640D73DD5BE8B797CFD199606 /* Foundation.framework */; };
-		360656925A47D90D1A6583DC47653A63 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A95F8027E3EB86CB9AE2D7539201FE /* MASViewConstraint.m */; };
-		36C9143E3482FBDD1C615CA8D3511E3F /* AFPageCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = CA88D6BA5848D4BAFB3AD14061B9510E /* AFPageCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		334EE2A2B6446FECF7227A0231E1D6E5 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C5CD1265270E95A8A89443C727427 /* MASConstraintMaker.m */; };
+		369C0936150F65EE2D90392941B182E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF909907D9794E4C781DAC1693A7018 /* UIKit.framework */; };
+		374586502930CCA3AB7AA64EBB36DECA /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA8A3885BC33F25CB32442EB2449111 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3DBD6FE7AAF50B4B55C467952EB63832 /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 837834476F3329FA118B081516D4FC28 /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42891B70CB7E04A29CAEDB9BAAA7E237 /* AFSegmentConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3F0718F8E7EB9585C216E1B61D8078 /* AFSegmentConfiguration.m */; };
 		4752BE7D2F93C6B84AF4F8C49916FB0F /* Pods-AFPageClient_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5936797ED480EA5AF4E8D981E01477FD /* Pods-AFPageClient_Tests-dummy.m */; };
-		4B272C856DC46617A25AF4D52172D120 /* MASConstraint+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 837834476F3329FA118B081516D4FC28 /* MASConstraint+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4BE6A40FDD5D3C6C1573B6065EE9BD21 /* AFPageItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A52ECE6FB12EE57164308D659B7DEBFF /* AFPageItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C9E7F0D6D5446C0AC437C9C5E15AB1A /* AFSegmentConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E3942D2BD4E344BE9D6A0C3949F92184 /* AFSegmentConfiguration.m */; };
-		4CBD038B410B40B14E7A0ADC131E3C61 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = D12E9F350C1C8076BE92719B89951AD8 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F988483F813F9E79BFFBF78450EFCBF /* AFPageClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E58F4021DA00567CE2818A7E39D12A2 /* AFPageClient-dummy.m */; };
-		5057D8FE819604AEE1E3F529BD8040AD /* AFPageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B415F66D4247AB5C159BDC50EC16C9E4 /* AFPageItem.m */; };
-		567D6F71654C3F951E633E951866F22D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071EEE0A3CE36E163E09EA7F7915F1DE /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		57A18EEE70BBDF05B0DA26B5D7898220 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7851906D7976272A721C8C4E0CE9092 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		585AD6B5008746D56E1FF5072B9CEBAC /* Masonry.h in Headers */ = {isa = PBXBuildFile; fileRef = EDA8A3885BC33F25CB32442EB2449111 /* Masonry.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C7D7DCC1B2C82D76EBC1ED2696FBEEA /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B28864E3F11E1DDE7AEF55AFFD8B0FE /* Masonry.framework */; };
-		63CD0BE9FF86247DA08E58D991BAE07A /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EC6C5D191587619B42076546EDC448 /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6AF6398C067A9DFC83172F050448792A /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FF4AF21902029EC43C354AC0978CE49 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C8CE642B1E101AFACC6406844FBB1EE /* AFPageClient-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F03727ADFECAC490176AEBEC217434F /* AFPageClient-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		731695E8181E96BA94BE8D365736E570 /* AFCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AC3ECAF218049DC6250EE8BEDE3E8E0 /* AFCollectionViewFlowLayout.m */; };
-		77EB4264F76A1B1A82EE3CA636D2CED2 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 607937A372913475EE7EAE532760ACD4 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B1BE938FE1237FCA6C4703CC716FD11 /* AFPageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 86D8334C2B382E87C08B790C9307F381 /* AFPageClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F1BD957143D26C0837EFBD2F3332D49 /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = A78D3443F105E00FC21FE5A357C8F716 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F66921DCE01F65E456E468E83BF7161 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9073C3B74BC30C55B4EB5B2A596EAD72 /* MASConstraint.m */; };
+		5031955206510DBBD84D70291E2D7EEA /* AFSegmentViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 619C2CDDC187DEBC4741DB1112926145 /* AFSegmentViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60041C3DD419593A8E75D59D7455BCBB /* NSArray+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EC6C5D191587619B42076546EDC448 /* NSArray+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		617B7FB5D3B39DBB414CCC1475D23CB2 /* AFPageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EB70A91F270D802700F8B05CF870E6 /* AFPageItem.m */; };
+		6223D18716DE8F22E2189A2C6B920657 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEBD88282BA13360CAA867D8465C75 /* NSArray+MASAdditions.m */; };
+		6B7889E995E4F9D78ADD384EEF8663E4 /* AFPageCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F6D36B1F9E8A3A27A7AB5B481106F05 /* AFPageCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7183905F11BED81EABC1D678496F7479 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7CC7527FD599A1064055C060E14B43 /* MASCompositeConstraint.m */; };
 		7AD37408AE9A704CE940A479CF1F1480 /* Pods-AFPageClient_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 909B7B861610475B7CB4793BD0B0A3DA /* Pods-AFPageClient_Example-dummy.m */; };
+		7CC10378DCEDF4CF984357A856E340BF /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B28864E3F11E1DDE7AEF55AFFD8B0FE /* Masonry.framework */; };
 		80D2D862B6F4903D96B459CC99824FB1 /* Pods-AFPageClient_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 810F4895A2DE48C63C94B4D8823CBF58 /* Pods-AFPageClient_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97A1800966F2C69ADCD295CA664203A8 /* AFPageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 412B869836B4C8836970C0230E8B9266 /* AFPageClient.m */; };
-		9A42C06C4313E0A3437E93F2FCE116FF /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = EB7CC7527FD599A1064055C060E14B43 /* MASCompositeConstraint.m */; };
-		9EBCD83693F1C2809BC4183DAAE66743 /* AFPageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = C2FA50CD74D9826FD201B6EB1CB7EFFE /* AFPageClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A397B9F4DD7B560BEE9A6EE74938EC39 /* AFPageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAB11BF2978362BC144BCB93AAA8B01 /* AFPageCollectionView.m */; };
-		A560EED1ABA26A0B66675FCEC9722FC9 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E17443EA85E103F4DD0553AB6BB942A /* MASLayoutConstraint.m */; };
+		83967DCBE2EB9D9ED73C4C914D803150 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55960467D1B758EC688A18A171012E78 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		850901F8B31DE2738393F401BB687B8E /* AFPageClient-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1235BDDA250D2323D0B264D2FA078712 /* AFPageClient-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8588DB10CDC6EC0F1F048FD98C1B3A55 /* AFSegmentConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = E52BDAE404E0791C9E3142635EC7D980 /* AFSegmentConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8994BB3A6368F79B086854DE34A16BFA /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A95F8027E3EB86CB9AE2D7539201FE /* MASViewConstraint.m */; };
+		8A35FC3E7A6F73D906150802DE339132 /* Masonry-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF8069504999FB8BF5FA1529175AA74 /* Masonry-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AEC911EFC8EFE07AAFCAE7DED272E7D /* AFPageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7FC4112A5E3EB63BDA7AC1F4C78D2 /* AFPageClient.m */; };
+		8B60B90306E84CF2F6EAD99011411FF2 /* MASViewConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = D12E9F350C1C8076BE92719B89951AD8 /* MASViewConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90875027D868C3578A032B71090BB008 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 86765B456E483806C4E13D2DD50E40A4 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9220BC080C3DE046FA553263D67AE3BF /* AFSegmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFA5014CDF36BD7C7D921413ECF5D12 /* AFSegmentViewCell.m */; };
+		94ADEE771852E2A716E5CEC2EEA60154 /* AFPageItemBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FD9853CE9470BCB24B031A067A861 /* AFPageItemBadge.m */; };
+		A4B01593125AC20684964FA7B737855B /* AFSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80702FDEE264023455134789EDE1A73B /* AFSegmentView.m */; };
+		A66823A092FE242DC8EDDF0B065633C4 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7851906D7976272A721C8C4E0CE9092 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA071E08E9842EAE934BC061ADE24366 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28147EF640D73DD5BE8B797CFD199606 /* Foundation.framework */; };
-		B00590BF93EC9FA22416AE5573CD4178 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AD89987EC7EAE20D7034EEF9935E7CC /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B75C956EBC32EB70E59F75FBD766C57F /* AFSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A754BE6E523C1C7AFD86E3213DA6E8E /* AFSegmentView.m */; };
-		B84320B882D89A0A99E0D68B5E384183 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9073C3B74BC30C55B4EB5B2A596EAD72 /* MASConstraint.m */; };
-		B9EAC80E0A5103D485E26330C0C81880 /* AFCollectionViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C2AD2AD8CC0BA69770AFCE0E16AFD8E /* AFCollectionViewFlowLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDB7D7C4D3BFE389B66CBD8A53E0C4D1 /* View+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 86765B456E483806C4E13D2DD50E40A4 /* View+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BDE2B6AF769D769BA57F88F76DBD3BF0 /* AFSegmentViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = C6F96EACA0CE1EDDA27FCD2BE719ED0E /* AFSegmentViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C01357E3059B56007FF9950A3EC5C537 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 55960467D1B758EC688A18A171012E78 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C358AFDCCF68457027EC6C63F11A3DAB /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 047EE388CF208BD5F57049BD98558C94 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D73D3E92AE76485BD25398685FB9094D /* MASViewAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = A78D3443F105E00FC21FE5A357C8F716 /* MASViewAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB0A1C8B1796B882B48DD17C8BC9E789 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = B28EC2F4C626ED77509645BE3805CB29 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DEF21927E6E8E9171FA9C859C640E091 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BCCE8C6C17F326AFEDF4357C62ADAF /* MASViewAttribute.m */; };
-		E1EDA7604174FF67F10F0BEE6C78D295 /* AFSegmentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 50EB51FB28EDC4C526754F7F4B0604AF /* AFSegmentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E74EF583752A2A1F3B3EFB6BF7CBFE01 /* Masonry-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CF8069504999FB8BF5FA1529175AA74 /* Masonry-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F162580BAF95C86C2826F91C1FA831A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFF909907D9794E4C781DAC1693A7018 /* UIKit.framework */; };
-		F680B01929C0FB0E73015E6D37FCB742 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28147EF640D73DD5BE8B797CFD199606 /* Foundation.framework */; };
-		F8D086799AA17E597301201D75729F52 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEBD88282BA13360CAA867D8465C75 /* NSArray+MASAdditions.m */; };
-		FA82A5CB8AC010435CC2D25B66EBA2C4 /* AFSegmentConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AD34B42C79FE91701623BC8B9C9A205 /* AFSegmentConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ACE69330C9B1ABBE62A596A654632FF5 /* AFPageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DC7A59C0372FBB1C37F32D4CA67A1 /* AFPageCollectionView.m */; };
+		B088489401866040E1FBA4E31511F24A /* View+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 047EE388CF208BD5F57049BD98558C94 /* View+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4AD2A898B8F189C4FDC7F3116CD3315 /* AFPageScrollBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DC79653E127E12D5F26AABD774C3B4 /* AFPageScrollBar.m */; };
+		B554AB2ECEB2BF2173AABFC6EA171A09 /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 607937A372913475EE7EAE532760ACD4 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5C8139D2C45F2F89BBE48008F2B5610 /* NSArray+MASShorthandAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E12E3D2779B5C7A8301A94F715DB4C /* NSArray+MASShorthandAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5ED850ABA7F5EE5FA84B0740C827E13 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E17443EA85E103F4DD0553AB6BB942A /* MASLayoutConstraint.m */; };
+		B6EA188089F97A274B9124E381ADCADD /* MASLayoutConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FF4AF21902029EC43C354AC0978CE49 /* MASLayoutConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BECA6F1C4774C6587DA57136DC87D987 /* MASCompositeConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AD89987EC7EAE20D7034EEF9935E7CC /* MASCompositeConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF74236A6631D06DD50271B79777AFEE /* AFSegmentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5734D8DCF2AEBA21509934CEE2919E4D /* AFSegmentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3D138C63BCE45703D17D384908C1AC5 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 342C4D9B5E1E36390E7AF01E35444998 /* ViewController+MASAdditions.m */; };
+		C6AA5AD587885250BA153A4D1D4CBC56 /* AFCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9B065E7CA6ACDF3759E0323E99E5A4 /* AFCollectionViewFlowLayout.m */; };
+		CAF835752EF820DD33260803A0CF6DA9 /* AFPageScrollBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 61263D1714C116E85E1FF39032C242D5 /* AFPageScrollBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CDD2859A90B677FAD62FF519A56A2E2E /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A85AE9E36F67A1B513CB8DA940771B4F /* Masonry-dummy.m */; };
+		CE1EF77BC29EF00391AB84F325A43F67 /* AFCollectionViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A109F2FEFE0E487BF00653E923EB31E /* AFCollectionViewFlowLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9BA6D7D301BC2457150DE8EF83434CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28147EF640D73DD5BE8B797CFD199606 /* Foundation.framework */; };
+		DFA7E5ECD6AF043E4E3940CEED48CE38 /* MASConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 02CA69FDFD4D7BB11F8E3E2E7A0B9879 /* MASConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E790828EC16ECA019EAE10015A27A9F4 /* MASConstraintMaker.h in Headers */ = {isa = PBXBuildFile; fileRef = B28EC2F4C626ED77509645BE3805CB29 /* MASConstraintMaker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0596FA169E8E765E0804C3552554290 /* AFPageClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FDAD99F31B83DF59E88E0D3834A2F1 /* AFPageClient-dummy.m */; };
+		F626F82B4B424E84C1908D7D638A4039 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28147EF640D73DD5BE8B797CFD199606 /* Foundation.framework */; };
+		FBA82F12781DC8617A63426A67F436FB /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4497913DB548AE2E03103D3A97F34F /* View+MASAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +74,7 @@
 			remoteGlobalIDString = 55AF53E6C77A10ED4985E04D74A8878E;
 			remoteInfo = Masonry;
 		};
-		565CB1B60A1212F6CF5818E4201596EC /* PBXContainerItemProxy */ = {
+		1D73F2F8F5DB3C358BBBB014AAC3EC5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -97,60 +99,65 @@
 
 /* Begin PBXFileReference section */
 		02CA69FDFD4D7BB11F8E3E2E7A0B9879 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		0393D3C947BBC14E16D758046B2CC8BC /* Pods_AFPageClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0393D3C947BBC14E16D758046B2CC8BC /* Pods_AFPageClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AFPageClient_Tests.framework; path = "Pods-AFPageClient_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		047EE388CF208BD5F57049BD98558C94 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
 		0486E8C2741426973DF0E151F932E54F /* Pods-AFPageClient_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AFPageClient_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		071EEE0A3CE36E163E09EA7F7915F1DE /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		11271FBA982B0206FD7038F426AC0B5B /* AFPageScrollBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageScrollBar.h; path = AFPageClient/Classes/AFPageScrollBar.h; sourceTree = "<group>"; };
+		07D6C428B8A9C95A8F9E829A77C1B82D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		1235BDDA250D2323D0B264D2FA078712 /* AFPageClient-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFPageClient-umbrella.h"; sourceTree = "<group>"; };
+		1719D1216FD4E109D1BC47006C308FBF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		17C4BB34D7A9E83E08764936E7C68A16 /* Pods-AFPageClient_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AFPageClient_Tests.modulemap"; sourceTree = "<group>"; };
-		1A754BE6E523C1C7AFD86E3213DA6E8E /* AFSegmentView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentView.m; path = AFPageClient/Classes/AFSegmentView.m; sourceTree = "<group>"; };
-		1B0BEE1DFCFB8CB40A6DAEEAD4D0344F /* AFPageClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFPageClient.release.xcconfig; sourceTree = "<group>"; };
-		1E58F4021DA00567CE2818A7E39D12A2 /* AFPageClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFPageClient-dummy.m"; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CFA5014CDF36BD7C7D921413ECF5D12 /* AFSegmentViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentViewCell.m; path = AFPageClient/Classes/AFSegmentViewCell.m; sourceTree = "<group>"; };
+		1E9B065E7CA6ACDF3759E0323E99E5A4 /* AFCollectionViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFCollectionViewFlowLayout.m; path = AFPageClient/Classes/AFCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		1F11184863CAD1191BB843C9861BD3AF /* AFPageClient-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFPageClient-Info.plist"; sourceTree = "<group>"; };
+		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071DD7F2DEEBC3E54F7DB4A0739681E /* Pods-AFPageClient_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFPageClient_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		2121ADC7CB58F7B7599A8101FC7F6B2C /* AFSegmentViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentViewCell.m; path = AFPageClient/Classes/AFSegmentViewCell.m; sourceTree = "<group>"; };
 		27E12E3D2779B5C7A8301A94F715DB4C /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		28147EF640D73DD5BE8B797CFD199606 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		28EB70A91F270D802700F8B05CF870E6 /* AFPageItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageItem.m; path = AFPageClient/Classes/AFPageItem.m; sourceTree = "<group>"; };
+		2D8DC7A59C0372FBB1C37F32D4CA67A1 /* AFPageCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageCollectionView.m; path = AFPageClient/Classes/AFPageCollectionView.m; sourceTree = "<group>"; };
+		2F6D36B1F9E8A3A27A7AB5B481106F05 /* AFPageCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageCollectionView.h; path = AFPageClient/Classes/AFPageCollectionView.h; sourceTree = "<group>"; };
 		30EC6C5D191587619B42076546EDC448 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
 		32BA6B48E96A9BC63FD4BB822DFD954D /* Pods-AFPageClient_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AFPageClient_Tests-umbrella.h"; sourceTree = "<group>"; };
 		342C4D9B5E1E36390E7AF01E35444998 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		3A109F2FEFE0E487BF00653E923EB31E /* AFCollectionViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCollectionViewFlowLayout.h; path = AFPageClient/Classes/AFCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		3E537C1F47DA8B06DA4A71E3D14F4DE4 /* Masonry.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Masonry.modulemap; sourceTree = "<group>"; };
-		3F03727ADFECAC490176AEBEC217434F /* AFPageClient-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFPageClient-umbrella.h"; sourceTree = "<group>"; };
-		412B869836B4C8836970C0230E8B9266 /* AFPageClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageClient.m; path = AFPageClient/Classes/AFPageClient.m; sourceTree = "<group>"; };
-		419292DB79E2B760333FFE8EC2F93833 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		419A961AD957E23BAB6A998ED7623134 /* Masonry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.release.xcconfig; sourceTree = "<group>"; };
 		470C5CD1265270E95A8A89443C727427 /* MASConstraintMaker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraintMaker.m; path = Masonry/MASConstraintMaker.m; sourceTree = "<group>"; };
 		4AD89987EC7EAE20D7034EEF9935E7CC /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
-		4C2AD2AD8CC0BA69770AFCE0E16AFD8E /* AFCollectionViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCollectionViewFlowLayout.h; path = AFPageClient/Classes/AFCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		50CAA70DF75043A9FFF121384BA48B8B /* AFPageClient-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFPageClient-prefix.pch"; sourceTree = "<group>"; };
-		50EB51FB28EDC4C526754F7F4B0604AF /* AFSegmentView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSegmentView.h; path = AFPageClient/Classes/AFSegmentView.h; sourceTree = "<group>"; };
-		527908DE30C90315668254E2B3DB3416 /* AFPageScrollBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageScrollBar.m; path = AFPageClient/Classes/AFPageScrollBar.m; sourceTree = "<group>"; };
+		50DC79653E127E12D5F26AABD774C3B4 /* AFPageScrollBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageScrollBar.m; path = AFPageClient/Classes/AFPageScrollBar.m; sourceTree = "<group>"; };
 		55960467D1B758EC688A18A171012E78 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ViewController+MASAdditions.h"; path = "Masonry/ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		5734D8DCF2AEBA21509934CEE2919E4D /* AFSegmentView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSegmentView.h; path = AFPageClient/Classes/AFSegmentView.h; sourceTree = "<group>"; };
 		5936797ED480EA5AF4E8D981E01477FD /* Pods-AFPageClient_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AFPageClient_Tests-dummy.m"; sourceTree = "<group>"; };
-		59AB1674C1627481F3A38A04ADCA6126 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		5E385017B1CC83DAC1E6BAF5B74EA956 /* AFPageClient.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFPageClient.modulemap; sourceTree = "<group>"; };
+		5C6FD9853CE9470BCB24B031A067A861 /* AFPageItemBadge.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageItemBadge.m; path = AFPageClient/Classes/AFPageItemBadge.m; sourceTree = "<group>"; };
 		607937A372913475EE7EAE532760ACD4 /* MASUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASUtilities.h; path = Masonry/MASUtilities.h; sourceTree = "<group>"; };
+		61263D1714C116E85E1FF39032C242D5 /* AFPageScrollBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageScrollBar.h; path = AFPageClient/Classes/AFPageScrollBar.h; sourceTree = "<group>"; };
+		619C2CDDC187DEBC4741DB1112926145 /* AFSegmentViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSegmentViewCell.h; path = AFPageClient/Classes/AFSegmentViewCell.h; sourceTree = "<group>"; };
 		6B28864E3F11E1DDE7AEF55AFFD8B0FE /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF8069504999FB8BF5FA1529175AA74 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
 		6E17443EA85E103F4DD0553AB6BB942A /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		6FF4AF21902029EC43C354AC0978CE49 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
+		70BD2F9882F52BEF98064CB55C145C82 /* AFPageClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = AFPageClient.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		72A95F8027E3EB86CB9AE2D7539201FE /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
+		75FDAD99F31B83DF59E88E0D3834A2F1 /* AFPageClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFPageClient-dummy.m"; sourceTree = "<group>"; };
 		7EA9E49E41A563FAC7993E12D588BE19 /* Pods-AFPageClient_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AFPageClient_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7ED7FC4112A5E3EB63BDA7AC1F4C78D2 /* AFPageClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageClient.m; path = AFPageClient/Classes/AFPageClient.m; sourceTree = "<group>"; };
 		7F264F98DF5CA9A0013980316E9F8C04 /* Pods-AFPageClient_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AFPageClient_Tests-Info.plist"; sourceTree = "<group>"; };
+		80702FDEE264023455134789EDE1A73B /* AFSegmentView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentView.m; path = AFPageClient/Classes/AFSegmentView.m; sourceTree = "<group>"; };
 		810F4895A2DE48C63C94B4D8823CBF58 /* Pods-AFPageClient_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AFPageClient_Example-umbrella.h"; sourceTree = "<group>"; };
 		837834476F3329FA118B081516D4FC28 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
+		84EF0D89AE28E99200CD0D139648E9B2 /* AFPageClient.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AFPageClient.modulemap; sourceTree = "<group>"; };
 		85E6C4FF07E80DBC128370D9B513CDD0 /* Pods-AFPageClient_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AFPageClient_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		86765B456E483806C4E13D2DD50E40A4 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		86D8334C2B382E87C08B790C9307F381 /* AFPageClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageClient.h; path = AFPageClient/Classes/AFPageClient.h; sourceTree = "<group>"; };
 		8AC77A2E0978858601D264FF1412C5D0 /* Pods-AFPageClient_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AFPageClient_Example-frameworks.sh"; sourceTree = "<group>"; };
 		8AEEBD88282BA13360CAA867D8465C75 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
 		8C30145C7A3E2F2F3FA8EA3C943581BB /* Pods-AFPageClient_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFPageClient_Example.release.xcconfig"; sourceTree = "<group>"; };
-		8DEFAA0AC4E4525F1355FF2461BBD356 /* AFPageClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = AFPageClient.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		9073C3B74BC30C55B4EB5B2A596EAD72 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		909B7B861610475B7CB4793BD0B0A3DA /* Pods-AFPageClient_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AFPageClient_Example-dummy.m"; sourceTree = "<group>"; };
-		9AC3ECAF218049DC6250EE8BEDE3E8E0 /* AFCollectionViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFCollectionViewFlowLayout.m; path = AFPageClient/Classes/AFCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		9AD34B42C79FE91701623BC8B9C9A205 /* AFSegmentConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSegmentConfiguration.h; path = AFPageClient/Classes/AFSegmentConfiguration.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A52ECE6FB12EE57164308D659B7DEBFF /* AFPageItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageItem.h; path = AFPageClient/Classes/AFPageItem.h; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A236EE5B7D91DEFE40F9328A83307ECC /* AFPageItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageItem.h; path = AFPageClient/Classes/AFPageItem.h; sourceTree = "<group>"; };
+		A2434C8570DC983EAED1387EE7E25FF2 /* AFPageItemBadge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageItemBadge.h; path = AFPageClient/Classes/AFPageItemBadge.h; sourceTree = "<group>"; };
 		A703176EFEED5E757B3D97A20A051DFA /* Pods-AFPageClient_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AFPageClient_Example-Info.plist"; sourceTree = "<group>"; };
 		A78D3443F105E00FC21FE5A357C8F716 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
 		A80F4D0C7D7F516DB6FBE089C15C6673 /* Pods-AFPageClient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFPageClient_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,30 +165,36 @@
 		A8BCCE8C6C17F326AFEDF4357C62ADAF /* MASViewAttribute.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewAttribute.m; path = Masonry/MASViewAttribute.m; sourceTree = "<group>"; };
 		AF4497913DB548AE2E03103D3A97F34F /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
 		B28EC2F4C626ED77509645BE3805CB29 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
-		B415F66D4247AB5C159BDC50EC16C9E4 /* AFPageItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageItem.m; path = AFPageClient/Classes/AFPageItem.m; sourceTree = "<group>"; };
-		B4E1A147E5470749B369B12B0BDDF913 /* AFPageClient-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFPageClient-Info.plist"; sourceTree = "<group>"; };
 		BC021D26CF2FBE7B2AE888B9BD4BC05F /* Pods-AFPageClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFPageClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDB676D9D5D3AFD89D8DDCE3369D4BAC /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		BE1F10D90F608A2CF1617234F1792F37 /* Pods_AFPageClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE1F10D90F608A2CF1617234F1792F37 /* Pods_AFPageClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AFPageClient_Example.framework; path = "Pods-AFPageClient_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8300BFB0B33DF6EE948B8419E4A2D6 /* Pods-AFPageClient_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AFPageClient_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C2FA50CD74D9826FD201B6EB1CB7EFFE /* AFPageClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageClient.h; path = AFPageClient/Classes/AFPageClient.h; sourceTree = "<group>"; };
-		C6F96EACA0CE1EDDA27FCD2BE719ED0E /* AFSegmentViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSegmentViewCell.h; path = AFPageClient/Classes/AFSegmentViewCell.h; sourceTree = "<group>"; };
-		CA88D6BA5848D4BAFB3AD14061B9510E /* AFPageCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageCollectionView.h; path = AFPageClient/Classes/AFPageCollectionView.h; sourceTree = "<group>"; };
-		CEAB11BF2978362BC144BCB93AAA8B01 /* AFPageCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageCollectionView.m; path = AFPageClient/Classes/AFPageCollectionView.m; sourceTree = "<group>"; };
+		CF3F0718F8E7EB9585C216E1B61D8078 /* AFSegmentConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentConfiguration.m; path = AFPageClient/Classes/AFSegmentConfiguration.m; sourceTree = "<group>"; };
 		D12E9F350C1C8076BE92719B89951AD8 /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
-		DA61C819CF11C179E0E026C9E93FF4C8 /* AFPageClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFPageClient.debug.xcconfig; sourceTree = "<group>"; };
 		DFA1012B6A8BD076CD9F09831AE37A01 /* Masonry-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
-		E3942D2BD4E344BE9D6A0C3949F92184 /* AFSegmentConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentConfiguration.m; path = AFPageClient/Classes/AFSegmentConfiguration.m; sourceTree = "<group>"; };
+		E52BDAE404E0791C9E3142635EC7D980 /* AFSegmentConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSegmentConfiguration.h; path = AFPageClient/Classes/AFSegmentConfiguration.h; sourceTree = "<group>"; };
 		E7851906D7976272A721C8C4E0CE9092 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		E7C87227659A1BBC10B4FD2D09E25C4D /* AFPageClient-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFPageClient-prefix.pch"; sourceTree = "<group>"; };
 		EB7CC7527FD599A1064055C060E14B43 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
 		EDA8A3885BC33F25CB32442EB2449111 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
 		EFF909907D9794E4C781DAC1693A7018 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F12D120BFF0583F670852171E9033870 /* Pods-AFPageClient_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AFPageClient_Example.modulemap"; sourceTree = "<group>"; };
 		F287598D192FA586BD4AECCD85B988A4 /* Masonry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.debug.xcconfig; sourceTree = "<group>"; };
-		FC59FA5D17DF450B9A64922CE114711E /* AFPageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFPageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB757B0D7BD394C107B418D052E024FD /* AFPageClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFPageClient.debug.xcconfig; sourceTree = "<group>"; };
+		FC59FA5D17DF450B9A64922CE114711E /* AFPageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFPageClient.framework; path = AFPageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FED837E956D0830E5A0E0EA46230A779 /* AFPageClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFPageClient.release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		49C629FE70C48A7670DAB64958E6A028 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F626F82B4B424E84C1908D7D638A4039 /* Foundation.framework in Frameworks */,
+				369C0936150F65EE2D90392941B182E5 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		538A7A016DEDFE453B61EA7C429B55D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,12 +203,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		72CD0259D9B956721D06214DAA1E0FFB /* Frameworks */ = {
+		879BB0E3605281018C1BCBE2DFE0DD1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F680B01929C0FB0E73015E6D37FCB742 /* Foundation.framework in Frameworks */,
-				F162580BAF95C86C2826F91C1FA831A3 /* UIKit.framework in Frameworks */,
+				D9BA6D7D301BC2457150DE8EF83434CE /* Foundation.framework in Frameworks */,
+				7CC10378DCEDF4CF984357A856E340BF /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,15 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA071E08E9842EAE934BC061ADE24366 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3C332EF54F48754BD097EAC9710C716 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35910309568188BB92D013B594E346F5 /* Foundation.framework in Frameworks */,
-				5C7D7DCC1B2C82D76EBC1ED2696FBEEA /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,33 +253,8 @@
 				342C4D9B5E1E36390E7AF01E35444998 /* ViewController+MASAdditions.m */,
 				C84A449C2DE4F91F0620A5147DD42E0F /* Support Files */,
 			);
+			name = Masonry;
 			path = Masonry;
-			sourceTree = "<group>";
-		};
-		16FBEBD5C9A961772F9E3A2427F7792E /* AFPageClient */ = {
-			isa = PBXGroup;
-			children = (
-				4C2AD2AD8CC0BA69770AFCE0E16AFD8E /* AFCollectionViewFlowLayout.h */,
-				9AC3ECAF218049DC6250EE8BEDE3E8E0 /* AFCollectionViewFlowLayout.m */,
-				C2FA50CD74D9826FD201B6EB1CB7EFFE /* AFPageClient.h */,
-				412B869836B4C8836970C0230E8B9266 /* AFPageClient.m */,
-				CA88D6BA5848D4BAFB3AD14061B9510E /* AFPageCollectionView.h */,
-				CEAB11BF2978362BC144BCB93AAA8B01 /* AFPageCollectionView.m */,
-				A52ECE6FB12EE57164308D659B7DEBFF /* AFPageItem.h */,
-				B415F66D4247AB5C159BDC50EC16C9E4 /* AFPageItem.m */,
-				11271FBA982B0206FD7038F426AC0B5B /* AFPageScrollBar.h */,
-				527908DE30C90315668254E2B3DB3416 /* AFPageScrollBar.m */,
-				9AD34B42C79FE91701623BC8B9C9A205 /* AFSegmentConfiguration.h */,
-				E3942D2BD4E344BE9D6A0C3949F92184 /* AFSegmentConfiguration.m */,
-				50EB51FB28EDC4C526754F7F4B0604AF /* AFSegmentView.h */,
-				1A754BE6E523C1C7AFD86E3213DA6E8E /* AFSegmentView.m */,
-				C6F96EACA0CE1EDDA27FCD2BE719ED0E /* AFSegmentViewCell.h */,
-				2121ADC7CB58F7B7599A8101FC7F6B2C /* AFSegmentViewCell.m */,
-				B394C4E6A5DFFC74B72461608EB47F32 /* Pod */,
-				6FC6BDA74F5521B1FF40AACB11990D45 /* Support Files */,
-			);
-			name = AFPageClient;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		3A8FB4BE74B078BB22E7FD44021287F7 /* Products */ = {
@@ -298,6 +277,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		6266AEF15EF0328DD26D011B79D2522E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC442749685CE12F4184BFAD3165D53F /* AFPageClient */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		65C986756E217526ECF39AE8FAE0130D /* Pods-AFPageClient_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,21 +301,6 @@
 			path = "Target Support Files/Pods-AFPageClient_Tests";
 			sourceTree = "<group>";
 		};
-		6FC6BDA74F5521B1FF40AACB11990D45 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5E385017B1CC83DAC1E6BAF5B74EA956 /* AFPageClient.modulemap */,
-				1E58F4021DA00567CE2818A7E39D12A2 /* AFPageClient-dummy.m */,
-				B4E1A147E5470749B369B12B0BDDF913 /* AFPageClient-Info.plist */,
-				50CAA70DF75043A9FFF121384BA48B8B /* AFPageClient-prefix.pch */,
-				3F03727ADFECAC490176AEBEC217434F /* AFPageClient-umbrella.h */,
-				DA61C819CF11C179E0E026C9E93FF4C8 /* AFPageClient.debug.xcconfig */,
-				1B0BEE1DFCFB8CB40A6DAEEAD4D0344F /* AFPageClient.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/AFPageClient";
-			sourceTree = "<group>";
-		};
 		7529FD53BCE26816CCD46658378AAF1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,22 +309,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		867643D505EE5E4C9D6B4E389AC6B53F /* Development Pods */ = {
+		796A20552AA99755AB6C090C64C37498 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				16FBEBD5C9A961772F9E3A2427F7792E /* AFPageClient */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		B394C4E6A5DFFC74B72461608EB47F32 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				8DEFAA0AC4E4525F1355FF2461BBD356 /* AFPageClient.podspec */,
-				59AB1674C1627481F3A38A04ADCA6126 /* LICENSE */,
-				419292DB79E2B760333FFE8EC2F93833 /* README.md */,
+				70BD2F9882F52BEF98064CB55C145C82 /* AFPageClient.podspec */,
+				1719D1216FD4E109D1BC47006C308FBF /* LICENSE */,
+				07D6C428B8A9C95A8F9E829A77C1B82D /* README.md */,
 			);
 			name = Pod;
+			sourceTree = "<group>";
+		};
+		A6A1BA7CE6517245AA44BB2CB6D47F4A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				84EF0D89AE28E99200CD0D139648E9B2 /* AFPageClient.modulemap */,
+				75FDAD99F31B83DF59E88E0D3834A2F1 /* AFPageClient-dummy.m */,
+				1F11184863CAD1191BB843C9861BD3AF /* AFPageClient-Info.plist */,
+				E7C87227659A1BBC10B4FD2D09E25C4D /* AFPageClient-prefix.pch */,
+				1235BDDA250D2323D0B264D2FA078712 /* AFPageClient-umbrella.h */,
+				FB757B0D7BD394C107B418D052E024FD /* AFPageClient.debug.xcconfig */,
+				FED837E956D0830E5A0E0EA46230A779 /* AFPageClient.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/AFPageClient";
 			sourceTree = "<group>";
 		};
 		B8E2C472EF7E7FDC3762375EC6A7F033 /* iOS */ = {
@@ -383,7 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				867643D505EE5E4C9D6B4E389AC6B53F /* Development Pods */,
+				6266AEF15EF0328DD26D011B79D2522E /* Development Pods */,
 				DF275781DF9628A2D5BF35F5D74F7BC1 /* Frameworks */,
 				7529FD53BCE26816CCD46658378AAF1B /* Pods */,
 				3A8FB4BE74B078BB22E7FD44021287F7 /* Products */,
@@ -417,6 +396,34 @@
 			path = "Target Support Files/Pods-AFPageClient_Example";
 			sourceTree = "<group>";
 		};
+		EC442749685CE12F4184BFAD3165D53F /* AFPageClient */ = {
+			isa = PBXGroup;
+			children = (
+				3A109F2FEFE0E487BF00653E923EB31E /* AFCollectionViewFlowLayout.h */,
+				1E9B065E7CA6ACDF3759E0323E99E5A4 /* AFCollectionViewFlowLayout.m */,
+				86D8334C2B382E87C08B790C9307F381 /* AFPageClient.h */,
+				7ED7FC4112A5E3EB63BDA7AC1F4C78D2 /* AFPageClient.m */,
+				2F6D36B1F9E8A3A27A7AB5B481106F05 /* AFPageCollectionView.h */,
+				2D8DC7A59C0372FBB1C37F32D4CA67A1 /* AFPageCollectionView.m */,
+				A236EE5B7D91DEFE40F9328A83307ECC /* AFPageItem.h */,
+				28EB70A91F270D802700F8B05CF870E6 /* AFPageItem.m */,
+				A2434C8570DC983EAED1387EE7E25FF2 /* AFPageItemBadge.h */,
+				5C6FD9853CE9470BCB24B031A067A861 /* AFPageItemBadge.m */,
+				61263D1714C116E85E1FF39032C242D5 /* AFPageScrollBar.h */,
+				50DC79653E127E12D5F26AABD774C3B4 /* AFPageScrollBar.m */,
+				E52BDAE404E0791C9E3142635EC7D980 /* AFSegmentConfiguration.h */,
+				CF3F0718F8E7EB9585C216E1B61D8078 /* AFSegmentConfiguration.m */,
+				5734D8DCF2AEBA21509934CEE2919E4D /* AFSegmentView.h */,
+				80702FDEE264023455134789EDE1A73B /* AFSegmentView.m */,
+				619C2CDDC187DEBC4741DB1112926145 /* AFSegmentViewCell.h */,
+				1CFA5014CDF36BD7C7D921413ECF5D12 /* AFSegmentViewCell.m */,
+				796A20552AA99755AB6C090C64C37498 /* Pod */,
+				A6A1BA7CE6517245AA44BB2CB6D47F4A /* Support Files */,
+			);
+			name = AFPageClient;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -428,6 +435,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		032C5A032F1624B22AB6E327B96B9764 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1EF77BC29EF00391AB84F325A43F67 /* AFCollectionViewFlowLayout.h in Headers */,
+				850901F8B31DE2738393F401BB687B8E /* AFPageClient-umbrella.h in Headers */,
+				4B1BE938FE1237FCA6C4703CC716FD11 /* AFPageClient.h in Headers */,
+				6B7889E995E4F9D78ADD384EEF8663E4 /* AFPageCollectionView.h in Headers */,
+				22FDA20628FA466698EC0630142D6D7F /* AFPageItem.h in Headers */,
+				1623C195DC5F4CC704CBF39B27444C72 /* AFPageItemBadge.h in Headers */,
+				CAF835752EF820DD33260803A0CF6DA9 /* AFPageScrollBar.h in Headers */,
+				8588DB10CDC6EC0F1F048FD98C1B3A55 /* AFSegmentConfiguration.h in Headers */,
+				BF74236A6631D06DD50271B79777AFEE /* AFSegmentView.h in Headers */,
+				5031955206510DBBD84D70291E2D7EEA /* AFSegmentViewCell.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2921A6B8018F4B0C0A81B2E660872079 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,42 +460,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A3DAB8C51F32161A3A08C633C737042F /* Headers */ = {
+		E24C79B62B0A8FE477356399F3357BF4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B00590BF93EC9FA22416AE5573CD4178 /* MASCompositeConstraint.h in Headers */,
-				4B272C856DC46617A25AF4D52172D120 /* MASConstraint+Private.h in Headers */,
-				03E44A120A07C233C0705931189F0C9F /* MASConstraint.h in Headers */,
-				DB0A1C8B1796B882B48DD17C8BC9E789 /* MASConstraintMaker.h in Headers */,
-				6AF6398C067A9DFC83172F050448792A /* MASLayoutConstraint.h in Headers */,
-				E74EF583752A2A1F3B3EFB6BF7CBFE01 /* Masonry-umbrella.h in Headers */,
-				585AD6B5008746D56E1FF5072B9CEBAC /* Masonry.h in Headers */,
-				77EB4264F76A1B1A82EE3CA636D2CED2 /* MASUtilities.h in Headers */,
-				D73D3E92AE76485BD25398685FB9094D /* MASViewAttribute.h in Headers */,
-				4CBD038B410B40B14E7A0ADC131E3C61 /* MASViewConstraint.h in Headers */,
-				63CD0BE9FF86247DA08E58D991BAE07A /* NSArray+MASAdditions.h in Headers */,
-				1FF20693BC8BD37A66898283A7178D6A /* NSArray+MASShorthandAdditions.h in Headers */,
-				57A18EEE70BBDF05B0DA26B5D7898220 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
-				C358AFDCCF68457027EC6C63F11A3DAB /* View+MASAdditions.h in Headers */,
-				BDB7D7C4D3BFE389B66CBD8A53E0C4D1 /* View+MASShorthandAdditions.h in Headers */,
-				C01357E3059B56007FF9950A3EC5C537 /* ViewController+MASAdditions.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BED3E5C2FC9A65F880E5298F0E7B1D3D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B9EAC80E0A5103D485E26330C0C81880 /* AFCollectionViewFlowLayout.h in Headers */,
-				6C8CE642B1E101AFACC6406844FBB1EE /* AFPageClient-umbrella.h in Headers */,
-				9EBCD83693F1C2809BC4183DAAE66743 /* AFPageClient.h in Headers */,
-				36C9143E3482FBDD1C615CA8D3511E3F /* AFPageCollectionView.h in Headers */,
-				4BE6A40FDD5D3C6C1573B6065EE9BD21 /* AFPageItem.h in Headers */,
-				3579737BC3E7119A49726D56D9ACCA01 /* AFPageScrollBar.h in Headers */,
-				FA82A5CB8AC010435CC2D25B66EBA2C4 /* AFSegmentConfiguration.h in Headers */,
-				E1EDA7604174FF67F10F0BEE6C78D295 /* AFSegmentView.h in Headers */,
-				BDE2B6AF769D769BA57F88F76DBD3BF0 /* AFSegmentViewCell.h in Headers */,
+				BECA6F1C4774C6587DA57136DC87D987 /* MASCompositeConstraint.h in Headers */,
+				3DBD6FE7AAF50B4B55C467952EB63832 /* MASConstraint+Private.h in Headers */,
+				DFA7E5ECD6AF043E4E3940CEED48CE38 /* MASConstraint.h in Headers */,
+				E790828EC16ECA019EAE10015A27A9F4 /* MASConstraintMaker.h in Headers */,
+				B6EA188089F97A274B9124E381ADCADD /* MASLayoutConstraint.h in Headers */,
+				8A35FC3E7A6F73D906150802DE339132 /* Masonry-umbrella.h in Headers */,
+				374586502930CCA3AB7AA64EBB36DECA /* Masonry.h in Headers */,
+				B554AB2ECEB2BF2173AABFC6EA171A09 /* MASUtilities.h in Headers */,
+				4F1BD957143D26C0837EFBD2F3332D49 /* MASViewAttribute.h in Headers */,
+				8B60B90306E84CF2F6EAD99011411FF2 /* MASViewConstraint.h in Headers */,
+				60041C3DD419593A8E75D59D7455BCBB /* NSArray+MASAdditions.h in Headers */,
+				B5C8139D2C45F2F89BBE48008F2B5610 /* NSArray+MASShorthandAdditions.h in Headers */,
+				A66823A092FE242DC8EDDF0B065633C4 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
+				B088489401866040E1FBA4E31511F24A /* View+MASAdditions.h in Headers */,
+				90875027D868C3578A032B71090BB008 /* View+MASShorthandAdditions.h in Headers */,
+				83967DCBE2EB9D9ED73C4C914D803150 /* ViewController+MASAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,12 +508,12 @@
 		};
 		55AF53E6C77A10ED4985E04D74A8878E /* Masonry */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7BF05C649807B26448FBB85101BCF36E /* Build configuration list for PBXNativeTarget "Masonry" */;
+			buildConfigurationList = 88931C0BDD40269D127DABA942EC4DAB /* Build configuration list for PBXNativeTarget "Masonry" */;
 			buildPhases = (
-				A3DAB8C51F32161A3A08C633C737042F /* Headers */,
-				B7DF276FFF72EB221F94AA2DA2BCCEA2 /* Sources */,
-				72CD0259D9B956721D06214DAA1E0FFB /* Frameworks */,
-				274992A4568EB6C288D969ED0A0A3D9D /* Resources */,
+				E24C79B62B0A8FE477356399F3357BF4 /* Headers */,
+				5E1CCAE6975592B8D8BDDA43C2659144 /* Sources */,
+				49C629FE70C48A7670DAB64958E6A028 /* Frameworks */,
+				528CFACC0C6571919F503705089F5DC8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -537,17 +545,17 @@
 		};
 		DE183C9AE5EF56FB098DBBDAFD3381C8 /* AFPageClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9AB584C6017BA0C5B6F9CF929B343F42 /* Build configuration list for PBXNativeTarget "AFPageClient" */;
+			buildConfigurationList = 0FDB6AFCA10FCC1A0D7B67BC6E18E0E3 /* Build configuration list for PBXNativeTarget "AFPageClient" */;
 			buildPhases = (
-				BED3E5C2FC9A65F880E5298F0E7B1D3D /* Headers */,
-				1AEFEA1FAF567208AD74DC720F4C179F /* Sources */,
-				B3C332EF54F48754BD097EAC9710C716 /* Frameworks */,
-				F3B5A27BD7D5DD3DC6CF9974B12F7818 /* Resources */,
+				032C5A032F1624B22AB6E327B96B9764 /* Headers */,
+				CB7405EF975CF37F461F589A93E7BB56 /* Sources */,
+				879BB0E3605281018C1BCBE2DFE0DD1E /* Frameworks */,
+				0281C0890A0F69CABDBD4000DCB37181 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4309DCD30463B8ACE8D03452FBDB57FF /* PBXTargetDependency */,
+				EF9986709236D58D088234277D721332 /* PBXTargetDependency */,
 			);
 			name = AFPageClient;
 			productName = AFPageClient;
@@ -585,7 +593,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		274992A4568EB6C288D969ED0A0A3D9D /* Resources */ = {
+		0281C0890A0F69CABDBD4000DCB37181 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -599,14 +607,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		89323FE89637C8E8C6E747C97C37705D /* Resources */ = {
+		528CFACC0C6571919F503705089F5DC8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F3B5A27BD7D5DD3DC6CF9974B12F7818 /* Resources */ = {
+		89323FE89637C8E8C6E747C97C37705D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -616,22 +624,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1AEFEA1FAF567208AD74DC720F4C179F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				731695E8181E96BA94BE8D365736E570 /* AFCollectionViewFlowLayout.m in Sources */,
-				4F988483F813F9E79BFFBF78450EFCBF /* AFPageClient-dummy.m in Sources */,
-				97A1800966F2C69ADCD295CA664203A8 /* AFPageClient.m in Sources */,
-				A397B9F4DD7B560BEE9A6EE74938EC39 /* AFPageCollectionView.m in Sources */,
-				5057D8FE819604AEE1E3F529BD8040AD /* AFPageItem.m in Sources */,
-				2BA725B15CD28227C84F9A23B6612585 /* AFPageScrollBar.m in Sources */,
-				4C9E7F0D6D5446C0AC437C9C5E15AB1A /* AFSegmentConfiguration.m in Sources */,
-				B75C956EBC32EB70E59F75FBD766C57F /* AFSegmentView.m in Sources */,
-				35463E8BDCAF931316970C6B4C7137FD /* AFSegmentViewCell.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		44F7CC02CF0C4C1A09B501409F6B3BC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -640,21 +632,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7DF276FFF72EB221F94AA2DA2BCCEA2 /* Sources */ = {
+		5E1CCAE6975592B8D8BDDA43C2659144 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A42C06C4313E0A3437E93F2FCE116FF /* MASCompositeConstraint.m in Sources */,
-				B84320B882D89A0A99E0D68B5E384183 /* MASConstraint.m in Sources */,
-				0F53DEDA5ACF7AEE88B53F1FADB645B5 /* MASConstraintMaker.m in Sources */,
-				A560EED1ABA26A0B66675FCEC9722FC9 /* MASLayoutConstraint.m in Sources */,
-				007A2DB6ED32EC20354FB5595805CAAB /* Masonry-dummy.m in Sources */,
-				DEF21927E6E8E9171FA9C859C640E091 /* MASViewAttribute.m in Sources */,
-				360656925A47D90D1A6583DC47653A63 /* MASViewConstraint.m in Sources */,
-				F8D086799AA17E597301201D75729F52 /* NSArray+MASAdditions.m in Sources */,
-				567D6F71654C3F951E633E951866F22D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				2F5BF5A3FE3853C0936E276F810985C0 /* View+MASAdditions.m in Sources */,
-				1D5BBA98F46BCE5EC8059A461FAADA94 /* ViewController+MASAdditions.m in Sources */,
+				7183905F11BED81EABC1D678496F7479 /* MASCompositeConstraint.m in Sources */,
+				4F66921DCE01F65E456E468E83BF7161 /* MASConstraint.m in Sources */,
+				334EE2A2B6446FECF7227A0231E1D6E5 /* MASConstraintMaker.m in Sources */,
+				B5ED850ABA7F5EE5FA84B0740C827E13 /* MASLayoutConstraint.m in Sources */,
+				CDD2859A90B677FAD62FF519A56A2E2E /* Masonry-dummy.m in Sources */,
+				24BF82B573B458890387FA1886525116 /* MASViewAttribute.m in Sources */,
+				8994BB3A6368F79B086854DE34A16BFA /* MASViewConstraint.m in Sources */,
+				6223D18716DE8F22E2189A2C6B920657 /* NSArray+MASAdditions.m in Sources */,
+				06699408D8C2E4FFA9CF9C46C218C597 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				FBA82F12781DC8617A63426A67F436FB /* View+MASAdditions.m in Sources */,
+				C3D138C63BCE45703D17D384908C1AC5 /* ViewController+MASAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB7405EF975CF37F461F589A93E7BB56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6AA5AD587885250BA153A4D1D4CBC56 /* AFCollectionViewFlowLayout.m in Sources */,
+				F0596FA169E8E765E0804C3552554290 /* AFPageClient-dummy.m in Sources */,
+				8AEC911EFC8EFE07AAFCAE7DED272E7D /* AFPageClient.m in Sources */,
+				ACE69330C9B1ABBE62A596A654632FF5 /* AFPageCollectionView.m in Sources */,
+				617B7FB5D3B39DBB414CCC1475D23CB2 /* AFPageItem.m in Sources */,
+				94ADEE771852E2A716E5CEC2EEA60154 /* AFPageItemBadge.m in Sources */,
+				B4AD2A898B8F189C4FDC7F3116CD3315 /* AFPageScrollBar.m in Sources */,
+				42891B70CB7E04A29CAEDB9BAAA7E237 /* AFSegmentConfiguration.m in Sources */,
+				A4B01593125AC20684964FA7B737855B /* AFSegmentView.m in Sources */,
+				9220BC080C3DE046FA553263D67AE3BF /* AFSegmentViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,12 +678,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4309DCD30463B8ACE8D03452FBDB57FF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Masonry;
-			target = 55AF53E6C77A10ED4985E04D74A8878E /* Masonry */;
-			targetProxy = 565CB1B60A1212F6CF5818E4201596EC /* PBXContainerItemProxy */;
-		};
 		473968CCC20796CB422C68E39D418D7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Masonry;
@@ -693,41 +696,15 @@
 			target = DE183C9AE5EF56FB098DBBDAFD3381C8 /* AFPageClient */;
 			targetProxy = 754AE3C86FE1FD5AC7242B26E14DA1EB /* PBXContainerItemProxy */;
 		};
+		EF9986709236D58D088234277D721332 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Masonry;
+			target = 55AF53E6C77A10ED4985E04D74A8878E /* Masonry */;
+			targetProxy = 1D73F2F8F5DB3C358BBBB014AAC3EC5D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0681264E206680294554FA4A8FE564EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 419A961AD957E23BAB6A998ED7623134 /* Masonry.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Masonry/Masonry-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Masonry/Masonry.modulemap";
-				PRODUCT_MODULE_NAME = Masonry;
-				PRODUCT_NAME = Masonry;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		081957B32F7AB576D949743873F6EEC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A80F4D0C7D7F516DB6FBE089C15C6673 /* Pods-AFPageClient_Example.debug.xcconfig */;
@@ -848,7 +825,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -881,6 +859,37 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		67EDBA5440E2172DCA68A180B61982E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F287598D192FA586BD4AECCD85B988A4 /* Masonry.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Masonry/Masonry-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Masonry/Masonry.modulemap";
+				PRODUCT_MODULE_NAME = Masonry;
+				PRODUCT_NAME = Masonry;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -985,9 +994,72 @@
 			};
 			name = Release;
 		};
-		9326FC75747E6F8EAD1ADA0BAC651BBD /* Release */ = {
+		94F29FDB6B2EA1FDE6F4FCA0B9CF7DAF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B0BEE1DFCFB8CB40A6DAEEAD4D0344F /* AFPageClient.release.xcconfig */;
+			baseConfigurationReference = 419A961AD957E23BAB6A998ED7623134 /* Masonry.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Masonry/Masonry-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Masonry/Masonry.modulemap";
+				PRODUCT_MODULE_NAME = Masonry;
+				PRODUCT_NAME = Masonry;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BAAE7F291E985AA1AAA189BF341FDA8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB757B0D7BD394C107B418D052E024FD /* AFPageClient.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AFPageClient/AFPageClient-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AFPageClient/AFPageClient-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AFPageClient/AFPageClient.modulemap";
+				PRODUCT_MODULE_NAME = AFPageClient;
+				PRODUCT_NAME = AFPageClient;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EF4AD6DD5FCE523A97955A11ECA81EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FED837E956D0830E5A0E0EA46230A779 /* AFPageClient.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1017,71 +1089,18 @@
 			};
 			name = Release;
 		};
-		95FCF0719E1926AC6F83526284E6F207 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F287598D192FA586BD4AECCD85B988A4 /* Masonry.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Masonry/Masonry-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Masonry/Masonry-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Masonry/Masonry.modulemap";
-				PRODUCT_MODULE_NAME = Masonry;
-				PRODUCT_NAME = Masonry;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B0986AA72A98EB0D74AF6CE9E71670CE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA61C819CF11C179E0E026C9E93FF4C8 /* AFPageClient.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AFPageClient/AFPageClient-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AFPageClient/AFPageClient-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AFPageClient/AFPageClient.modulemap";
-				PRODUCT_MODULE_NAME = AFPageClient;
-				PRODUCT_NAME = AFPageClient;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0FDB6AFCA10FCC1A0D7B67BC6E18E0E3 /* Build configuration list for PBXNativeTarget "AFPageClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAAE7F291E985AA1AAA189BF341FDA8C /* Debug */,
+				EF4AD6DD5FCE523A97955A11ECA81EE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1543FF7E54695B3D3ECA98EF823E17D0 /* Build configuration list for PBXNativeTarget "Pods-AFPageClient_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1100,11 +1119,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7BF05C649807B26448FBB85101BCF36E /* Build configuration list for PBXNativeTarget "Masonry" */ = {
+		88931C0BDD40269D127DABA942EC4DAB /* Build configuration list for PBXNativeTarget "Masonry" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				95FCF0719E1926AC6F83526284E6F207 /* Debug */,
-				0681264E206680294554FA4A8FE564EB /* Release */,
+				67EDBA5440E2172DCA68A180B61982E4 /* Debug */,
+				94F29FDB6B2EA1FDE6F4FCA0B9CF7DAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1114,15 +1133,6 @@
 			buildConfigurations = (
 				53C2484B5909226F93BFC526EAF22CFA /* Debug */,
 				8EAA4C203431764215ED55B7A9469377 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9AB584C6017BA0C5B6F9CF929B343F42 /* Build configuration list for PBXNativeTarget "AFPageClient" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B0986AA72A98EB0D74AF6CE9E71670CE /* Debug */,
-				9326FC75747E6F8EAD1ADA0BAC651BBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

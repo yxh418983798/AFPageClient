@@ -6,8 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
+#import "AFPageItemBadge.h"
 
 @interface AFPageItem : NSObject
 
@@ -41,34 +40,8 @@
 /** NSLineBreakMode */
 @property (nonatomic, assign) NSLineBreakMode   lineBreakMode;
 
-
-#pragma mark - 角标配置
-/**
- * @brief 角标的显示文本
- *
- * @note  默认nil：不显示角标
- * @note  设置为空字符串@""时，显示一个小红点
- * @note  设置为其他字符串时，显示对应的文本
- */
-@property (nonatomic, copy) NSString            *displayBadge;
-
-/** 角标的背景颜色，默认红色 */
-@property (nonatomic, strong) UIColor           *badgeBackgroundColor;
-
-/** 角标的文字颜色，默认白色 */
-@property (nonatomic, strong) UIColor           *badgeTitleColor;
-
-/** 角标的文字字体，默认10 */
-@property (nonatomic, strong) UIFont            *badgeTitleFont;
-
-/** 角标的圆角大小，默认3 */
-@property (nonatomic, assign) CGFloat           badgeCornerRadius;
-
-/** 角标文本的缩进默认，0，2，0，2 */
-@property (nonatomic, assign) UIEdgeInsets      badgeTitleInsets;
-
-/** 角标的偏移，默认（0, 0） */
-@property (nonatomic, assign) CGPoint           badgeOffset;
+/** 角标 */
+@property (nonatomic, strong) AFPageItemBadge   *badge;
 
 /// 获取展示的size
 - (CGFloat)widthWithItemSpace:(CGFloat)space;
