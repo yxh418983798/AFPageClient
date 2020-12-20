@@ -68,6 +68,7 @@ static CGFloat ScrollBar_W = 6.f;
 - (AFPageScrollBar *)scrollBar {
     if (!_scrollBar) {
         _scrollBar = AFPageScrollBar.new;
+        _scrollBar.backgroundColor = self.configuration.scrollBarColor;
     }
     return _scrollBar;
 }

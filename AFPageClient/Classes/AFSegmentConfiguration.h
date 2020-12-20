@@ -10,8 +10,6 @@
 
 @interface AFSegmentConfiguration : NSObject
 
-/** 是否显示滚动条 默认YES */
-@property (assign, nonatomic) BOOL showScrollBar;
 
 /** 切换Item时，字体是否动画变化，默认YES */
 @property (assign, nonatomic) BOOL animatedEnable;
@@ -34,14 +32,20 @@
 /** 当itemSize为自适应时，可以设置item之间的间隔，默认25 */
 @property (assign, nonatomic) CGFloat  itemSpace;
 
-/** 滚动条的颜色 */
-@property (nonatomic, strong) UIColor  *scrollBarColor;
-
 /** 底部分割线的颜色 */
 @property (strong, nonatomic) UIColor  *lineColor;
 
 /** 背景颜色 */
 @property (nonatomic, strong) UIColor  *backgroundColor;
+
+
+#pragma mark - 滚动条的配置
+/** 是否显示滚动条 默认YES */
+@property (assign, nonatomic) BOOL showScrollBar;
+
+/** 滚动条的颜色 */
+@property (nonatomic, strong) UIColor  *scrollBarColor;
+
 
 @end
 

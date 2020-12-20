@@ -274,7 +274,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 //            }
 //        }
 //    }
-    NSLog(@"-------------------------- 停了：%g --------------------------", self.segmentView.scrollBar.frame.origin.x);
+//    NSLog(@"-------------------------- 停了：%g --------------------------", self.segmentView.scrollBar.frame.origin.x);
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -299,11 +299,11 @@ static NSInteger AFPageChildViewTag = 66661201;
             }
         }
     }
-    NSLog(@"-------------------------- 离开手指，%d --------------------------", scrollView.decelerating);
+//    NSLog(@"-------------------------- 离开手指，%d --------------------------", scrollView.decelerating);
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"-------------------------- 结束了 --------------------------");
+//    NSLog(@"-------------------------- 结束了 --------------------------");
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.segmentView.scrollBar stop];

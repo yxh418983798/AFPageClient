@@ -17,10 +17,18 @@
         self.textColor = UIColor.blackColor;
         self.selectedTextColor = UIColor.blackColor;
         self.backgroundColor = UIColor.whiteColor;
+        
+        self.badgeTitleColor = UIColor.whiteColor;
+        self.badgeTitleFont = [UIFont systemFontOfSize:12];
+        self.badgeCornerRadius = 3.f;
+        self.badgeBackgroundColor = UIColor.redColor;
+        self.badgeTitleInsets = UIEdgeInsetsMake(5, 5, 5, 5);
     }
     return self;
 }
 
+
+#pragma mark - Getter
 - (UIFont *)selectedFont {
     if (!_selectedFont) return _font;
     return _selectedFont;

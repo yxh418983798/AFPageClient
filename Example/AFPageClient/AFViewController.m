@@ -39,10 +39,12 @@
     [super viewDidLoad];
     AFSegmentConfiguration *s = AFSegmentConfiguration.new;
     s.insets = UIEdgeInsetsMake(0, 100, 0, 100);
+    s.scrollBarColor = UIColor.redColor;
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:s];
     self.pageClient.delegate = self;
     [self.pageClient reloadData];
-//
+    
+    //
 //    AFSegmentView *segmentView = AFSegmentView.new;
 //    segmentView.configuration.backgroundColor = UIColor.grayColor;
 //    segmentView.delegate = self;
@@ -101,7 +103,9 @@
     item.selectedFont = [UIFont systemFontOfSize:18];
     item.childViewController = AFPageViewController.new;
     item.content = [NSString stringWithFormat:@"第%d个item", index];
-    item.backgroundColor = UIColor.grayColor;
+//    item.backgroundColor = UIColor.grayColor;
+    item.displayBadge = @"";
+    item.badgeOffset = CGPointMake(0, 10);
     NSLog(@"-------------------------- itemForSegmentAtIndex：%d --------------------------", index);
     return item;
 }
