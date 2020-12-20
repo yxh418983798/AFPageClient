@@ -58,13 +58,13 @@
 /** 角标的文字颜色，默认白色 */
 @property (nonatomic, strong) UIColor           *badgeTitleColor;
 
-/** 角标的文字字体，默认12 */
+/** 角标的文字字体，默认10 */
 @property (nonatomic, strong) UIFont            *badgeTitleFont;
 
 /** 角标的圆角大小，默认3 */
 @property (nonatomic, assign) CGFloat           badgeCornerRadius;
 
-/** 角标文本的缩进默认，5，5，5，5 */
+/** 角标文本的缩进默认，0，2，0，2 */
 @property (nonatomic, assign) UIEdgeInsets      badgeTitleInsets;
 
 /** 角标的偏移，默认（0, 0） */

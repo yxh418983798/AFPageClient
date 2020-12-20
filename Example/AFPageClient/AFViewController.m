@@ -23,6 +23,9 @@
 /** AFPageClient */
 @property (nonatomic, strong) AFPageClient             *pageClient;
 
+/** item */
+@property (nonatomic, strong) AFPageItem            *item;
+
 @end
 
 @implementation AFViewController
@@ -106,6 +109,9 @@
 //    item.backgroundColor = UIColor.grayColor;
     item.displayBadge = @"";
     item.badgeOffset = CGPointMake(0, 10);
+    if (index == 0) {
+        self.item = item;
+    }
     NSLog(@"-------------------------- itemForSegmentAtIndex：%d --------------------------", index);
     return item;
 }
@@ -126,6 +132,8 @@
 }
 
 - (void)popAction {
+    self.item.displayBadge = self.item.displayBadge != @"" ? @"" : @"12";
+    [self.pageClient reloadSegment];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

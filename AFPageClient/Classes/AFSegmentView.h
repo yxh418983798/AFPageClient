@@ -54,6 +54,9 @@
 /// 更新
 - (void)update;
 
+/// 更新
+- (void)reloadData;
+
 /// 手动选中
 - (void)selectedAtIndex:(NSInteger)index;
 

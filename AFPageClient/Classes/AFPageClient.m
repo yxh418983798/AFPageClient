@@ -166,6 +166,11 @@ static NSInteger AFPageChildViewTag = 66661201;
     [self update];
 }
 
+/// 刷新SegmentView
+- (void)reloadSegment {
+    [self.segmentView reloadData];
+}
+
 - (void)update {
     
     _collectionView = nil;

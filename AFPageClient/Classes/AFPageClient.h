@@ -49,8 +49,11 @@
 + (instancetype)new  NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame parentController:(UIViewController *)viewController configuration:(AFSegmentConfiguration *)configuration;
 
-/// 刷新
+/// 刷新整个PageClient
 - (void)reloadData;
+
+/// 刷新SegmentView
+- (void)reloadSegment;
 
 /// 获取当前Vc
 - (UIViewController *)currentVc;

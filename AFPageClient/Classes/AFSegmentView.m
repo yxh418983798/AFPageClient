@@ -107,6 +107,10 @@ static CGFloat ScrollBar_W = 6.f;
 
 
 #pragma mark - 刷新
+- (void)reloadData {
+    [self.collectionView reloadData];
+}
+
 - (void)update {
     
     self.backgroundColor = self.configuration.backgroundColor;
