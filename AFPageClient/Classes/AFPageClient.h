@@ -10,7 +10,7 @@
 #import "AFPageItemBadge.h"
 #import "AFSegmentConfiguration.h"
 
-@class AFPageClient;
+@class AFPageClient, AFSegmentView;
 
 @protocol AFPageClientDelegate <NSObject>
 
@@ -66,6 +66,9 @@
 
 /// 获取当前Vc
 - (UIViewController *)currentVc;
+
+/// 获取segmentView
+- (AFSegmentView *)segmentView;
 
 
 @end
