@@ -7,9 +7,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class AFSegmentConfiguration;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AFPageScrollBar : UIView
+
+#pragma mark - 构造
+- (instancetype)initWithConfiguration:(AFSegmentConfiguration *)configuration;
+
 
 /// 滑动
 - (void)scrollFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue;

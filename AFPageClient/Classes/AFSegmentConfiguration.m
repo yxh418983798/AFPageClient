@@ -21,6 +21,9 @@
 
         self.frame = CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 45);
         self.itemSpace = 25.f;
+        self.scrollBar_minW = 6.f;
+        self.scrollBar_maxW = 60.f;
+        self.scrollBar_H = 6.f;
     }
     return self;
 }

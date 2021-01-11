@@ -12,7 +12,8 @@
 #import "AFSegmentConfiguration.h"
 #import "AFCollectionViewFlowLayout.h"
 
-static CGFloat ScrollBar_W = 6.f;
+#define ScrollBar_W self.configuration.scrollBar_minW
+//static CGFloat ScrollBar_W = 6.f;
 
 @interface AFSegmentView () <UICollectionViewDelegate, UICollectionViewDataSource, AFFlowLayoutDelegate>
 
@@ -67,8 +68,7 @@ static CGFloat ScrollBar_W = 6.f;
 
 - (AFPageScrollBar *)scrollBar {
     if (!_scrollBar) {
-        _scrollBar = AFPageScrollBar.new;
-        _scrollBar.backgroundColor = self.configuration.scrollBarColor;
+        _scrollBar = [[AFPageScrollBar alloc] initWithConfiguration:self.configuration];
     }
     return _scrollBar;
 }
@@ -188,7 +188,7 @@ static CGFloat ScrollBar_W = 6.f;
         } else {
             cell_W = item.itemSize.width;
         }
-        self.scrollBar.frame = CGRectMake(self.configuration.insets.left + (cell_W - ScrollBar_W)/2, self.collectionView.frame.size.height - ScrollBar_W, ScrollBar_W, ScrollBar_W);
+        self.scrollBar.frame = CGRectMake(self.configuration.insets.left + (cell_W - ScrollBar_W)/2, self.collectionView.frame.size.height - self.configuration.scrollBar_H, ScrollBar_W, self.configuration.scrollBar_H);
         [self.collectionView addSubview:self.scrollBar];
         
     } else if (_lineView) {
@@ -228,7 +228,7 @@ static CGFloat ScrollBar_W = 6.f;
             [toCell updateScrollPercent:0 animated:YES];
         }
         if (self.configuration.showScrollBar) {
-            NSLog(@"--------------------------!!!! current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
+//            NSLog(@"--------------------------!!!! current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
             [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
         }
         return;
@@ -240,7 +240,7 @@ static CGFloat ScrollBar_W = 6.f;
     [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:(UICollectionViewScrollPositionCenteredHorizontally)];
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
     if (self.configuration.showScrollBar) {
-        NSLog(@"-------------------------- current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
+//        NSLog(@"-------------------------- current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
         [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
     }
 }

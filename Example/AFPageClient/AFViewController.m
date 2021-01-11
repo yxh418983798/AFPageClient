@@ -42,6 +42,8 @@
     [super viewDidLoad];
     AFSegmentConfiguration *s = AFSegmentConfiguration.new;
     s.insets = UIEdgeInsetsMake(0, 100, 0, 100);
+    s.scrollBar_minW = 20;
+    s.scrollBar_maxW = 100;
     s.scrollBarColor = UIColor.redColor;
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:s];
     self.pageClient.delegate = self;

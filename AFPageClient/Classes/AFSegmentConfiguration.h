@@ -41,10 +41,20 @@
 
 #pragma mark - 滚动条的配置
 /** 是否显示滚动条 默认YES */
-@property (assign, nonatomic) BOOL showScrollBar;
+@property (nonatomic, assign) BOOL     showScrollBar;
+
+/** 滚动条 最小宽度，默认6 */
+@property (nonatomic, assign) CGFloat  scrollBar_minW;
+
+/** 滚动条 最大宽度，默认60 */
+@property (nonatomic, assign) CGFloat  scrollBar_maxW;
+
+/** 滚动条 高度，默认6 */
+@property (nonatomic, assign) CGFloat  scrollBar_H;
 
 /** 滚动条的颜色 */
 @property (nonatomic, strong) UIColor  *scrollBarColor;
+
 
 
 @end

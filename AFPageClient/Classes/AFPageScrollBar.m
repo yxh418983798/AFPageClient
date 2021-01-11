@@ -6,6 +6,7 @@
 //
 
 #import "AFPageScrollBar.h"
+#import "AFSegmentConfiguration.h"
 
 
 typedef NS_ENUM(NSInteger, AFPageScrollBarStatus)  {
@@ -24,6 +25,9 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 
 
 @interface AFPageScrollBar ()
+
+/** 配置 */
+@property (nonatomic, strong) AFSegmentConfiguration *configuration;
 
 /** displayLink */
 @property (strong, nonatomic) CADisplayLink      *displayLink;
@@ -45,12 +49,16 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 
 @implementation AFPageScrollBar
 
-static CGFloat Min_W = 6.f;
-static CGFloat Max_W = 60.f;
+#define Min_W self.configuration.scrollBar_minW
+#define Max_W self.configuration.scrollBar_maxW
+//static CGFloat Min_W = 6.f;
+//static CGFloat Max_W = 60.f;
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        self.layer.cornerRadius = 3;
+- (instancetype)initWithConfiguration:(AFSegmentConfiguration *)configuration {
+    if (self = [super init]) {
+        self.configuration = configuration;
+        self.backgroundColor = self.configuration.scrollBarColor;
+        self.layer.cornerRadius = configuration.scrollBar_H/2.f;
         self.layer.masksToBounds = YES;
     }
     return self;
