@@ -114,12 +114,15 @@
 }
 
 - (void)setTitleSelected:(BOOL)selected {
-    if (selected) {
-        self.titleLb.font =  _item.selectedFont;
-        self.titleLb.textColor = _item.selectedTextColor;
-    } else {
-        self.titleLb.font =  _item.font;
-        self.titleLb.textColor = _item.textColor;
+    if (self.item.isInitial) {
+        if (selected) {
+            self.titleLb.font =  _item.selectedFont;
+            self.titleLb.textColor = _item.selectedTextColor;
+        } else {
+            self.titleLb.font =  _item.font;
+            self.titleLb.textColor = _item.textColor;
+        }
+        self.item.isInitial = NO;
     }
 }
 
@@ -215,6 +218,8 @@
 - (void)updateScrollPercent:(CGFloat)percent animated:(BOOL)animated {
     if (!self.titleLb.text.length) return;
     if (animated) {
+        if (!self.item.isInitial) return;
+        self.item.isInitial = NO;
         CGFloat selectedPointSize = self.item.selectedFont.pointSize;
         CGFloat normalPointSize = self.item.font.pointSize;
 //        NSLog(@"-------------------------- !!!! selectedPointSize:%g --------------------------", percent);

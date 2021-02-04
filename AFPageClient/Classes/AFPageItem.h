@@ -43,6 +43,9 @@
 /** 角标 */
 @property (nonatomic, strong) AFPageItemBadge   *badge;
 
+/** 是否第一次设置 */
+@property (nonatomic, assign) BOOL              isInitial;
+
 /// 获取展示的size
 - (CGFloat)widthWithItemSpace:(CGFloat)space;
 

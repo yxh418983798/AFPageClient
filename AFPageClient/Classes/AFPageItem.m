@@ -17,6 +17,7 @@
         self.textColor = UIColor.blackColor;
         self.selectedTextColor = UIColor.blackColor;
         self.backgroundColor = UIColor.whiteColor;
+        self.isInitial = YES;
     }
     return self;
 }

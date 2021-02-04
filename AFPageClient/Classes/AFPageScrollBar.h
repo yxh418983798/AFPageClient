@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 手势交互滑动，实时更新
 - (void)interactionScrollFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue percent:(CGFloat)percent;
 
+/// 更新动画，整个移动过程：拉伸 - > 移动 -> 缩短
+- (void)updatePrevious:(CGFloat)previous next:(CGFloat)next offsetPercent:(CGFloat)percent;
 
 /// 停止
 - (void)stop;

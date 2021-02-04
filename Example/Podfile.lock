@@ -1,5 +1,5 @@
 PODS:
-  - AFPageClient (1.0.5):
+  - AFPageClient (1.0.9):
     - Masonry
   - Masonry (1.1.0)
 
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFPageClient: 840f2cbf669c8f5b908c54e86a8ae9d8797d789b
+  AFPageClient: 08531583180c474851b16d578e373e303e61f288
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
 PODFILE CHECKSUM: e28e8d38b3409af022f7ac751c3a976edd30a64f
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

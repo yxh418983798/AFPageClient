@@ -292,6 +292,45 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
     _displayLink = nil;
 }
 
+
+
+
+/// 更新动画，整个移动过程：拉伸 - > 移动 -> 缩短
+- (void)updatePrevious:(CGFloat)previous next:(CGFloat)next offsetPercent:(CGFloat)percent {
+    
+    if (next <= previous || percent < 0 || percent > 1) {
+        NSLog(@"-----------过滤异常 previous:%f -- next:%f -- percent：%f", previous, next, percent);
+        return;
+    }
+    
+    CGRect frame = self.frame;
+    CGFloat totalDistance = next - previous + Max_W - Min_W; // 移动一个item完整的距离
+    CGFloat distance = totalDistance * percent; // 根据百分比计算出当前的距离
+    /// 拉伸过程
+    if (distance <= Max_W - Min_W) {
+        frame.size.width = Min_W + distance;
+        frame
+        .origin.x = previous;
+        self.frame = frame;
+        return;
+    }
+    
+    /// 移动过程
+    if (distance <= next - previous) {
+        frame.origin.x = previous + (distance - (Max_W - Min_W));
+        frame.size.width = Max_W;
+        self.frame = frame;
+        return;
+    }
+    
+    /// 缩短过程
+    frame.size.width = Max_W - (distance - (next - previous));
+    frame.origin.x = next + Min_W - frame.size.width;
+    self.frame = frame;
+}
+
+
+
 //- (void)dealloc {
 //    NSLog(@"-------------------------- svrollbar释放 --------------------------");
 //}
