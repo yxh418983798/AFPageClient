@@ -16,6 +16,8 @@
 		20D87CB216297476756E1449191AA989 /* Pods-AFPageClient_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 909B7B861610475B7CB4793BD0B0A3DA /* Pods-AFPageClient_Example-dummy.m */; };
 		22A23D7169D3A219C1ABBDF651DDF70C /* AFSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80702FDEE264023455134789EDE1A73B /* AFSegmentView.m */; };
 		2F97C6F8AE87485EC0B38C4DFE9983D1 /* AFPageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7FC4112A5E3EB63BDA7AC1F4C78D2 /* AFPageClient.m */; };
+		31DE085425E7857F009EBB69 /* AFScrollViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 31DE085225E7857F009EBB69 /* AFScrollViewProxy.h */; };
+		31DE085525E7857F009EBB69 /* AFScrollViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 31DE085325E7857F009EBB69 /* AFScrollViewProxy.m */; };
 		33255967D0F7904ED43BC8224972A832 /* AFSegmentConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = E52BDAE404E0791C9E3142635EC7D980 /* AFSegmentConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3471EF42C9EB6038AFAA922AA398B372 /* AFPageClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FDAD99F31B83DF59E88E0D3834A2F1 /* AFPageClient-dummy.m */; };
 		37FB92A2AE375032A0A614D7A02CC49D /* AFPageScrollBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 61263D1714C116E85E1FF39032C242D5 /* AFPageScrollBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -99,24 +101,26 @@
 
 /* Begin PBXFileReference section */
 		02CA69FDFD4D7BB11F8E3E2E7A0B9879 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
-		0393D3C947BBC14E16D758046B2CC8BC /* Pods_AFPageClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AFPageClient_Tests.framework; path = "Pods-AFPageClient_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0393D3C947BBC14E16D758046B2CC8BC /* Pods_AFPageClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		047EE388CF208BD5F57049BD98558C94 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
 		0486E8C2741426973DF0E151F932E54F /* Pods-AFPageClient_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AFPageClient_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		071EEE0A3CE36E163E09EA7F7915F1DE /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		07D6C428B8A9C95A8F9E829A77C1B82D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		07D6C428B8A9C95A8F9E829A77C1B82D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1235BDDA250D2323D0B264D2FA078712 /* AFPageClient-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFPageClient-umbrella.h"; sourceTree = "<group>"; };
-		1719D1216FD4E109D1BC47006C308FBF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		1719D1216FD4E109D1BC47006C308FBF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		17C4BB34D7A9E83E08764936E7C68A16 /* Pods-AFPageClient_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AFPageClient_Tests.modulemap"; sourceTree = "<group>"; };
 		1CFA5014CDF36BD7C7D921413ECF5D12 /* AFSegmentViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentViewCell.m; path = AFPageClient/Classes/AFSegmentViewCell.m; sourceTree = "<group>"; };
 		1E9B065E7CA6ACDF3759E0323E99E5A4 /* AFCollectionViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFCollectionViewFlowLayout.m; path = AFPageClient/Classes/AFCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		1F11184863CAD1191BB843C9861BD3AF /* AFPageClient-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFPageClient-Info.plist"; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2071DD7F2DEEBC3E54F7DB4A0739681E /* Pods-AFPageClient_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFPageClient_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		27E12E3D2779B5C7A8301A94F715DB4C /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASShorthandAdditions.h"; path = "Masonry/NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		28EB70A91F270D802700F8B05CF870E6 /* AFPageItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageItem.m; path = AFPageClient/Classes/AFPageItem.m; sourceTree = "<group>"; };
 		2D8DC7A59C0372FBB1C37F32D4CA67A1 /* AFPageCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFPageCollectionView.m; path = AFPageClient/Classes/AFPageCollectionView.m; sourceTree = "<group>"; };
 		2F6D36B1F9E8A3A27A7AB5B481106F05 /* AFPageCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageCollectionView.h; path = AFPageClient/Classes/AFPageCollectionView.h; sourceTree = "<group>"; };
 		30EC6C5D191587619B42076546EDC448 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+MASAdditions.h"; path = "Masonry/NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		31DE085225E7857F009EBB69 /* AFScrollViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AFScrollViewProxy.h; path = AFPageClient/Classes/AFScrollViewProxy.h; sourceTree = "<group>"; };
+		31DE085325E7857F009EBB69 /* AFScrollViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AFScrollViewProxy.m; path = AFPageClient/Classes/AFScrollViewProxy.m; sourceTree = "<group>"; };
 		32BA6B48E96A9BC63FD4BB822DFD954D /* Pods-AFPageClient_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AFPageClient_Tests-umbrella.h"; sourceTree = "<group>"; };
 		342C4D9B5E1E36390E7AF01E35444998 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		3A109F2FEFE0E487BF00653E923EB31E /* AFCollectionViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCollectionViewFlowLayout.h; path = AFPageClient/Classes/AFCollectionViewFlowLayout.h; sourceTree = "<group>"; };
@@ -136,7 +140,7 @@
 		6CF8069504999FB8BF5FA1529175AA74 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
 		6E17443EA85E103F4DD0553AB6BB942A /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		6FF4AF21902029EC43C354AC0978CE49 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
-		70BD2F9882F52BEF98064CB55C145C82 /* AFPageClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = AFPageClient.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		70BD2F9882F52BEF98064CB55C145C82 /* AFPageClient.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = AFPageClient.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		72A95F8027E3EB86CB9AE2D7539201FE /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		75FDAD99F31B83DF59E88E0D3834A2F1 /* AFPageClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFPageClient-dummy.m"; sourceTree = "<group>"; };
 		7EA9E49E41A563FAC7993E12D588BE19 /* Pods-AFPageClient_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AFPageClient_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -154,7 +158,7 @@
 		8C30145C7A3E2F2F3FA8EA3C943581BB /* Pods-AFPageClient_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFPageClient_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9073C3B74BC30C55B4EB5B2A596EAD72 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		909B7B861610475B7CB4793BD0B0A3DA /* Pods-AFPageClient_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AFPageClient_Example-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A236EE5B7D91DEFE40F9328A83307ECC /* AFPageItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageItem.h; path = AFPageClient/Classes/AFPageItem.h; sourceTree = "<group>"; };
 		A2434C8570DC983EAED1387EE7E25FF2 /* AFPageItemBadge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFPageItemBadge.h; path = AFPageClient/Classes/AFPageItemBadge.h; sourceTree = "<group>"; };
 		A703176EFEED5E757B3D97A20A051DFA /* Pods-AFPageClient_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AFPageClient_Example-Info.plist"; sourceTree = "<group>"; };
@@ -166,7 +170,7 @@
 		B28EC2F4C626ED77509645BE3805CB29 /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
 		BC021D26CF2FBE7B2AE888B9BD4BC05F /* Pods-AFPageClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AFPageClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDB676D9D5D3AFD89D8DDCE3369D4BAC /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		BE1F10D90F608A2CF1617234F1792F37 /* Pods_AFPageClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AFPageClient_Example.framework; path = "Pods-AFPageClient_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE1F10D90F608A2CF1617234F1792F37 /* Pods_AFPageClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8300BFB0B33DF6EE948B8419E4A2D6 /* Pods-AFPageClient_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AFPageClient_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CF3F0718F8E7EB9585C216E1B61D8078 /* AFSegmentConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSegmentConfiguration.m; path = AFPageClient/Classes/AFSegmentConfiguration.m; sourceTree = "<group>"; };
 		CFE446476C51FAE0ACFF4FBB24E50A65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -181,7 +185,7 @@
 		F287598D192FA586BD4AECCD85B988A4 /* Masonry.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.debug.xcconfig; sourceTree = "<group>"; };
 		F3CF773651727D50CDFC96D527CE18A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FB757B0D7BD394C107B418D052E024FD /* AFPageClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFPageClient.debug.xcconfig; sourceTree = "<group>"; };
-		FC59FA5D17DF450B9A64922CE114711E /* AFPageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFPageClient.framework; path = AFPageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC59FA5D17DF450B9A64922CE114711E /* AFPageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFPageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED837E956D0830E5A0E0EA46230A779 /* AFPageClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFPageClient.release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,7 +257,6 @@
 				342C4D9B5E1E36390E7AF01E35444998 /* ViewController+MASAdditions.m */,
 				C84A449C2DE4F91F0620A5147DD42E0F /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -419,6 +422,8 @@
 				1CFA5014CDF36BD7C7D921413ECF5D12 /* AFSegmentViewCell.m */,
 				796A20552AA99755AB6C090C64C37498 /* Pod */,
 				A6A1BA7CE6517245AA44BB2CB6D47F4A /* Support Files */,
+				31DE085225E7857F009EBB69 /* AFScrollViewProxy.h */,
+				31DE085325E7857F009EBB69 /* AFScrollViewProxy.m */,
 			);
 			name = AFPageClient;
 			path = ../..;
@@ -463,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				929604A9F739471C3F81A62FCE44953D /* AFCollectionViewFlowLayout.h in Headers */,
+				31DE085425E7857F009EBB69 /* AFScrollViewProxy.h in Headers */,
 				7171E6ED3962DE6C505D4A29B85CAB72 /* AFPageClient-umbrella.h in Headers */,
 				55A1655989D25F225429CB770FFEC86A /* AFPageClient.h in Headers */,
 				6FE39C66A444F268F77A19661E896EA2 /* AFPageCollectionView.h in Headers */,
@@ -631,6 +637,7 @@
 				3FA41EAAD82150B5DFDE4F7AA6A54B78 /* AFCollectionViewFlowLayout.m in Sources */,
 				3471EF42C9EB6038AFAA922AA398B372 /* AFPageClient-dummy.m in Sources */,
 				2F97C6F8AE87485EC0B38C4DFE9983D1 /* AFPageClient.m in Sources */,
+				31DE085525E7857F009EBB69 /* AFScrollViewProxy.m in Sources */,
 				FDF07857A37E952CE23F7FA9BA470C2D /* AFPageCollectionView.m in Sources */,
 				638575336CED87A514F6DCD212A06322 /* AFPageItem.m in Sources */,
 				8A075E0049FC42DF4ECA9E1FE61CB580 /* AFPageItemBadge.m in Sources */,
@@ -982,8 +989,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

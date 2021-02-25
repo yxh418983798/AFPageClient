@@ -39,9 +39,6 @@ static NSInteger AFPageChildViewTag = 66661201;
 /** BOOL */
 @property (nonatomic, assign) BOOL                  isFixed;
 
-/** 是否能滚动 默认YES */
-@property (assign, nonatomic) BOOL                  scrollEnable;
-
 /** segment样式 */
 @property (strong, nonatomic) AFSegmentConfiguration *configuration;
 
@@ -60,7 +57,6 @@ static NSInteger AFPageChildViewTag = 66661201;
         self.parentViewController = viewController;
         self.frame = frame;
         self.configuration = configuration;
-        _scrollEnable = YES;
     }
     return self;
 }

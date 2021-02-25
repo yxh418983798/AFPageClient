@@ -8,6 +8,13 @@
 #import <Foundation/Foundation.h>
 
 
+typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
+    AFPageClientStyleDefault,
+    AFPageClientStylePullParent,
+    AFPageClientStylePullItem,
+};
+
+
 @interface AFSegmentConfiguration : NSObject
 
 
@@ -19,9 +26,6 @@
 
 /** 手动设置是否允许滚动，默认NO -- 前提必须先关闭adjustEnable，否则无效 */
 @property (assign, nonatomic) BOOL scrollEnable;
-
-/** 默认YES  YES：如果标题大于adjustMaxCount，会滚动并根据标题自适应宽度  --  NO：平分宽度且不滚动 */
-@property (assign, nonatomic) BOOL adjustEnable;
 
 /** segmentView Frame */
 @property (assign, nonatomic) CGRect   frame;

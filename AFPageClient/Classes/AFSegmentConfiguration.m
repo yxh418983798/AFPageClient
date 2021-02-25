@@ -13,7 +13,6 @@
     if(self = [super init]) {
         _showScrollBar = YES;
         _showBottomLine = NO;
-        _adjustEnable = YES;
         _animatedEnable = YES;
         self.backgroundColor = UIColor.whiteColor;
         self.lineColor = UIColor.grayColor;

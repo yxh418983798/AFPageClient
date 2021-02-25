@@ -24,7 +24,7 @@
 @property (nonatomic, strong) AFPageClient             *pageClient;
 
 /** item */
-@property (nonatomic, strong) AFPageItem            *item;
+@property (nonatomic, strong) AFPageItem               *item;
 
 @end
 
