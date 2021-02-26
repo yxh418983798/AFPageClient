@@ -8,12 +8,13 @@
 #import "AFPageClient.h"
 #import "AFPageCollectionView.h"
 #import "AFSegmentView.h"
+#import "AFScrollViewProxy.h"
 
 /// 子控制器的view的tag
 static NSInteger AFPageChildViewTag = 66661201;
 
 
-@interface AFPageClient () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, AFSegmentViewDelegate>
+@interface AFPageClient () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, AFSegmentViewDelegate, AFScrollViewProxyDelegate>
 
 /** 容器 */
 @property (weak, nonatomic) UIViewController        *parentViewController;
@@ -45,6 +46,12 @@ static NSInteger AFPageChildViewTag = 66661201;
 /** 记录item数据源 */
 @property (strong, nonatomic) NSMutableDictionary <NSString *, AFPageItem *>   *pageItems;
 
+/** AFScrollViewProxy */
+@property (nonatomic, strong) AFScrollViewProxy            *scrollProxy;
+
+/** headerView */
+@property (nonatomic, strong) UIView                       *headerView;
+
 @end
 
 
@@ -62,7 +69,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 }
 
 
-#pragma mark - UI
+#pragma mark - Getter
 - (UIView *)contentView {
     if (!_contentView) {
         _contentView = [[UIView alloc] initWithFrame:self.frame];
@@ -76,6 +83,21 @@ static NSInteger AFPageChildViewTag = 66661201;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.bounces = NO;
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } 
+        if ([self.delegate respondsToSelector:@selector(headerViewForPageClient:)]) {
+            self.headerView = [self.delegate headerViewForPageClient:self];
+            if (self.configuration.headerViewScrollEnable) {
+                _tableView.tableHeaderView = self.headerView;
+            } else {
+                UIView *tableHeaderView = UIView.new;
+                tableHeaderView.clipsToBounds = YES;
+                tableHeaderView.frame = CGRectMake(0, 0, self.frame.size.width, self.headerView.frame.size.height);
+                [tableHeaderView addSubview:self.headerView];
+                _tableView.tableHeaderView = tableHeaderView;
+            }
+        }
     }
     return _tableView;
 }
@@ -121,19 +143,23 @@ static NSInteger AFPageChildViewTag = 66661201;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator   = NO;
         _collectionView.backgroundColor = self.configuration.backgroundColor;
-//        _collectionView.gestureShouldRecognizer = YES;
-//        _collectionView.responseDelegate = self;
     }
     return _collectionView;
 }
 
-
-#pragma mark - 数据
 - (NSMutableDictionary *)pageItems {
     if (!_pageItems) {
         _pageItems = NSMutableDictionary.dictionary;
     }
     return _pageItems;
+}
+
+- (AFScrollViewProxy *)scrollProxy {
+    if (!_scrollProxy) {
+        _scrollProxy = [AFScrollViewProxy proxyWithScrollView:self.tableView delegate:self];
+        _scrollProxy.frame = self.tableView.frame;
+    }
+    return _scrollProxy;
 }
 
 /// segment的配置
@@ -214,13 +240,6 @@ static NSInteger AFPageChildViewTag = 66661201;
             [self.parentViewController.view addSubview:self.tableView];
         }
     }
-
-//    //header
-//    if ([self.delegate respondsToSelector:@selector(headerViewForContainer)]) {
-//        self.tableView.tableHeaderView = self.delegate.headerViewForContainer;
-//        self.tableView.bounces = YES;
-//        [self.parentViewController.view insertSubview:self.multiScrollView atIndex:0];
-//    }
     
     //collection
     if (self.parentViewController.navigationController.interactivePopGestureRecognizer) {
@@ -238,8 +257,10 @@ static NSInteger AFPageChildViewTag = 66661201;
     if (!self.isFixed) {
         [self.tableView reloadData];
     }
+    if (self.configuration.style != AFPageClientStyleDefault) {
+        [self.parentViewController.view insertSubview:self.scrollProxy atIndex:0];
+    }
 }
-
 
 
 #pragma mark - UITableViewDelegate
@@ -277,9 +298,6 @@ static NSInteger AFPageChildViewTag = 66661201;
     UIViewController *childVc = item.childViewController;
     [self.parentViewController addChildViewController:childVc];
     [childVc didMoveToParentViewController:self.parentViewController];
-//    if (self.tableView.tableHeaderView && !childVc.view.superview && [childVc respondsToSelector:@selector(scrollViewForChildViewController)]) {
-//        [self.monitor addChildScrollView:childVc.scrollViewForChildViewController forParentScrollView:self.tableView atIndex:indexPath.item];
-//    }
     childVc.view.frame = CGRectMake(0, 0, self.collectionView.frame.size.width, self.collectionView.frame.size.height);
     [cell.contentView addSubview:childVc.view];
     return cell;
@@ -287,7 +305,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 
 #pragma mark - 监听滚动事件
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 //    if (scrollView == self.collectionView) {
 //        NSInteger page = (NSInteger)(scrollView.contentOffset.x / self.collectionView.frame.size.width);
 //        if (_selectedIndex != page) {
@@ -299,7 +317,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 //        }
 //    }
 //    NSLog(@"-------------------------- 停了：%g --------------------------", self.segmentView.scrollBar.frame.origin.x);
-}
+//}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
      if (scrollView == self.collectionView) {
@@ -307,8 +325,16 @@ static NSInteger AFPageChildViewTag = 66661201;
 //        if ([self.delegate respondsToSelector:@selector(pageCollectionViewDidScroll:)]) {
 //            [self.delegate pageCollectionViewDidScroll:self.collectionView];
 //        }
-
-    }
+     } else if (scrollView == self.tableView) {
+         if (!self.configuration.headerViewScrollEnable) {
+             if (scrollView.contentOffset.y > self.tableView.tableHeaderView.frame.size.height) return;
+             if (scrollView.contentOffset.y > 0) {
+                 self.headerView.frame = CGRectMake(0, scrollView.contentOffset.y, self.frame.size.width, self.tableView.tableHeaderView.frame.size.height);
+             } else {
+                 self.headerView.frame = self.tableView.tableHeaderView.bounds;
+             }
+         }
+     }
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
@@ -323,16 +349,11 @@ static NSInteger AFPageChildViewTag = 66661201;
             }
         }
     }
-//    NSLog(@"-------------------------- 离开手指，%d --------------------------", scrollView.decelerating);
 }
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    NSLog(@"-------------------------- 结束了 --------------------------");
-}
+    
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.segmentView.scrollBar stop];
 }
-
 
 
 #pragma mark -- 手动设置显示的控制器
@@ -385,5 +406,26 @@ static NSInteger AFPageChildViewTag = 66661201;
     }
 }
 
+
+#pragma mark - AFScrollViewProxyDelegate
+- (UIScrollView *)childScrollViewForCurrentIndex {
+    UIScrollView *childScrollView = [(UIViewController <AFPageClientChildViewControllerDelegate> *)self.currentVc childScrollViewForPageClient:self];
+    if (childScrollView.panGestureRecognizer) {
+        [childScrollView removeGestureRecognizer:childScrollView.panGestureRecognizer];
+    }
+//    NSLog(@"-------------------------- currentIndex：%d --------------------------", self.selectedIndex);
+    return childScrollView;
+}
+
+- (UIScrollView *)scrollViewForPull {
+    return self.configuration.style == AFPageClientStylePullItem ? self.childScrollViewForCurrentIndex : self.tableView;
+}
+
+- (BOOL)isTouchContentInLocation:(CGPoint)location {
+    if (self.configuration.style != AFPageClientStyleDefault) {
+        return location.y > self.tableView.tableHeaderView.frame.size.height + self.segmentView.frame.size.height;
+    }
+    return YES;
+}
 
 @end

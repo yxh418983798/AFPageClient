@@ -17,6 +17,11 @@ typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
 
 @interface AFSegmentConfiguration : NSObject
 
+/** AFPageClientStyle */
+@property (nonatomic, assign) AFPageClientStyle  style;
+
+/** headerView是否跟随滚动，默认NO */
+@property (assign, nonatomic) BOOL headerViewScrollEnable;
 
 /** 切换Item时，字体是否动画变化，默认YES */
 @property (assign, nonatomic) BOOL animatedEnable;
@@ -58,7 +63,6 @@ typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
 
 /** 滚动条的颜色 */
 @property (nonatomic, strong) UIColor  *scrollBarColor;
-
 
 
 @end

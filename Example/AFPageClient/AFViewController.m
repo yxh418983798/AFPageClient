@@ -42,10 +42,12 @@
     [super viewDidLoad];
     AFSegmentConfiguration *s = AFSegmentConfiguration.new;
     s.insets = UIEdgeInsetsMake(0, 100, 0, 100);
+    s.backgroundColor = UIColor.lightGrayColor;
     s.scrollBar_minW = 20;
     s.scrollBar_maxW = 100;
     s.scrollBarColor = UIColor.redColor;
-    self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:s];
+    s.style = AFPageClientStylePullParent;
+    self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)) parentController:self configuration:s];
     self.pageClient.delegate = self;
     [self.pageClient reloadData];
     
@@ -92,11 +94,23 @@
 //
 //}
 
-
+/// 自定义pageClient的headerView
+- (UIView *)headerViewForPageClient:(AFPageClient *)pageClient {
+    UIView *headerView = UIView.new;
+    headerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 200);
+    headerView.backgroundColor = UIColor.redColor;
+    
+    UIView *view = UIView.new;
+    [view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)]];
+    view.frame = CGRectMake(0, 50, self.view.frame.size.width, 100);
+    view.backgroundColor = UIColor.blueColor;
+    [headerView addSubview:view];
+    return headerView;
+}
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 2;
+    return 4;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
@@ -156,5 +170,9 @@ static NSString *content = AFPageItemBadgeRedDot;
 
 - (void)dealloc {
     NSLog(@"-------------------------- 控制器释放 --------------------------");
-} 
+}
+
+- (void)tapAction {
+    NSLog(@"-------------------------- tapAction --------------------------");
+}
 @end

@@ -25,6 +25,9 @@
 /// 选中Item的回调
 - (void)pageClient:(AFPageClient *)pageClient didSelectItemAtIndex:(NSInteger)index;
 
+/// 自定义pageClient的headerView
+- (UIView *)headerViewForPageClient:(AFPageClient *)pageClient;
+
 /// 返回item的角标
 - (AFPageItemBadge *)pageClient:(AFPageClient *)pageClient badgeForItemAtIndex:(NSInteger)index;
 
@@ -34,9 +37,14 @@
 /// 自定义Segment的rightView
 - (UIView *)rightViewForSegmentInPageClient:(AFPageClient *)pageClient;
 
-
 @end
 
+
+@protocol AFPageClientChildViewControllerDelegate <NSObject>
+
+- (__kindof UIScrollView *)childScrollViewForPageClient:(AFPageClient *)pageClient;
+
+@end
 
 
 @interface AFPageClient : NSObject

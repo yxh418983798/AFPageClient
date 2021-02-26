@@ -13,17 +13,14 @@
 
 - (UIScrollView *)scrollViewForPull;
 
+- (BOOL)isTouchContentInLocation:(CGPoint)location;
+
 @end
 
 
 @interface AFScrollViewProxy : UIScrollView
 
-/** 代理 */
-@property (nonatomic, weak) id <AFScrollViewProxyDelegate>  proxyDelegate;
-
-+ (instancetype)proxyWithScrollView:(UIScrollView *)scrollView;
-
-- (void)addChildScrollView:(UIScrollView *)childScrollView atIndex:(NSInteger)index;
++ (instancetype)proxyWithScrollView:(UIScrollView *)scrollView delegate:(id <AFScrollViewProxyDelegate>)delegate;
 
 @end
 
