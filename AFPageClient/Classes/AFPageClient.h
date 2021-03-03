@@ -37,6 +37,10 @@
 /// 自定义Segment的rightView
 - (UIView *)rightViewForSegmentInPageClient:(AFPageClient *)pageClient;
 
+/// TableView滚动监听
+- (void)pageClient:(AFPageClient *)pageClient didScrollTableView:(UITableView *)tableView;
+
+
 @end
 
 
@@ -54,6 +58,11 @@
 
 /** 获取当前index */
 @property (assign, nonatomic) NSInteger                  selectedIndex;
+
+/** 获取外层的TableView */
+- (UITableView *)tableView;
+
+
 
 /// 构造
 - (instancetype)init NS_UNAVAILABLE;

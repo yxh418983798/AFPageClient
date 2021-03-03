@@ -82,10 +82,12 @@ static NSInteger AFPageChildViewTag = 66661201;
         _tableView = [[UITableView alloc] initWithFrame:self.frame style:(UITableViewStylePlain)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.bounces = NO;
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        } 
+        }
         if ([self.delegate respondsToSelector:@selector(headerViewForPageClient:)]) {
             self.headerView = [self.delegate headerViewForPageClient:self];
             if (self.configuration.headerViewScrollEnable) {
@@ -333,6 +335,9 @@ static NSInteger AFPageChildViewTag = 66661201;
              } else {
                  self.headerView.frame = self.tableView.tableHeaderView.bounds;
              }
+         }
+         if ([self.delegate respondsToSelector:@selector(pageClient:didScrollTableView:)]) {
+             [self.delegate pageClient:self didScrollTableView:scrollView];
          }
      }
 }
