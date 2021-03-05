@@ -9,15 +9,15 @@
 
 
 typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
-    AFPageClientStyleDefault,
-    AFPageClientStylePullParent,
-    AFPageClientStylePullItem,
+    AFPageClientStyleDefault,    // 默认，顶部是固定的，没有嵌套滚动
+    AFPageClientStylePullParent, // 嵌套滚动，下拉时，外层TableView下拉
+    AFPageClientStylePullItem,   // 嵌套滚动，下拉时，内层的ScrollView下拉
 };
 
 
 @interface AFSegmentConfiguration : NSObject
 
-/** AFPageClientStyle */
+/** 设置嵌套滚动的方式，默认没有嵌套滚动 */
 @property (nonatomic, assign) AFPageClientStyle  style;
 
 /** headerView是否跟随滚动，默认NO */
@@ -28,9 +28,6 @@ typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
 
 /** 是否显示底部分割线 默认NO */
 @property (assign, nonatomic) BOOL showBottomLine;
-
-/** 手动设置是否允许滚动，默认NO -- 前提必须先关闭adjustEnable，否则无效 */
-@property (assign, nonatomic) BOOL scrollEnable;
 
 /** segmentView Frame */
 @property (assign, nonatomic) CGRect   frame;

@@ -9,6 +9,7 @@
 #import "AFPageCollectionView.h"
 #import "AFSegmentView.h"
 #import "AFScrollViewProxy.h"
+#import <objc/runtime.h>
 
 /// 子控制器的view的tag
 static NSInteger AFPageChildViewTag = 66661201;
@@ -415,10 +416,12 @@ static NSInteger AFPageChildViewTag = 66661201;
 #pragma mark - AFScrollViewProxyDelegate
 - (UIScrollView *)childScrollViewForCurrentIndex {
     UIScrollView *childScrollView = [(UIViewController <AFPageClientChildViewControllerDelegate> *)self.currentVc childScrollViewForPageClient:self];
-    if (childScrollView.panGestureRecognizer) {
-        [childScrollView removeGestureRecognizer:childScrollView.panGestureRecognizer];
+    
+    if (childScrollView.panGestureRecognizer != self.scrollProxy.panGestureRecognizer && !objc_getAssociatedObject(childScrollView, "af_scrollProxy")) {
+//        [childScrollView removeGestureRecognizer:childScrollView.panGestureRecognizer];
+        objc_setAssociatedObject(childScrollView, "af_scrollProxy", self.scrollProxy, OBJC_ASSOCIATION_ASSIGN);
+        [self swizzlMethod:childScrollView.class];
     }
-//    NSLog(@"-------------------------- currentIndex：%d --------------------------", self.selectedIndex);
     return childScrollView;
 }
 
@@ -432,5 +435,24 @@ static NSInteger AFPageChildViewTag = 66661201;
     }
     return YES;
 }
+
+
+#pragma mark - 交换方法
+- (void)swizzlMethod:(Class)scrollViewClass {
+    
+    if (![scrollViewClass isSubclassOfClass:UIScrollView.class]) return;
+    Method swizzlDraggin = class_getInstanceMethod(self.class, @selector(af_isDragging));
+    if (!class_addMethod(scrollViewClass, @selector(isDragging), method_getImplementation(swizzlDraggin), method_getTypeEncoding(swizzlDraggin))) {
+        class_replaceMethod(scrollViewClass, @selector(isDragging), method_getImplementation(swizzlDraggin), method_getTypeEncoding(swizzlDraggin));
+    }
+}
+
+- (BOOL)af_isDragging {
+    UIScrollView *scrollView = [self respondsToSelector:@selector(scrollProxy)] ? self.scrollProxy : objc_getAssociatedObject(self, "af_scrollProxy");
+    return scrollView.isDragging;
+}
+
+
+
 
 @end

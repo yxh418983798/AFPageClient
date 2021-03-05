@@ -62,6 +62,8 @@
 /** 获取外层的TableView */
 - (UITableView *)tableView;
 
+/** 获取scrollProxy，如果有设置嵌套滚动，且需要下拉刷新，需要同步设置下scrollProxy的refresh控件 */
+- (UIScrollView *)scrollProxy;
 
 
 /// 构造

@@ -6,6 +6,7 @@
 //
 
 #import "AFScrollViewProxy.h"
+#import <objc/runtime.h>
 
 @interface AFScrollViewProxy () <UIScrollViewDelegate>
 
@@ -66,7 +67,7 @@
     CGFloat content_H = self.scrollView.contentSize.height; //contentSize的最小值
     content_H = fmax(content_H, self.header_H + currentScrollView.contentSize.height);
     self.contentSize = CGSizeMake(self.contentSize.width, content_H);
-    NSLog(@"手势拦截 --%@, proxy:%@ \n scrollView:%@ \n currentScrollView:%@", NSStringFromCGPoint([gestureRecognizer velocityInView:gestureRecognizer.view]), self, self.scrollView, currentScrollView);
+//    NSLog(@"手势拦截 --%@, proxy:%@ \n scrollView:%@ \n currentScrollView:%@", NSStringFromCGPoint([gestureRecognizer velocityInView:gestureRecognizer.view]), self, self.scrollView, currentScrollView);
     self.contentOffset = CGPointMake(self.contentOffset.x, self.scrollView.contentOffset.y + currentScrollView.contentOffset.y);
 
     return YES; 

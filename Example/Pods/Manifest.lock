@@ -1,12 +1,16 @@
 PODS:
-  - AFPageClient (1.0.9):
+  - AFPageClient (1.1.1):
     - Masonry
   - Masonry (1.1.0)
+  - MJRefresh (3.5.0)
 
 DEPENDENCIES:
   - AFPageClient (from `../`)
+  - MJRefresh
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - MJRefresh
   trunk:
     - Masonry
 
@@ -15,9 +19,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFPageClient: 08531583180c474851b16d578e373e303e61f288
+  AFPageClient: 69bcdd3fdc78da35867098d6e46b8173ada87686
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
 
-PODFILE CHECKSUM: e28e8d38b3409af022f7ac751c3a976edd30a64f
+PODFILE CHECKSUM: 6fc0d83acef389a7c96c90805deef9e5fa994247
 
 COCOAPODS: 1.10.1

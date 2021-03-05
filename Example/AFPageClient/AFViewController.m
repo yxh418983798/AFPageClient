@@ -14,6 +14,7 @@
 #import "RSACryptor.h"
 #import "AFPageClient.h"
 #import "AFPageViewController.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface AFViewController () <AFPageClientDelegate>
 
@@ -37,6 +38,23 @@
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
+
+- (void)refreshAction {
+    NSLog(@"-------------------------- 下拉刷新 --------------------------");
+    UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [sv.mj_header endRefreshing];
+    });
+}
+
+- (void)footerAction {
+    NSLog(@"-------------------------- 下拉加载 --------------------------");
+    UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [sv.mj_footer endRefreshing];
+    });
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,11 +64,14 @@
     s.scrollBar_minW = 20;
     s.scrollBar_maxW = 100;
     s.scrollBarColor = UIColor.redColor;
-    s.style = AFPageClientStylePullParent;
+    s.style = AFPageClientStylePullItem;
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)) parentController:self configuration:s];
     self.pageClient.delegate = self;
     [self.pageClient reloadData];
     
+    UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
+    sv.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshAction)];
+    sv.mj_footer = [MJRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerAction)];
     //
 //    AFSegmentView *segmentView = AFSegmentView.new;
 //    segmentView.configuration.backgroundColor = UIColor.grayColor;
