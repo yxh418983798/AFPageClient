@@ -15,7 +15,7 @@
 #import "AFPageClient.h"
 #import "AFPageViewController.h"
 #import <MJRefresh/MJRefresh.h>
-
+#import <objc/runtime.h>
 @interface AFViewController () <AFPageClientDelegate>
 
 /** AFSegmentView */
@@ -194,6 +194,15 @@ static NSString *content = AFPageItemBadgeRedDot;
 }
 
 - (void)tapAction {
-    NSLog(@"-------------------------- tapAction --------------------------");
+    
+    UIView *obj = UIView.new;
+    objc_setAssociatedObject(self, "afobj", obj, OBJC_ASSOCIATION_ASSIGN);
+    NSLog(@"-------------------------- tapAction:%@ --------------------------", obj);
+    obj = nil;
+    objc_setAssociatedObject(self, "afobj", nil, OBJC_ASSOCIATION_ASSIGN);
+    UIView *v = objc_getAssociatedObject(self, "afobj");
+    NSLog(@"-------------------------- 哈哈：%@ --------------------------", v);
+    
+
 }
 @end

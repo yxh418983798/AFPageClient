@@ -63,14 +63,19 @@
 #pragma mark - 手势拦截，保持与当前的子ScrollView数据同步
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
     self.isTouchContent = [self.proxyDelegate isTouchContentInLocation:[gestureRecognizer locationInView:gestureRecognizer.view]];
+    [self reload];
+    //    NSLog(@"手势拦截 --%@, proxy:%@ \n scrollView:%@ \n currentScrollView:%@", NSStringFromCGPoint([gestureRecognizer velocityInView:gestureRecognizer.view]), self, self.scrollView, currentScrollView);
+    return YES;
+}
+
+
+#pragma mark - 刷新
+- (void)reload {
     UIScrollView *currentScrollView = self.proxyDelegate.childScrollViewForCurrentIndex;
     CGFloat content_H = self.scrollView.contentSize.height; //contentSize的最小值
     content_H = fmax(content_H, self.header_H + currentScrollView.contentSize.height + fmax(0, self.frame.size.height - currentScrollView.frame.size.height));
     self.contentSize = CGSizeMake(self.contentSize.width, content_H);
-//    NSLog(@"手势拦截 --%@, proxy:%@ \n scrollView:%@ \n currentScrollView:%@", NSStringFromCGPoint([gestureRecognizer velocityInView:gestureRecognizer.view]), self, self.scrollView, currentScrollView);
     self.contentOffset = CGPointMake(self.contentOffset.x, self.scrollView.contentOffset.y + currentScrollView.contentOffset.y);
-
-    return YES; 
 }
 
 

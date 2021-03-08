@@ -22,6 +22,8 @@
 
 + (instancetype)proxyWithScrollView:(UIScrollView *)scrollView delegate:(id <AFScrollViewProxyDelegate>)delegate;
 
+- (void)reload;
+
 @end
 
 

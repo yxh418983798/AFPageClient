@@ -9,6 +9,7 @@
 #import "AFPageItem.h"
 #import "AFPageItemBadge.h"
 #import "AFSegmentConfiguration.h"
+#import "AFScrollViewProxy.h"
 
 @class AFPageClient, AFSegmentView;
 
@@ -63,7 +64,7 @@
 - (UITableView *)tableView;
 
 /** 获取scrollProxy，如果有设置嵌套滚动，且需要下拉刷新，需要同步设置下scrollProxy的refresh控件 */
-- (UIScrollView *)scrollProxy;
+- (AFScrollViewProxy *)scrollProxy;
 
 
 /// 构造

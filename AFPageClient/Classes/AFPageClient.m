@@ -419,7 +419,7 @@ static NSInteger AFPageChildViewTag = 66661201;
     
     if (childScrollView.panGestureRecognizer != self.scrollProxy.panGestureRecognizer && !objc_getAssociatedObject(childScrollView, "af_scrollProxy")) {
 //        [childScrollView removeGestureRecognizer:childScrollView.panGestureRecognizer];
-        objc_setAssociatedObject(childScrollView, "af_scrollProxy", self.scrollProxy, OBJC_ASSOCIATION_ASSIGN);
+        objc_setAssociatedObject(childScrollView, "af_scrollProxy", self.scrollProxy, OBJC_ASSOCIATION_RETAIN);
         [self swizzlMethod:childScrollView.class];
     }
     return childScrollView;
