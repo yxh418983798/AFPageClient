@@ -57,6 +57,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     AFSegmentConfiguration *s = AFSegmentConfiguration.new;
     s.insets = UIEdgeInsetsMake(0, 100, 0, 100);
@@ -67,7 +68,7 @@
     s.style = AFPageClientStylePullItem;
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)) parentController:self configuration:s];
     self.pageClient.delegate = self;
-    self.pageClient.selectedIndex =  1;
+    self.pageClient.selectedIndex =  3;
     [self.pageClient reloadData];
     
     UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
@@ -132,7 +133,7 @@
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 4;
+    return 10;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
