@@ -57,7 +57,7 @@
 /** 代理 */
 @property (nonatomic, weak) id <AFPageClientDelegate>    delegate;
 
-/** 获取当前index */
+/** 当前index */
 @property (assign, nonatomic) NSInteger                  selectedIndex;
 
 /** 获取外层的TableView */

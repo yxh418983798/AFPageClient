@@ -67,6 +67,7 @@
     s.style = AFPageClientStylePullItem;
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)) parentController:self configuration:s];
     self.pageClient.delegate = self;
+    self.pageClient.selectedIndex =  1;
     [self.pageClient reloadData];
     
     UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];

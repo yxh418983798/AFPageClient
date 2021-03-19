@@ -208,7 +208,10 @@
 
 
 - (void)selectedAtIndex:(NSInteger)index  {
-    
+    if (!_collectionView) {
+        self.current_index = index;
+        return;
+    }
     if (self.current_index == index) {
         CGFloat offX = self.collectionView.contentOffset.x - self.collectionView.frame.size.width * self.current_index;
         NSInteger toIndex;

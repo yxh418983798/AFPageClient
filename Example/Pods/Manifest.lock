@@ -1,5 +1,5 @@
 PODS:
-  - AFPageClient (1.1.1):
+  - AFPageClient (1.1.4):
     - Masonry
   - Masonry (1.1.0)
   - MJRefresh (3.5.0)
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AFPageClient: 69bcdd3fdc78da35867098d6e46b8173ada87686
+  AFPageClient: e72192c10107f16bed3c611ed48ca7050cab1d5e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
 

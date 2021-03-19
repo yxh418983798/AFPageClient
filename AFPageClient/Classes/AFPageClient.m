@@ -146,6 +146,7 @@ static NSInteger AFPageChildViewTag = 66661201;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator   = NO;
         _collectionView.backgroundColor = self.configuration.backgroundColor;
+        _collectionView.contentSize = CGSizeMake(self.frame.size.width * self.numberOfItems, layout.itemSize.height);
     }
     return _collectionView;
 }
@@ -191,6 +192,16 @@ static NSInteger AFPageChildViewTag = 66661201;
     }
     return item;
 }
+
+/// 当前控制器
+- (UIViewController *)currentVc {
+    AFPageItem *item = [self itemAtIndex:self.selectedIndex];
+    return item.childViewController;
+}
+
+//- (NSInteger)index  {
+//    return self.selectedIndex;
+//}
 
 
 #pragma mark - 刷新
@@ -263,6 +274,32 @@ static NSInteger AFPageChildViewTag = 66661201;
     if (self.configuration.style != AFPageClientStyleDefault) {
         [self.parentViewController.view insertSubview:self.scrollProxy atIndex:0];
     }
+}
+
+
+#pragma mark -- 手动设置显示的控制器
+- (void)setSelectedIndex:(NSInteger)selectedIndex {
+    [self selectedViewControllerAtIndex:selectedIndex animated:NO];
+}
+
+- (void)selectedViewControllerAtIndex:(NSInteger)index animated:(BOOL)animated {
+    if ((index >= [self.delegate numberOfItemsInPageClient:self] || (index == _selectedIndex))) {
+        return;
+    }
+    if (!animated || abs((int)(index - _selectedIndex)) > 1) {
+        // 不做动画
+        if ([self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]]) {
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:NO];
+        } else {
+            dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+                [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:NO];
+            });
+        }
+    } else {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:YES];
+    }
+    _selectedIndex = index;
+    [self.segmentView selectedAtIndex:index];
 }
 
 
@@ -362,36 +399,6 @@ static NSInteger AFPageChildViewTag = 66661201;
 }
 
 
-#pragma mark -- 手动设置显示的控制器
-- (void)setSelectedIndex:(NSInteger)selectedIndex {
-//    if (self.segmentView.delegate == self) {
-//        [self.segmentView selectedAtIndex:index];
-//    } else {
-//        [self selectedViewControllerAtIndex:index];
-//    }
-    [self selectedViewControllerAtIndex:index];
-}
-
-- (void)selectedViewControllerAtIndex:(NSInteger)index {
-    if ((index >= [self.delegate numberOfItemsInPageClient:self] || (index == self.selectedIndex))) {
-        return;
-    }
-    if (abs((int)(index - self.selectedIndex)) > 1) {
-        //不做动画
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:NO];
-    } else {
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:YES];
-    }
-    [self.segmentView selectedAtIndex:index];
-    _selectedIndex = index;
-}
-
-- (UIViewController *)currentVc {
-    AFPageItem *item = [self itemAtIndex:self.selectedIndex];
-    return item.childViewController;
-}
-
-
 #pragma mark - AFSegmentViewDelegate
 /// item的数量
 - (NSInteger)numberOfItemsInSegmentView:(AFSegmentView *)segmentView {
@@ -406,7 +413,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 /// 选中Item的回调
 - (void)segmentView:(AFSegmentView *)segmentView didSelectItemAtIndex:(NSInteger)index {
     if (index >= [self.delegate numberOfItemsInPageClient:self]) return;
-    [self selectedViewControllerAtIndex:index];
+    [self selectedViewControllerAtIndex:index animated:YES];
     if ([self.delegate respondsToSelector:@selector(pageClient:didSelectItemAtIndex:)]) {
         [self.delegate pageClient:self didSelectItemAtIndex:index];
     }
