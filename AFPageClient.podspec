@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AFPageClient'
-  s.version          = '1.1.6'
+  s.version          = '1.2.0'
   s.summary          = '分页控制器'
   s.homepage         = 'https://github.com/yxh418983798/AFPageClient'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.source_files = 'AFPageClient/Classes/**/*'
   s.dependency 'Masonry'
-  s.public_header_files = 'Pod/Classes/**/{AFPageClient,AFPageItem,AFSegmentConfiguration}.h'
+#  s.public_header_files = 'Pod/Classes/**/{AFPageClient,AFPageItem,AFSegmentConfiguration}.h'
   
 end

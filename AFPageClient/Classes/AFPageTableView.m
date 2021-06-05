@@ -9,13 +9,10 @@
 
 @implementation AFPageTableView
 
-
 - (void)handlePan:(UIPanGestureRecognizer *)pan {
-
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-//    NSLog(@"-------------------------- 11 --------------------------");
     return YES;
 }
 

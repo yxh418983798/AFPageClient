@@ -7,6 +7,14 @@
 
 #import "AFPageItem.h"
 
+@interface AFPageItem ()
+
+/** 是否第一次设置 */
+@property (nonatomic, assign) BOOL              isInitial;
+
+@end
+
+
 @implementation AFPageItem
 
 - (instancetype)init {
@@ -18,6 +26,7 @@
         self.selectedTextColor = UIColor.blackColor;
         self.backgroundColor = UIColor.whiteColor;
         self.isInitial = YES;
+        self.scrollEnable = YES;
     }
     return self;
 }

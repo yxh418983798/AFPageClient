@@ -13,6 +13,9 @@
 /** 控制器 */
 @property (nonatomic, strong) UIViewController  *childViewController;
 
+/** 是否可以横向滚动，默认true */
+@property (assign, nonatomic) BOOL              scrollEnable;
+
 /** 指定itemSize，如果不设置，默认自适应 */
 @property (assign, nonatomic) CGSize            itemSize;
 
@@ -43,13 +46,8 @@
 /** 角标 */
 @property (nonatomic, strong) AFPageItemBadge   *badge;
 
-/** 是否第一次设置 */
-@property (nonatomic, assign) BOOL              isInitial;
-
 /// 获取展示的size
 - (CGFloat)widthWithItemSpace:(CGFloat)space;
-
-
 
 @end
 

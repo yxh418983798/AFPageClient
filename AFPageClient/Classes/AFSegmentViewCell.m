@@ -9,6 +9,12 @@
 #import <Masonry/Masonry.h>
 #import "AFPageItem.h"
 
+@interface AFPageItem ()
+/** 是否第一次设置 */
+@property (nonatomic, assign) BOOL              isInitial;
+@end
+
+
 @interface AFSegmentViewCell ()
 
 /** itemView */
@@ -25,6 +31,9 @@
 
 /** 角标文本 */
 @property (nonatomic, strong) UILabel         *badgeLb;
+
+/** 记录是否在动画 */
+@property (nonatomic, assign) BOOL            isAnimating;
 
 @end
 
@@ -216,26 +225,28 @@
 
 #pragma mark - 根据手势交互，更新字体大小和颜色
 - (void)updateScrollPercent:(CGFloat)percent animated:(BOOL)animated {
+    
     if (!self.titleLb.text.length) return;
+    
     if (animated) {
-        if (!self.item.isInitial) return;
-        self.item.isInitial = NO;
-        CGFloat selectedPointSize = self.item.selectedFont.pointSize;
-        CGFloat normalPointSize = self.item.font.pointSize;
-//        NSLog(@"-------------------------- !!!! selectedPointSize:%g --------------------------", percent);
+
         [UIView animateWithDuration:0.25 animations:^{
             self.titleLb.font = percent == 1 ? self.item.selectedFont : self.item.font;
             self.titleLb.textColor  = percent == 1 ? self.item.selectedTextColor : self.item.textColor;
         }];
+        
     } else {
-        CGFloat selectedPointSize = self.item.selectedFont.pointSize;
-        CGFloat normalPointSize = self.item.font.pointSize;
-//        NSLog(@"-------------------------- selectedPointSize:%g ---------------------------", percent);
-        self.titleLb.font = [self.titleLb.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
-        CGFloat startR,startG,startB,startA,endR,endG,endB,endA;
-        [self.item.textColor getRed:&startR green:&startG blue:&startB alpha:&startA];
-        [self.item.selectedTextColor getRed:&endR green:&endG blue:&endB alpha:&endA];
-        self.titleLb.textColor = [UIColor colorWithRed:startR + (endR - startR) * percent green:startG + (endG - startG) * percent blue:startB + (endB - startB) * percent alpha:startA + (endA - startA) * percent];
+        if (self.item.selectedFont) {
+            CGFloat selectedPointSize = self.item.selectedFont.pointSize;
+            CGFloat normalPointSize = self.item.font.pointSize;
+            self.titleLb.font = [self.titleLb.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+        }
+        if (self.item.selectedTextColor) {
+            CGFloat startR,startG,startB,startA,endR,endG,endB,endA;
+            [self.item.textColor getRed:&startR green:&startG blue:&startB alpha:&startA];
+            [self.item.selectedTextColor getRed:&endR green:&endG blue:&endB alpha:&endA];
+            self.titleLb.textColor = [UIColor colorWithRed:startR + (endR - startR) * percent green:startG + (endG - startG) * percent blue:startB + (endB - startB) * percent alpha:startA + (endA - startA) * percent];
+        }
     }
 }
 

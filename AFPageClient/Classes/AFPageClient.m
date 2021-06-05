@@ -361,10 +361,10 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
      if (scrollView == self.collectionView) {
-         [self.segmentView pageScrollViewDidScroll:scrollView];
-//        if ([self.delegate respondsToSelector:@selector(pageCollectionViewDidScroll:)]) {
-//            [self.delegate pageCollectionViewDidScroll:self.collectionView];
-//        }
+         [self.segmentView didScrollHorizontal:scrollView];
+         if ([self.delegate respondsToSelector:@selector(pageClient:didScrollHorizontal:)]) {
+             [self.delegate pageClient:self didScrollHorizontal:scrollView];
+         }
      } else if (scrollView == self.tableView) {
          if (!self.configuration.headerViewScrollEnable) {
              if (scrollView.contentOffset.y > self.tableView.tableHeaderView.frame.size.height) return;
@@ -374,8 +374,8 @@ static NSInteger AFPageChildViewTag = 66661201;
                  self.headerView.frame = self.tableView.tableHeaderView.bounds;
              }
          }
-         if ([self.delegate respondsToSelector:@selector(pageClient:didScrollTableView:)]) {
-             [self.delegate pageClient:self didScrollTableView:scrollView];
+         if ([self.delegate respondsToSelector:@selector(pageClient:didScrollVertical:)]) {
+             [self.delegate pageClient:self didScrollVertical:scrollView];
          }
      }
 }
@@ -460,6 +460,13 @@ static NSInteger AFPageChildViewTag = 66661201;
 }
 
 
-
+#pragma mark - 控制滚动
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if ([self.delegate respondsToSelector:@selector(pageClient:horizontalScrollEnableWithGestureRecognizer:)]) {
+        return [self.delegate pageClient:self horizontalScrollEnableWithGestureRecognizer:gestureRecognizer];
+    }
+    AFPageItem *item = [self itemAtIndex:self.selectedIndex];
+    return item.scrollEnable;
+}
 
 @end

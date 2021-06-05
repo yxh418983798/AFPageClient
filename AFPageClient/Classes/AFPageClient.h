@@ -23,24 +23,29 @@
 
 @optional;
 
+/// 返回item的角标
+- (AFPageItemBadge *)pageClient:(AFPageClient *)pageClient badgeForItemAtIndex:(NSInteger)index;
+
 /// 选中Item的回调
 - (void)pageClient:(AFPageClient *)pageClient didSelectItemAtIndex:(NSInteger)index;
 
 /// 自定义pageClient的headerView
 - (UIView *)headerViewForPageClient:(AFPageClient *)pageClient;
 
-/// 返回item的角标
-- (AFPageItemBadge *)pageClient:(AFPageClient *)pageClient badgeForItemAtIndex:(NSInteger)index;
-
-/// 自定义Segment的leftView
+/// 自定义头部菜单栏的leftView
 - (UIView *)leftViewForSegmentInPageClient:(AFPageClient *)pageClient;
 
-/// 自定义Segment的rightView
+/// 自定义头部菜单栏的rightView
 - (UIView *)rightViewForSegmentInPageClient:(AFPageClient *)pageClient;
 
-/// TableView滚动监听
-- (void)pageClient:(AFPageClient *)pageClient didScrollTableView:(UITableView *)tableView;
+/// 返回PageClient是否可以横向滚动，也可以通过设置pageItem的ScrollEnable控制
+- (BOOL)pageClient:(AFPageClient *)pageClient horizontalScrollEnableWithGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
 
+/// ScrollView纵向滚动监听
+- (void)pageClient:(AFPageClient *)pageClient didScrollVertical:(UIScrollView *)scrollView;
+
+/// ScrollView横向滚动监听
+- (void)pageClient:(AFPageClient *)pageClient didScrollHorizontal:(UIScrollView *)scrollView;
 
 @end
 
@@ -85,7 +90,7 @@
 - (void)reloadBadgeAtIndex:(NSInteger)index;
 
 /// 获取当前Vc
-- (UIViewController *)currentVc;
+- (__kindof UIViewController *)currentVc;
 
 /// 获取segmentView
 - (AFSegmentView *)segmentView;

@@ -21,28 +21,28 @@ typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
 @property (nonatomic, assign) AFPageClientStyle  style;
 
 /** headerView是否跟随滚动，默认NO */
-@property (assign, nonatomic) BOOL headerViewScrollEnable;
+@property (assign, nonatomic) BOOL               headerViewScrollEnable;
 
 /** 切换Item时，字体是否动画变化，默认YES */
-@property (assign, nonatomic) BOOL animatedEnable;
+@property (assign, nonatomic) BOOL               animatedEnable;
 
 /** 是否显示底部分割线 默认NO */
-@property (assign, nonatomic) BOOL showBottomLine;
+@property (assign, nonatomic) BOOL               showBottomLine;
+
+/** 底部分割线的颜色 */
+@property (strong, nonatomic) UIColor            *lineColor;
+
+/** 背景颜色 */
+@property (nonatomic, strong) UIColor            *backgroundColor;
 
 /** segmentView Frame */
-@property (assign, nonatomic) CGRect   frame;
+@property (assign, nonatomic) CGRect        frame;
 
 /** 缩进 */
 @property (assign, nonatomic) UIEdgeInsets  insets;
 
 /** 当itemSize为自适应时，可以设置item之间的间隔，默认25 */
-@property (assign, nonatomic) CGFloat  itemSpace;
-
-/** 底部分割线的颜色 */
-@property (strong, nonatomic) UIColor  *lineColor;
-
-/** 背景颜色 */
-@property (nonatomic, strong) UIColor  *backgroundColor;
+@property (assign, nonatomic) CGFloat       itemSpace;
 
 
 #pragma mark - 滚动条的配置

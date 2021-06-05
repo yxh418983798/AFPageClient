@@ -51,9 +51,8 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 
 #define Min_W self.configuration.scrollBar_minW
 #define Max_W self.configuration.scrollBar_maxW
-//static CGFloat Min_W = 6.f;
-//static CGFloat Max_W = 60.f;
 
+#pragma mark - 生命周期
 - (instancetype)initWithConfiguration:(AFSegmentConfiguration *)configuration {
     if (self = [super init]) {
         self.configuration = configuration;
@@ -64,14 +63,9 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
     return self;
 }
 
-/// 定时器
-- (CADisplayLink *)displayLink {
-    if (!_displayLink) {
-        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timerAction)];
-        _displayLink.frameInterval = 1;
-    }
-    return _displayLink;
-}
+//- (void)dealloc {
+//    NSLog(@"-------------------------- ScrollBar释放 --------------------------");
+//}
 
 
 #pragma mark - 动画
@@ -110,6 +104,21 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
     }
 }
 
+
+#pragma mark - 定时器
+- (CADisplayLink *)displayLink {
+    if (!_displayLink) {
+        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timerAction)];
+        _displayLink.frameInterval = 1;
+    }
+    return _displayLink;
+}
+
+/// 停止定时器动画
+- (void)stop {
+    [_displayLink invalidate];
+    _displayLink = nil;
+}
 
 - (void)timerAction {
 //    CGFloat distance = fmax(fabs(_toValue - _fromValue)/100, 0.2);
@@ -241,61 +250,7 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 }
 
 
-#pragma mark - 手势交互滑动，实时更新
-- (void)interactionScrollFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue percent:(CGFloat)percent {
-    AFPageScrollBarDirection direction;
-    AFPageScrollBarStatus status = AFPageScrollBarStatusNormal;
-    if (toValue > fromValue) {
-        direction = AFPageScrollBarDirectionRight;
-    } else if (toValue < fromValue) {
-        direction = AFPageScrollBarDirectionLeft;
-    } else {
-        return;
-    }
-    
-    CGRect frame = self.frame;
-    CGFloat totalDistance = fabs(toValue - fromValue) + Max_W - Min_W*2; // 总共要移动的距离
-    CGFloat stretchPercent = (Max_W - Min_W)/totalDistance; // 整个伸长过程 要移动的距离百分比
-    CGFloat shortenPercent = 1 - stretchPercent; // 开始缩短 所要移动的百分比
- 
-    if (percent < stretchPercent) {
-        // 拉伸
-//        NSLog(@"-------------------------- 拉伸：%g -- %g --------------------------", stretchPercent, shortenPercent);
-        frame.size.width = fmin(Min_W + (percent/stretchPercent) * (Max_W - Min_W), Max_W);
-        if (toValue < fromValue) {
-            frame.origin.x = fromValue - frame.size.width;
-        }
-    } else if (percent < shortenPercent) {
-        frame.size.width =  Max_W;
-        // 移动
-        if (toValue > fromValue) {
-            frame.origin.x = fromValue + (toValue - fromValue - Max_W) * (percent - stretchPercent)/(shortenPercent - stretchPercent);
-        } else {
-            frame.origin.x = fromValue - Max_W - (fromValue - toValue - Max_W) * (percent - stretchPercent)/(shortenPercent - stretchPercent);
-        }
-//        NSLog(@"-------------------------- 移动：%g -- %g -- %g--------------------------", stretchPercent, (percent - stretchPercent)/(shortenPercent - stretchPercent), frame.origin.x);
-    } else {
-        // 缩短
-        frame.size.width = fmax(Max_W - (percent - shortenPercent)/stretchPercent * (Max_W - Min_W), Min_W);
-        if (toValue > fromValue) {
-            frame.origin.x = toValue - frame.size.width;
-        }
-//        NSLog(@"-------------------------- 缩短：%g -- %g -- %g--------------------------", stretchPercent, (percent - stretchPercent)/(shortenPercent - stretchPercent), frame.size.width);
-    }
-    self.frame = frame;
-}
-
-
-#pragma mark - 停止
-- (void)stop {
-    [_displayLink invalidate];
-    _displayLink = nil;
-}
-
-
-
-
-/// 更新动画，整个移动过程：拉伸 - > 移动 -> 缩短
+#pragma mark - 滑动ScrollBar，实时更新
 - (void)updatePrevious:(CGFloat)previous next:(CGFloat)next offsetPercent:(CGFloat)percent {
     
     if (next <= previous || percent < 0 || percent > 1) {
@@ -330,8 +285,4 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 }
 
 
-
-//- (void)dealloc {
-//    NSLog(@"-------------------------- svrollbar释放 --------------------------");
-//}
 @end

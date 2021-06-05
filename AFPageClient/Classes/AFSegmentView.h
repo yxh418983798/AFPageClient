@@ -61,7 +61,7 @@
 - (void)selectedAtIndex:(NSInteger)index;
 
 /// 监听滑动，实时更新UI
-- (void)pageScrollViewDidScroll:(UIScrollView *)scrollView;
+- (void)didScrollHorizontal:(UIScrollView *)scrollView;
 
 @end
 
