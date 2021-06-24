@@ -225,30 +225,16 @@
     [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:self.current_index inSection:0] animated:NO scrollPosition:(UICollectionViewScrollPositionNone)];
 }
 
-
 - (void)selectedAtIndex:(NSInteger)index  {
     if (!_collectionView) {
         self.current_index = index;
         return;
     }
-    if (self.current_index == index) {
-        
-//        AFSegmentViewCell *toCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
-//        AFSegmentViewCell *fromCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.last_index inSection:0]];
-//        if (self.configuration.showScrollBar) {
-//            [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2];
-//        }
-        return;
-    }
+    if (self.current_index == index) return;
     self.last_index = self.current_index;
     self.current_index = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:(UICollectionViewScrollPositionCenteredHorizontally)];
-    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-    if (self.configuration.showScrollBar) {
-//        NSLog(@"-------------------------- current_index:%d -- from:%g -- to：%g  --------------------------", self.current_index, self.scrollBar.frame.origin.x, cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2);
-//        [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
-    }
 }
 
 
@@ -280,13 +266,9 @@
     if (collectionView.scrollEnabled) {
         [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
     }
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     if ([self.delegate respondsToSelector:@selector(segmentView:didSelectItemAtIndex:)]) {
         [self.delegate segmentView:self didSelectItemAtIndex:indexPath.item];
     }
-//    if (self.configuration.showScrollBar) {
-//        [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:cell.frame.origin.x + (cell.frame.size.width - ScrollBar_W)/2];
-//    }
 }
 
 /// 返回item的宽度
@@ -320,7 +302,7 @@
         return;
     }
     
-    // 实时更新字体大小
+    // 更新字体大小和滚动条
     if (labs(self.current_index - self.last_index) > 1) {
         AFSegmentViewCell *toCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.current_index inSection:0]];
         AFSegmentViewCell *fromCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.last_index inSection:0]];
@@ -336,20 +318,32 @@
         CGFloat offsetPercent = percent;
         NSInteger previousIndex;
         NSInteger nextIndex;
-        if (offX >= 0) {
+        if (offX > 0) {
             previousIndex = self.current_index;
             nextIndex = fmin(self.current_index+1, [self.delegate numberOfItemsInSegmentView:self]);
-        } else {
+        } else if (offX < 0) {
             previousIndex = fmax(self.current_index - 1, 0);
             nextIndex = self.current_index;
             offsetPercent = 1 - percent;
+        } else {
+            if (self.current_index >= self.last_index) {
+                previousIndex = self.last_index;
+                nextIndex = self.current_index;
+                offsetPercent = 1;
+            } else {
+                previousIndex = self.current_index;
+                nextIndex = self.last_index;
+                offsetPercent = 0;
+            }
         }
-        if (nextIndex >= [self.delegate numberOfItemsInSegmentView:self] || nextIndex == previousIndex) return;
+        if (nextIndex >= [self.delegate numberOfItemsInSegmentView:self] || nextIndex == previousIndex) {
+            return;
+        }
         AFSegmentViewCell *previousCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:previousIndex inSection:0]];
         AFSegmentViewCell *nextCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:nextIndex inSection:0]];
         [self.scrollBar updatePrevious:CGRectGetMidX(previousCell.frame) - ScrollBar_W/2 next:CGRectGetMidX(nextCell.frame) - ScrollBar_W/2 offsetPercent:offsetPercent];
-        [previousCell updateScrollPercent:offX >= 0 ? 1-percent : percent animated:NO];
-        [nextCell updateScrollPercent:offX >= 0 ? percent : 1-percent animated:NO];
+        [previousCell updateScrollPercent:1-offsetPercent animated:NO];
+        [nextCell updateScrollPercent:offsetPercent animated:NO];
     }
 }
 

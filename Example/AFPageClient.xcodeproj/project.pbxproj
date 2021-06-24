@@ -79,7 +79,7 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		65F86BE5DD9417C72C5F58D0 /* AFPageClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AFPageClient.podspec; path = ../AFPageClient.podspec; sourceTree = "<group>"; };
+		65F86BE5DD9417C72C5F58D0 /* AFPageClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AFPageClient.podspec; path = ../AFPageClient.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8857584283E8F64983A2829A /* Pods-AFPageClient_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFPageClient_Example.release.xcconfig"; path = "Target Support Files/Pods-AFPageClient_Example/Pods-AFPageClient_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -573,7 +573,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -591,7 +591,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";

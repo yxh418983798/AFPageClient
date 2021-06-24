@@ -250,4 +250,10 @@
     }
 }
 
+/// 兼容暗黑模式
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [super traitCollectionDidChange:previousTraitCollection];
+    self.titleLb.textColor = self.selected ? self.item.selectedTextColor : self.item.textColor;
+}
+
 @end
