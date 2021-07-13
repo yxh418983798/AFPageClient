@@ -58,6 +58,9 @@ typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
 /** 滚动条 高度，默认6 */
 @property (nonatomic, assign) CGFloat  scrollBar_H;
 
+/** 滚动条和Segment底部的间距，默认0 */
+@property (nonatomic, assign) CGFloat  scrollBar_bottomInset;
+
 /** 滚动条的颜色 */
 @property (nonatomic, strong) UIColor  *scrollBarColor;
 

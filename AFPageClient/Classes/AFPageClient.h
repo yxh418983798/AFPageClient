@@ -4,6 +4,7 @@
 //
 //  Created by alfie on 2020/8/30.
 //
+//  Version: 1.2.2
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"

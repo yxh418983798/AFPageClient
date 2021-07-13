@@ -192,7 +192,7 @@
             cell_W = item.itemSize.width;
         }
         if (self.current_index == 0) {
-            self.scrollBar.frame = CGRectMake(self.configuration.insets.left + (cell_W - ScrollBar_W)/2, self.collectionView.frame.size.height - self.configuration.scrollBar_H, ScrollBar_W, self.configuration.scrollBar_H);
+            self.scrollBar.frame = CGRectMake(self.configuration.insets.left + (cell_W - ScrollBar_W)/2, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
         } else {
             dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.current_index inSection:0];
@@ -201,9 +201,9 @@
                 if (!cell) {
                     [self.collectionView layoutIfNeeded];
                     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-                    self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H, ScrollBar_W, self.configuration.scrollBar_H);
+                    self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
                 } else {
-                    self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H, ScrollBar_W, self.configuration.scrollBar_H);
+                    self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
                 }
             });
         }
