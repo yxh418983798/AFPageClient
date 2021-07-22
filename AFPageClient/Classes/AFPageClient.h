@@ -84,6 +84,9 @@
 /// 刷新整个PageClient
 - (void)reloadData;
 
+/// 刷新整个PageClient，并选中Index
+- (void)reloadPageClient:(NSInteger)selectedIndex;
+
 /// 刷新角标
 - (void)reloadBadge;
 

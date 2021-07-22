@@ -11,6 +11,12 @@
 #import "AFScrollViewProxy.h"
 #import <objc/runtime.h>
 
+
+@interface AFPageItem ()
+/** 是否第一次设置 */
+@property (nonatomic, assign) BOOL              isInitial;
+@end
+
 /// 子控制器的view的tag
 static NSInteger AFPageChildViewTag = 66661201;
 
@@ -208,11 +214,27 @@ static NSInteger AFPageChildViewTag = 66661201;
 - (void)reloadData {
 
     for (AFPageItem *item in self.pageItems.allValues) {
+        item.isInitial = YES;
         [item.childViewController.view removeFromSuperview];
         [item.childViewController removeFromParentViewController];
-//        NSLog(@"-------------------------- 释放:%@ --------------------------", item.childViewController);
     }
     [self.pageItems removeAllObjects];
+    [self update];
+}
+
+/// 刷新整个PageClient，并选中Index
+- (void)reloadPageClient:(NSInteger)selectedIndex {
+    for (AFPageItem *item in self.pageItems.allValues) {
+        item.isInitial = YES;
+        [item.childViewController.view removeFromSuperview];
+        [item.childViewController removeFromParentViewController];
+    }
+    [self.pageItems removeAllObjects];
+    if (_segmentView.superview) {
+        [_segmentView removeFromSuperview];
+        _segmentView = nil;
+    }
+    self.selectedIndex = selectedIndex;
     [self update];
 }
 
@@ -237,9 +259,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 }
 
 - (void)update {
-    
-    _collectionView = nil;
-    _contentCell = nil;
+
     [self segmentView:self.segmentView didSelectItemAtIndex:self.selectedIndex];
 
     if (self.isFixed) {
