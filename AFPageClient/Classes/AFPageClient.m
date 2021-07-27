@@ -481,9 +481,14 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 
 #pragma mark - 控制滚动
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)pan {
+    
+    CGPoint velocity = [pan velocityInView:pan.view];
+    if (velocity.y != 0 && fabs(velocity.x / velocity.y) < 1.4) {
+        return NO;
+    }
     if ([self.delegate respondsToSelector:@selector(pageClient:horizontalScrollEnableWithGestureRecognizer:)]) {
-        return [self.delegate pageClient:self horizontalScrollEnableWithGestureRecognizer:gestureRecognizer];
+        return [self.delegate pageClient:self horizontalScrollEnableWithGestureRecognizer:pan];
     }
     AFPageItem *item = [self itemAtIndex:self.selectedIndex];
     return item.scrollEnable;
