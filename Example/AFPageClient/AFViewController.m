@@ -10,12 +10,11 @@
 #import "AFSegmentView.h"
 #import "AFPageItem.h"
 #import "AFSegmentConfiguration.h"
-#import "EncryptionTools.h"
-#import "RSACryptor.h"
 #import "AFPageClient.h"
 #import "AFPageViewController.h"
 #import <MJRefresh/MJRefresh.h>
 #import <objc/runtime.h>
+
 @interface AFViewController () <AFPageClientDelegate>
 
 /** AFSegmentView */
@@ -30,33 +29,8 @@
 @end
 
 @implementation AFViewController
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
 
-- (void)refreshAction {
-    NSLog(@"-------------------------- 下拉刷新 --------------------------");
-    UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [sv.mj_header endRefreshing];
-    });
-}
-
-- (void)footerAction {
-    NSLog(@"-------------------------- 下拉加载 --------------------------");
-    UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [sv.mj_footer endRefreshing];
-    });
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     
     [super viewDidLoad];
     AFSegmentConfiguration *s = AFSegmentConfiguration.new;
@@ -68,7 +42,7 @@
     s.style = AFPageClientStylePullItem;
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)) parentController:self configuration:s];
     self.pageClient.delegate = self;
-    self.pageClient.selectedIndex =  3;
+    self.pageClient.selectedIndex =  0;
     [self.pageClient reloadData];
     
     UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
@@ -82,28 +56,21 @@
 //    [self.view addSubview:segmentView];
 //    [segmentView update];
     
-    
-//     AES CBC对称加密
-    NSString *key = @"htfvjredhjhghpsy";
-    NSData *data = [key dataUsingEncoding:(NSUTF8StringEncoding)];
-    NSDictionary *aa = @{@"sdjfl": @(1231232), @"data":@"http://www.baidu.com"};
-    NSString *rr = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:aa options:0 error:NULL] encoding:NSUTF8StringEncoding];
-    
-    NSString *str = [EncryptionTools.sharedEncryptionTools encryptString:@"{\"sdjfl\": 1231232, \"data\":\"http://www.baidu.com\"}" keyString:key iv:data];
-    NSLog(@"-------------------------- 加密后：%@--------------------------", str);
-    str = [EncryptionTools.sharedEncryptionTools decryptString:@"FeYaUjUlqonYJf740RqInLvzhFuqdS9WM45L1yCIVbzRTjtgthOVCyGcBf2VJGW2" keyString:key iv:data];
-    NSLog(@"-------------------------- 解密后：%@ --------------------------", str);
+}
 
-    
-//    NSData *dd = [@"d/MgQA4W3jhoN/ApNto40zPMMIGPdTs0O9hpwy9+XIxSq/UG6FAhxQvNe7WVJjHDm/W8T/w/w8s6\nj40INJWsfcG1CDKWYsC/3uhv5l17xy8vhbQCFfurQqk0XaSb/Q6VdJX0ej4rrDXg/se/fh5I/BZV\nqcS65UA9NIDg/bAQVIxhfVkgkB6wmfugwBRferkw\n" dataUsingEncoding:4];
 
-    
-//    [RSACryptor.sharedRSACryptor generateKeyPair:1024];
-//    [RSACryptor.sharedRSACryptor loadPublicKey:[NSBundle.mainBundle pathForResource:@"public_key.der" ofType:nil]];
-//    [RSACryptor.sharedRSACryptor loadPrivateKey:[NSBundle.mainBundle pathForResource:@"private_key.p12" ofType:nil] password:@"mostone0717"];
-//    NSData *eData = [RSACryptor.sharedRSACryptor encryptData:data];
-//    NSData *dData = [RSACryptor.sharedRSACryptor decryptData:eData];
-//    NSLog(@"-------------------------- dData:%@ --------------------------",  [[NSString alloc] initWithData:dData encoding:NSUTF8StringEncoding]);
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)dealloc {
+    NSLog(@"-------------------------- 控制器释放 --------------------------");
 }
 
 
@@ -133,16 +100,16 @@
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 10;
+    return 3;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
 - (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index {
     AFPageItem *item = AFPageItem.new;
-    item.textColor = UIColor.redColor;
-    item.selectedTextColor = UIColor.blackColor;
-    item.font = [UIFont systemFontOfSize:12];
-    item.selectedFont = [UIFont systemFontOfSize:18];
+//    item.textColor = UIColor.redColor;
+//    item.selectedTextColor = UIColor.blackColor;
+    item.font = [UIFont systemFontOfSize:12 weight:5];
+    item.selectedFont = [UIFont systemFontOfSize:16 weight:20];
     item.childViewController = AFPageViewController.new;
     item.content = [NSString stringWithFormat:@"第%d个item", index];
 //    item.backgroundColor = UIColor.grayColor;
@@ -170,14 +137,14 @@ static NSString *content = AFPageItemBadgeRedDot;
 //    NSLog(@"-------------------------- 来了：%d --------------------------", index);
 }
 
-/// 自定义leftView
-- (UIView *)leftViewForSegmentInPageClient:(AFPageClient *)pageClient {
-    UIButton *btn = [UIButton new];
-    btn.frame = CGRectMake(0, 0, 50, 50);
-    [btn setTitle:@"返回" forState:(UIControlStateNormal)];
-    [btn addTarget:self action:@selector(popAction) forControlEvents:(UIControlEventTouchUpInside)];
-    return btn;
-}
+///// 自定义leftView
+//- (UIView *)leftViewForSegmentInPageClient:(AFPageClient *)pageClient {
+//    UIButton *btn = [UIButton new];
+//    btn.frame = CGRectMake(0, 0, 50, 50);
+//    [btn setTitle:@"返回" forState:(UIControlStateNormal)];
+//    [btn addTarget:self action:@selector(popAction) forControlEvents:(UIControlEventTouchUpInside)];
+//    return btn;
+//}
 
 - (void)popAction {
     [self.pageClient reloadBadge];
@@ -191,10 +158,6 @@ static NSString *content = AFPageItemBadgeRedDot;
     return leftView;
 }
 
-- (void)dealloc {
-    NSLog(@"-------------------------- 控制器释放 --------------------------");
-}
-
 - (void)tapAction {
     
     UIView *obj = UIView.new;
@@ -204,7 +167,24 @@ static NSString *content = AFPageItemBadgeRedDot;
     objc_setAssociatedObject(self, "afobj", nil, OBJC_ASSOCIATION_ASSIGN);
     UIView *v = objc_getAssociatedObject(self, "afobj");
     NSLog(@"-------------------------- 哈哈：%@ --------------------------", v);
-    
-
 }
+
+
+- (void)refreshAction {
+    NSLog(@"-------------------------- 下拉刷新 --------------------------");
+    UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [sv.mj_header endRefreshing];
+    });
+}
+
+- (void)footerAction {
+    NSLog(@"-------------------------- 下拉加载 --------------------------");
+    UIScrollView *sv = [self.pageClient performSelector:@selector(scrollProxy)];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [sv.mj_footer endRefreshing];
+    });
+}
+
+
 @end

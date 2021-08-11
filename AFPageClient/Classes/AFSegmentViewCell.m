@@ -237,9 +237,15 @@
         
     } else {
         if (self.item.selectedFont) {
-            CGFloat selectedPointSize = self.item.selectedFont.pointSize;
-            CGFloat normalPointSize = self.item.font.pointSize;
-            self.titleLb.font = [self.titleLb.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+            if (percent >= 1) {
+                self.titleLb.font = self.item.selectedFont;
+            } else if (percent <= 0) {
+                self.titleLb.font = self.item.font;
+            } else {
+                CGFloat selectedPointSize = self.item.selectedFont.pointSize;
+                CGFloat normalPointSize = self.item.font.pointSize;
+                self.titleLb.font = [self.titleLb.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+            }
         }
         if (self.item.selectedTextColor) {
             CGFloat startR,startG,startB,startA,endR,endG,endB,endA;

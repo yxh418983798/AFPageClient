@@ -4,7 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.2.2
+//  Version: 1.2.5
+//  修复切换Item时，字体没有变化的bug
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"
