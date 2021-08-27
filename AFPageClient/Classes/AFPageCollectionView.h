@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AFPageCollectionView : UICollectionView
+@interface AFPageCollectionView : UICollectionView 
 
 @end
 

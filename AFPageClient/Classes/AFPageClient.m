@@ -224,6 +224,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 /// 刷新整个PageClient，并选中Index
 - (void)reloadPageClient:(NSInteger)selectedIndex {
+    [self.segmentView setDefault_index:selectedIndex];
     for (AFPageItem *item in self.pageItems.allValues) {
         item.isInitial = YES;
         [item.childViewController.view removeFromSuperview];
@@ -482,10 +483,15 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 #pragma mark - 控制滚动
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)pan {
-    
+    if (![pan isKindOfClass:UIPanGestureRecognizer.class]) {
+        return YES;
+    }
     CGPoint velocity = [pan velocityInView:pan.view];
     if (velocity.y != 0 && fabs(velocity.x / velocity.y) < 1.4) {
         return NO;
+    }
+    if (velocity.y == 0) {
+        return pan.delaysTouchesBegan;
     }
     if ([self.delegate respondsToSelector:@selector(pageClient:horizontalScrollEnableWithGestureRecognizer:)]) {
         return [self.delegate pageClient:self horizontalScrollEnableWithGestureRecognizer:pan];

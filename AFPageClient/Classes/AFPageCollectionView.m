@@ -13,4 +13,13 @@
     return [self.delegate performSelector:@selector(gestureRecognizerShouldBegin:) withObject:gestureRecognizer];
 }
 
+//- (BOOL)gestureRecognizer:(UIPanGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIPanGestureRecognizer *)otherGestureRecognizer {
+//    if (otherGestureRecognizer.view != self && [otherGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class] && [otherGestureRecognizer.view isKindOfClass:UIScrollView.class]) {
+//        return YES;
+//    }
+//    return NO;
+//}
+
+
+
 @end

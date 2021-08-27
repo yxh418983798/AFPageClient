@@ -4,8 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.2.5
-//  修复切换Item时，字体没有变化的bug
+//  Version: 1.2.6
+//  修复切换Item时，ContentSize变大导致滚动的bug
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"
@@ -52,8 +52,10 @@
 @end
 
 
+/// 嵌套滚动需要子控制器实现该协议
 @protocol AFPageClientChildViewControllerDelegate <NSObject>
 
+/// 实现嵌套滚动，需要返回子控制器的ScrollView（TableView/CollectionView）
 - (__kindof UIScrollView *)childScrollViewForPageClient:(AFPageClient *)pageClient;
 
 @end

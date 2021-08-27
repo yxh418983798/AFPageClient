@@ -230,7 +230,6 @@
 }
 
 
-
 #pragma mark - cell布局属性
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.style == AFFlowLayoutStyleDefault) {
@@ -238,7 +237,10 @@
 //        AFLog(@"<------------------------------ 55--Attri--indexPath:%@  frame:%@ ------------------------------>", indexPath, NSStringFromCGRect(attributes.frame));
         return attributes;
     }
-    
+    if (indexPath.item < self.attributesArray.count) {
+        // 避免重复计算
+        return self.attributesArray[indexPath.item];
+    }
     //计算 Cell的frame
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     switch (self.style) {
