@@ -23,3 +23,10 @@
 
 
 @end
+
+@implementation AFPageCollectionViewCell
+
+@end
+
+
+

@@ -80,6 +80,7 @@ static NSInteger AFPageChildViewTag = 66661201;
 - (UIView *)contentView {
     if (!_contentView) {
         _contentView = [[UIView alloc] initWithFrame:self.frame];
+        if (self.backgroundColor) _contentView.backgroundColor = self.backgroundColor;
     }
     return _contentView;
 }
@@ -92,6 +93,7 @@ static NSInteger AFPageChildViewTag = 66661201;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.bounces = NO;
+        if (self.backgroundColor) _tableView.backgroundColor = self.backgroundColor;
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
@@ -115,6 +117,10 @@ static NSInteger AFPageChildViewTag = 66661201;
     if (!_contentCell && !self.isFixed) {
         _contentCell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"AFPageContentCell"];
         _contentCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (self.backgroundColor) {
+            _contentCell.backgroundColor = self.backgroundColor;
+            _contentCell.contentView.backgroundColor = self.backgroundColor;
+        }
         [_contentCell.contentView addSubview:self.collectionView];
     }
     return _contentCell;
@@ -145,7 +151,7 @@ static NSInteger AFPageChildViewTag = 66661201;
         layout.minimumInteritemSpacing = 0;
         layout.minimumLineSpacing = 0;
         _collectionView = [[AFPageCollectionView alloc] initWithFrame:(CGRectMake(0, 0, layout.itemSize.width, layout.itemSize.height)) collectionViewLayout:layout];
-        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"AFPageChildViewControllerCell"];
+        [_collectionView registerClass:AFPageCollectionViewCell.class forCellWithReuseIdentifier:@"AFPageChildViewControllerCell"];
         _collectionView.pagingEnabled = YES;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -153,6 +159,7 @@ static NSInteger AFPageChildViewTag = 66661201;
         _collectionView.showsVerticalScrollIndicator   = NO;
         _collectionView.backgroundColor = self.configuration.backgroundColor;
         _collectionView.contentSize = CGSizeMake(self.frame.size.width * self.numberOfItems, layout.itemSize.height);
+        if (self.backgroundColor) _collectionView.backgroundColor = self.backgroundColor;
     }
     return _collectionView;
 }
@@ -353,9 +360,12 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AFPageChildViewControllerCell" forIndexPath:indexPath];
-    [[cell.contentView viewWithTag:AFPageChildViewTag] removeFromSuperview];
+    AFPageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AFPageChildViewControllerCell" forIndexPath:indexPath];
+    if (cell.item) {
+        [cell.item.childViewController.view removeFromSuperview];
+    }
     AFPageItem *item = [self itemAtIndex:indexPath.item];
+    cell.item = item;
     UIViewController *childVc = item.childViewController;
     [self.parentViewController addChildViewController:childVc];
     [childVc didMoveToParentViewController:self.parentViewController];
