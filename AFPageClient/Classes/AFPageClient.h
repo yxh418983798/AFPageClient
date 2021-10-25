@@ -4,8 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.2.7
-//  修复切换Item时，视图没有移除的问题
+//  Version: 1.2.8
+//  适配 iOS 15
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"
@@ -20,7 +20,7 @@
 /// 必须实现， 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient;
 
-/// 必须实现，构造item数据源，内部会自动缓存item以提升性能，如果需要更新数据源，需要调用reloadData
+/// 必须实现，构造item数据源，内部会自动缓存item以提升性能，如果需要更新数据源，需要调用reloadPageClient:
 - (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index;
 
 @optional;
@@ -84,11 +84,14 @@
 + (instancetype)new  NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame parentController:(UIViewController *)viewController configuration:(AFSegmentConfiguration *)configuration;
 
+/// 获取当前Vc
+- (__kindof UIViewController *)currentVc;
+
 /// 获取item
 - (AFPageItem *)itemAtIndex:(NSInteger)index;
 
-/// 刷新整个PageClient
-- (void)reloadData;
+/// 获取segmentView
+- (AFSegmentView *)segmentView;
 
 /// 刷新整个PageClient，并选中Index
 - (void)reloadPageClient:(NSInteger)selectedIndex;
@@ -99,12 +102,8 @@
 /// 刷新某个index的角标
 - (void)reloadBadgeAtIndex:(NSInteger)index;
 
-/// 获取当前Vc
-- (__kindof UIViewController *)currentVc;
-
-/// 获取segmentView
-- (AFSegmentView *)segmentView;
-
+/// 刷新整个PageClient，已弃用，请使用reloadPageClient：方法
+- (void)reloadData API_DEPRECATED("Use reloadPageClient: instead.", ios(7.0, 15.0));
 
 @end
 

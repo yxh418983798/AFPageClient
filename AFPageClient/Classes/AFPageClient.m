@@ -96,6 +96,9 @@ static NSInteger AFPageChildViewTag = 66661201;
         if (self.backgroundColor) _tableView.backgroundColor = self.backgroundColor;
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            if (@available(iOS 15.0, *)) {
+                _tableView.sectionHeaderTopPadding = 0;
+            }
         }
         if ([self.delegate respondsToSelector:@selector(headerViewForPageClient:)]) {
             self.headerView = [self.delegate headerViewForPageClient:self];
@@ -306,6 +309,11 @@ static NSInteger AFPageChildViewTag = 66661201;
 
 
 #pragma mark -- 手动设置显示的控制器
+///// 设置选中的index
+//- (void)setSelectedIndex:(NSInteger)selectedIndex animated:(BOOL)animated {
+//    [self selectedViewControllerAtIndex:selectedIndex animated:animated];
+//}
+
 - (void)setSelectedIndex:(NSInteger)selectedIndex {
     [self selectedViewControllerAtIndex:selectedIndex animated:NO];
 }

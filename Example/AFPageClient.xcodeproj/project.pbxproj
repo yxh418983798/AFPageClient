@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3124EFE527265E3F0022252D /* AFChildPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3124EFE427265E3F0022252D /* AFChildPageViewController.m */; };
 		31F6FB2C24FE3FB200703C1A /* AFHAHAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F6FB2B24FE3FB200703C1A /* AFHAHAViewController.m */; };
 		31F74BB124FBA0A300159A9E /* public_key.der in Resources */ = {isa = PBXBuildFile; fileRef = 31F74BAF24FBA0A300159A9E /* public_key.der */; };
 		31F74BC024FD0EC400159A9E /* AFPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F74BBF24FD0EC300159A9E /* AFPageViewController.m */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		0F6AD7ECC1148071C07F56C3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		233E07B5090188B800A750A2 /* Pods-AFPageClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AFPageClient_Tests.debug.xcconfig"; path = "Target Support Files/Pods-AFPageClient_Tests/Pods-AFPageClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		3124EFE327265E3F0022252D /* AFChildPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFChildPageViewController.h; sourceTree = "<group>"; };
+		3124EFE427265E3F0022252D /* AFChildPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFChildPageViewController.m; sourceTree = "<group>"; };
 		3159202B55CB97A83242F84D /* Pods_AFPageClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AFPageClient_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F6FB2A24FE3FB200703C1A /* AFHAHAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFHAHAViewController.h; sourceTree = "<group>"; };
 		31F6FB2B24FE3FB200703C1A /* AFHAHAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFHAHAViewController.m; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				31F74BBF24FD0EC300159A9E /* AFPageViewController.m */,
 				31F6FB2A24FE3FB200703C1A /* AFHAHAViewController.h */,
 				31F6FB2B24FE3FB200703C1A /* AFHAHAViewController.m */,
+				3124EFE327265E3F0022252D /* AFChildPageViewController.h */,
+				3124EFE427265E3F0022252D /* AFChildPageViewController.m */,
 			);
 			name = "Example for AFPageClient";
 			path = AFPageClient;
@@ -392,6 +397,7 @@
 				6003F59E195388D20070C39A /* AFAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* AFViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				3124EFE527265E3F0022252D /* AFChildPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +529,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.2.7;
+				MARKETING_VERSION = 1.2.8;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -541,7 +547,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AFPageClient/AFPageClient-Prefix.pch";
 				INFOPLIST_FILE = "AFPageClient/AFPageClient-Info.plist";
-				MARKETING_VERSION = 1.2.7;
+				MARKETING_VERSION = 1.2.8;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mostone.qiye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
