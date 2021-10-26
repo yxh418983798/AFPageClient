@@ -31,6 +31,8 @@
 /** 布局属性 */
 @property (strong, nonatomic) AFCollectionViewFlowLayout          *flowLayout;
 
+@property (assign, nonatomic) NSInteger            before_last_index;
+
 /** 记录自适应宽度的补充宽度 */
 //@property (assign, nonatomic) CGFloat                   supplement_W;
 
@@ -231,6 +233,7 @@
         return;
     }
     if (self.current_index == index) return;
+    self.before_last_index = self.last_index;
     self.last_index = self.current_index;
     self.current_index = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
@@ -260,6 +263,7 @@
     if (self.current_index == indexPath.item) {
         return;
     }
+    self.before_last_index = self.last_index;
     self.last_index = self.current_index;
     self.current_index = indexPath.item;
     
@@ -308,6 +312,11 @@
         AFSegmentViewCell *fromCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.last_index inSection:0]];
         [toCell updateScrollPercent:1 animated:self.configuration.animatedEnable];
         [fromCell updateScrollPercent:0 animated:self.configuration.animatedEnable];
+        if (self.last_index != self.before_last_index && self.current_index != self.before_last_index) {
+            // 防止前一个cell动画未完成就切换，需要对前一个cell进行复原操作
+            AFSegmentViewCell *beforeLastCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.before_last_index inSection:0]];
+            [beforeLastCell updateScrollPercent:0 animated:self.configuration.animatedEnable];
+        }
         if (self.configuration.showScrollBar) {
             [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2];
         }

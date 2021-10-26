@@ -4,8 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.2.8
-//  适配 iOS 15
+//  Version: 1.2.9
+//  修复Bug：快速切换Item时，可能出现的样式没有复原的问题
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"

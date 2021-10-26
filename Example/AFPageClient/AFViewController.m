@@ -59,15 +59,17 @@
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 2;
+    return 5;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
 - (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index {
     
     AFPageItem *item = AFPageItem.new;
-    item.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    item.font = [UIFont systemFontOfSize:12 weight:UIFontWeightSemibold];
     item.selectedFont = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    item.textColor = UIColor.blackColor;
+    item.selectedTextColor = UIColor.redColor;
     switch (index) {
         case 0: {
             item.content = @"Super1";
@@ -79,7 +81,7 @@
         }
             break;
     }
-    item.childViewController = AFChildPageViewController.new;
+    item.childViewController = AFPageViewController.new;
     if (index == 0) {
         self.item = item;
     }
