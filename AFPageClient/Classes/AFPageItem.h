@@ -46,6 +46,15 @@
 /** 角标 */
 @property (nonatomic, strong) AFPageItemBadge   *badge;
 
+/** 记录cell的frame */
+@property (nonatomic, assign) CGRect            frame;
+
+/** 普通字体的粗细 */
+@property (nonatomic, assign) UIFontWeight      fontWeight;
+
+/** 选中字体的粗细 */
+@property (nonatomic, assign) UIFontWeight      selectedFontWeight;
+
 /// 获取展示的size
 - (CGFloat)widthWithItemSpace:(CGFloat)space;
 

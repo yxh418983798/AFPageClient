@@ -17,10 +17,6 @@
 @property (nonatomic, assign) BOOL              isInitial;
 @end
 
-/// 子控制器的view的tag
-static NSInteger AFPageChildViewTag = 66661201;
-
-
 @interface AFPageClient () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, AFSegmentViewDelegate, AFScrollViewProxyDelegate>
 
 /** 容器 */

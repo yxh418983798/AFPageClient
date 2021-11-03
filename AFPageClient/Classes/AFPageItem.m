@@ -7,7 +7,10 @@
 
 #import "AFPageItem.h"
 
-@interface AFPageItem ()
+@interface AFPageItem () {
+    UIFont *_font;
+    UIFont *_selectedFont;
+}
 
 /** 是否第一次设置 */
 @property (nonatomic, assign) BOOL              isInitial;
@@ -31,6 +34,69 @@
     return self;
 }
 
+
+- (void)setSelectedFont:(UIFont *)selectedFont {
+    _selectedFont = selectedFont;
+    if (@available(iOS 8.2, *)) {
+        NSArray *fontNames = [selectedFont.fontName componentsSeparatedByString:@"-"];
+        if (fontNames.count == 2) {
+            NSString *weight = fontNames.lastObject;
+            if ([weight isEqualToString:@"Regular"]) {
+                    _fontWeight = UIFontWeightRegular;
+            } else if ([weight isEqualToString:@"Medium"]) {
+                _fontWeight = UIFontWeightMedium;
+            } else if ([weight isEqualToString:@"Semibold"]) {
+                _fontWeight = UIFontWeightSemibold;
+            } else if ([weight isEqualToString:@"Bold"]) {
+                _fontWeight = UIFontWeightBold;
+            } else if ([weight isEqualToString:@"Heavy"]) {
+                _fontWeight = UIFontWeightHeavy;
+            } else if ([weight isEqualToString:@"Black"]) {
+                _fontWeight = UIFontWeightBlack;
+            } else if ([weight isEqualToString:@"Light"]) {
+                _fontWeight = UIFontWeightLight;
+            } else if ([weight isEqualToString:@"Thin"]) {
+                _fontWeight = UIFontWeightThin;
+            } else if ([weight isEqualToString:@"UltraLight"]) {
+                _fontWeight = UIFontWeightUltraLight;
+            } else {
+                _fontWeight = UIFontWeightRegular;
+            }
+        }
+    }
+}
+
+
+- (void)setFont:(UIFont *)font {
+    _font = font;
+    if (@available(iOS 8.2, *)) {
+        NSArray *fontNames = [font.fontName componentsSeparatedByString:@"-"];
+        if (fontNames.count == 2) {
+            NSString *weight = fontNames.lastObject;
+            if ([weight isEqualToString:@"Regular"]) {
+                _selectedFontWeight = UIFontWeightRegular;
+            } else if ([weight isEqualToString:@"Medium"]) {
+                _selectedFontWeight = UIFontWeightMedium;
+            } else if ([weight isEqualToString:@"Semibold"]) {
+                _selectedFontWeight = UIFontWeightSemibold;
+            } else if ([weight isEqualToString:@"Bold"]) {
+                _selectedFontWeight = UIFontWeightBold;
+            } else if ([weight isEqualToString:@"Heavy"]) {
+                _selectedFontWeight = UIFontWeightHeavy;
+            } else if ([weight isEqualToString:@"Black"]) {
+                _selectedFontWeight = UIFontWeightBlack;
+            } else if ([weight isEqualToString:@"Light"]) {
+                _selectedFontWeight = UIFontWeightLight;
+            } else if ([weight isEqualToString:@"Thin"]) {
+                _selectedFontWeight = UIFontWeightThin;
+            } else if ([weight isEqualToString:@"UltraLight"]) {
+                _selectedFontWeight = UIFontWeightUltraLight;
+            } else {
+                _selectedFontWeight = UIFontWeightRegular;
+            }
+        }
+    }
+}
 
 #pragma mark - Getter
 - (UIFont *)selectedFont {

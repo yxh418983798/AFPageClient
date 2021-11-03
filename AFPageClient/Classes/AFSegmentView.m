@@ -253,8 +253,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AFSegmentViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AFSegmentViewCell" forIndexPath:indexPath];
     AFPageItem *item = [self.delegate segmentView:self itemForSegmentAtIndex:indexPath.item];
+    item.frame = cell.frame;
     cell.item = item;
-    cell.selected = (indexPath.item == self.current_index);
+    [cell setContentSelected:(indexPath.item == self.current_index)];
     [cell displayBadge:item.badge];
     return cell;
 }
@@ -349,10 +350,20 @@
             return;
         }
         AFSegmentViewCell *previousCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:previousIndex inSection:0]];
+        CGRect previousFrame = previousCell ? previousCell.frame : [self.delegate segmentView:self itemForSegmentAtIndex:previousIndex].frame;
+
         AFSegmentViewCell *nextCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:nextIndex inSection:0]];
-        [self.scrollBar updatePrevious:CGRectGetMidX(previousCell.frame) - ScrollBar_W/2 next:CGRectGetMidX(nextCell.frame) - ScrollBar_W/2 offsetPercent:offsetPercent];
+        CGRect nextFrame = nextCell ? nextCell.frame : [self.delegate segmentView:self itemForSegmentAtIndex:nextIndex].frame;
+        
+        [self.scrollBar updatePrevious:CGRectGetMidX(previousFrame) - ScrollBar_W/2 next:CGRectGetMidX(nextFrame) - ScrollBar_W/2 offsetPercent:offsetPercent];
         [previousCell updateScrollPercent:1-offsetPercent animated:NO];
         [nextCell updateScrollPercent:offsetPercent animated:NO];
+        
+        if (self.last_index != self.before_last_index && self.current_index != self.before_last_index) {
+            // 防止前一个cell动画未完成就切换，需要对前一个cell进行复原操作
+            AFSegmentViewCell *beforeLastCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.before_last_index inSection:0]];
+            [beforeLastCell updateScrollPercent:0 animated:NO];
+        }
     }
 }
 

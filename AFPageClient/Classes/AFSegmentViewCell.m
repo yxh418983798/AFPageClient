@@ -8,6 +8,28 @@
 #import "AFSegmentViewCell.h"
 #import <Masonry/Masonry.h>
 #import "AFPageItem.h"
+#import <objc/runtime.h>
+
+@interface UIFont (AFPageClient)
+
+@end
+@implementation UIFont (AFPageClient)
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Method originMethod = class_getClassMethod(UIFont.class, @selector(systemFontOfSize:weight:));
+        Method swizzleMethod = class_getClassMethod(UIFont.class, @selector(af_systemFontOfSize:weight:));
+        method_exchangeImplementations(originMethod, swizzleMethod);
+    });
+}
+
++ (UIFont *)af_systemFontOfSize:(CGFloat)fontSize weight:(UIFontWeight)weight {
+    NSLog(@"-------------------------- 1111111 --------------------------");
+    return [self af_systemFontOfSize:fontSize weight:weight];
+}
+
+@end
+
 
 @interface AFPageItem ()
 /** 是否第一次设置 */
@@ -84,9 +106,15 @@
 }
 
 
-#pragma mark - 是否选中状态
-- (void)setSelected:(BOOL)selected {
-    [super setSelected:selected];
+#pragma mark - 选中状态
+//- (void)setSelected:(BOOL)selected {
+//    [super setSelected:selected];
+//    if (self.item.isInitial) {
+//        [self setContentSelected:selected];
+//        self.item.isInitial = NO;
+//    }
+//}
+- (void)setContentSelected:(BOOL)selected {
     if (!_item) return;
     
     id content;
@@ -98,7 +126,13 @@
 
     if ([content isKindOfClass:NSString.class]) {
         self.titleLb.text = content;
-        [self setTitleSelected:selected];
+        if (selected) {
+            self.titleLb.font =  _item.selectedFont;
+            self.titleLb.textColor = _item.selectedTextColor;
+        } else {
+            self.titleLb.font =  _item.font;
+            self.titleLb.textColor = _item.textColor;
+        }
     } else if ([content isKindOfClass:NSAttributedString.class]) {
         self.titleLb.attributedText = content;
     } else if ([content isKindOfClass:UIView.class]) {
@@ -119,19 +153,6 @@
             self.itemView = self.imageView;
         }
         self.imageView.image = content;
-    }
-}
-
-- (void)setTitleSelected:(BOOL)selected {
-    if (self.item.isInitial) {
-        if (selected) {
-            self.titleLb.font =  _item.selectedFont;
-            self.titleLb.textColor = _item.selectedTextColor;
-        } else {
-            self.titleLb.font =  _item.font;
-            self.titleLb.textColor = _item.textColor;
-        }
-        self.item.isInitial = NO;
     }
 }
 
@@ -244,7 +265,22 @@
             } else {
                 CGFloat selectedPointSize = self.item.selectedFont.pointSize;
                 CGFloat normalPointSize = self.item.font.pointSize;
-                self.titleLb.font = [self.titleLb.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+                
+                if (self.item.fontWeight == self.item.selectedFontWeight) {
+                    self.titleLb.font = [self.titleLb.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+                } else {
+                    if ([self.item.selectedFont.familyName isEqualToString:@".AppleSystemUIFont"]) {
+                        if (@available(iOS 8.2, *)) {
+                            self.titleLb.font = [UIFont systemFontOfSize:normalPointSize + (selectedPointSize - normalPointSize) *  percent weight:self.item.fontWeight + (self.item.selectedFontWeight - self.item.fontWeight) * percent];
+                        }
+                    } else {
+                        if (percent > 0.5) {
+                            self.titleLb.font = [self.item.selectedFont fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+                        } else {
+                            self.titleLb.font = [self.item.font fontWithSize:normalPointSize + (selectedPointSize - normalPointSize) * percent];
+                        }
+                    }
+                }
             }
         }
         if (self.item.selectedTextColor) {

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AFPageClient'
-  s.version          = '1.2.9'
+  s.version          = '1.3.0'
   s.summary          = '分页控制器'
   s.homepage         = 'https://github.com/yxh418983798/AFPageClient'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -20,3 +20,5 @@ Pod::Spec.new do |s|
 #  s.public_header_files = 'Pod/Classes/**/{AFPageClient,AFPageItem,AFSegmentConfiguration}.h'
   
 end
+
+

@@ -24,6 +24,8 @@
 // 显示角标
 - (void)displayBadge:(AFPageItemBadge *)badge;
 
+- (void)setContentSelected:(BOOL)selected;
+
 @end
 
 

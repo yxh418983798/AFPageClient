@@ -42,7 +42,7 @@
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height - 88)) parentController:self configuration:s];
     self.pageClient.delegate = self;
 //    self.pageClient.selectedIndex =  0;
-    [self.pageClient reloadData];
+    [self.pageClient reloadPageClient:7];
     
 }
 
@@ -59,29 +59,24 @@
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 5;
+    return 10;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
 - (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index {
     
     AFPageItem *item = AFPageItem.new;
-    item.font = [UIFont systemFontOfSize:12 weight:UIFontWeightSemibold];
+    item.font = [UIFont systemFontOfSize:12 weight:UIFontWeightThin];
     item.selectedFont = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    
+    item.font = [UIFont fontWithName:@"PingFangSC-Thin" size:12];
+    item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
     item.textColor = UIColor.blackColor;
-    item.selectedTextColor = UIColor.redColor;
-    switch (index) {
-        case 0: {
-            item.content = @"Super1";
-        }
-            break;
-           
-        default: {
-            item.content = @"Super2";
-        }
-            break;
-    }
-    item.childViewController = AFPageViewController.new;
+//    item.selectedTextColor = UIColor.redColor;
+    item.content = [NSString stringWithFormat:@"Item:%ld", (long)index];
+    AFPageViewController *vc = AFPageViewController.new;
+    vc.index = index;
+    item.childViewController = vc;
     if (index == 0) {
         self.item = item;
     }

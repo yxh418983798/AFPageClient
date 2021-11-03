@@ -87,7 +87,9 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.rowHeight = 70.f;
-        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        if (@available(iOS 11.0, *)) {
+            _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } 
     }
     return _tableView;
 }
@@ -114,7 +116,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"UITableViewCell"];
         cell.contentView.backgroundColor = UIColor.grayColor;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"第%lu个Cell", indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"第%lu个Cell", self.index];
     return cell;
 }
 

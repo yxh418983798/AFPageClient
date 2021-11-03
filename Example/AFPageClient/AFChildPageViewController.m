@@ -68,7 +68,7 @@
     AFPageItem *item = AFPageItem.new;
     item.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
     item.selectedFont = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
-    item.content = [NSString stringWithFormat:@"child %d", index + 1];
+    item.content = [NSString stringWithFormat:@"child %ldd", index + 1];
     item.childViewController = AFPageViewController.new;
     if (index == 0) {
         self.item = item;
