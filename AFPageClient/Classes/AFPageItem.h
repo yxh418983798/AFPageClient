@@ -50,10 +50,10 @@
 @property (nonatomic, assign) CGRect            frame;
 
 /** 普通字体的粗细 */
-@property (nonatomic, assign) UIFontWeight      fontWeight;
+@property (nonatomic, assign, readonly) UIFontWeight      fontWeight;
 
 /** 选中字体的粗细 */
-@property (nonatomic, assign) UIFontWeight      selectedFontWeight;
+@property (nonatomic, assign, readonly) UIFontWeight      selectedFontWeight;
 
 /// 获取展示的size
 - (CGFloat)widthWithItemSpace:(CGFloat)space;

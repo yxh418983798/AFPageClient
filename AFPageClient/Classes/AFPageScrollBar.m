@@ -254,7 +254,7 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 - (void)updatePrevious:(CGFloat)previous next:(CGFloat)next offsetPercent:(CGFloat)percent {
     
     if (next <= previous || percent < 0 || percent > 1) {
-        NSLog(@"-----------过滤异常 previous:%f -- next:%f -- percent：%f", previous, next, percent);
+//        NSLog(@"-----------过滤异常 previous:%f -- next:%f -- percent：%f", previous, next, percent);
         return;
     }
     

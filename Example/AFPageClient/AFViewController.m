@@ -74,7 +74,7 @@
     item.textColor = UIColor.blackColor;
 //    item.selectedTextColor = UIColor.redColor;
     item.content = [NSString stringWithFormat:@"Item:%ld", (long)index];
-    AFPageViewController *vc = AFPageViewController.new;
+    AFChildPageViewController *vc = AFChildPageViewController.new;
     vc.index = index;
     item.childViewController = vc;
     if (index == 0) {

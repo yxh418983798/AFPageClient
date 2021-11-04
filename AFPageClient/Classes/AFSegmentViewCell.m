@@ -10,27 +10,6 @@
 #import "AFPageItem.h"
 #import <objc/runtime.h>
 
-@interface UIFont (AFPageClient)
-
-@end
-@implementation UIFont (AFPageClient)
-+ (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        Method originMethod = class_getClassMethod(UIFont.class, @selector(systemFontOfSize:weight:));
-        Method swizzleMethod = class_getClassMethod(UIFont.class, @selector(af_systemFontOfSize:weight:));
-        method_exchangeImplementations(originMethod, swizzleMethod);
-    });
-}
-
-+ (UIFont *)af_systemFontOfSize:(CGFloat)fontSize weight:(UIFontWeight)weight {
-    NSLog(@"-------------------------- 1111111 --------------------------");
-    return [self af_systemFontOfSize:fontSize weight:weight];
-}
-
-@end
-
-
 @interface AFPageItem ()
 /** 是否第一次设置 */
 @property (nonatomic, assign) BOOL              isInitial;
@@ -116,14 +95,8 @@
 //}
 - (void)setContentSelected:(BOOL)selected {
     if (!_item) return;
-    
-    id content;
-    if (selected) {
-        content = _item.selectedContent ?: _item.content;
-    } else {
-        content = _item.content;
-    }
-
+     
+    id content = _item.selectedContent ? (selected ? _item.selectedContent : _item.content) : _item.content;
     if ([content isKindOfClass:NSString.class]) {
         self.titleLb.text = content;
         if (selected) {
@@ -246,6 +219,12 @@
 
 #pragma mark - 根据手势交互，更新字体大小和颜色
 - (void)updateScrollPercent:(CGFloat)percent animated:(BOOL)animated {
+    
+    // 如果是不是普通文本类型，不需要做渐变
+    if (self.itemView != self.titleLb) {
+        [self setContentSelected:(percent > 0.5)];
+        return;
+    }
     
     if (!self.titleLb.text.length) return;
     

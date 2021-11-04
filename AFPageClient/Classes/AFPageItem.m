@@ -42,38 +42,6 @@
         if (fontNames.count == 2) {
             NSString *weight = fontNames.lastObject;
             if ([weight isEqualToString:@"Regular"]) {
-                    _fontWeight = UIFontWeightRegular;
-            } else if ([weight isEqualToString:@"Medium"]) {
-                _fontWeight = UIFontWeightMedium;
-            } else if ([weight isEqualToString:@"Semibold"]) {
-                _fontWeight = UIFontWeightSemibold;
-            } else if ([weight isEqualToString:@"Bold"]) {
-                _fontWeight = UIFontWeightBold;
-            } else if ([weight isEqualToString:@"Heavy"]) {
-                _fontWeight = UIFontWeightHeavy;
-            } else if ([weight isEqualToString:@"Black"]) {
-                _fontWeight = UIFontWeightBlack;
-            } else if ([weight isEqualToString:@"Light"]) {
-                _fontWeight = UIFontWeightLight;
-            } else if ([weight isEqualToString:@"Thin"]) {
-                _fontWeight = UIFontWeightThin;
-            } else if ([weight isEqualToString:@"UltraLight"]) {
-                _fontWeight = UIFontWeightUltraLight;
-            } else {
-                _fontWeight = UIFontWeightRegular;
-            }
-        }
-    }
-}
-
-
-- (void)setFont:(UIFont *)font {
-    _font = font;
-    if (@available(iOS 8.2, *)) {
-        NSArray *fontNames = [font.fontName componentsSeparatedByString:@"-"];
-        if (fontNames.count == 2) {
-            NSString *weight = fontNames.lastObject;
-            if ([weight isEqualToString:@"Regular"]) {
                 _selectedFontWeight = UIFontWeightRegular;
             } else if ([weight isEqualToString:@"Medium"]) {
                 _selectedFontWeight = UIFontWeightMedium;
@@ -93,6 +61,38 @@
                 _selectedFontWeight = UIFontWeightUltraLight;
             } else {
                 _selectedFontWeight = UIFontWeightRegular;
+            }
+        }
+    }
+}
+
+
+- (void)setFont:(UIFont *)font {
+    _font = font;
+    if (@available(iOS 8.2, *)) {
+        NSArray *fontNames = [font.fontName componentsSeparatedByString:@"-"];
+        if (fontNames.count == 2) {
+            NSString *weight = fontNames.lastObject;
+            if ([weight isEqualToString:@"Regular"]) {
+                _fontWeight = UIFontWeightRegular;
+            } else if ([weight isEqualToString:@"Medium"]) {
+                _fontWeight = UIFontWeightMedium;
+            } else if ([weight isEqualToString:@"Semibold"]) {
+                _fontWeight = UIFontWeightSemibold;
+            } else if ([weight isEqualToString:@"Bold"]) {
+                _fontWeight = UIFontWeightBold;
+            } else if ([weight isEqualToString:@"Heavy"]) {
+                _fontWeight = UIFontWeightHeavy;
+            } else if ([weight isEqualToString:@"Black"]) {
+                _fontWeight = UIFontWeightBlack;
+            } else if ([weight isEqualToString:@"Light"]) {
+                _fontWeight = UIFontWeightLight;
+            } else if ([weight isEqualToString:@"Thin"]) {
+                _fontWeight = UIFontWeightThin;
+            } else if ([weight isEqualToString:@"UltraLight"]) {
+                _fontWeight = UIFontWeightUltraLight;
+            } else {
+                _fontWeight = UIFontWeightRegular;
             }
         }
     }

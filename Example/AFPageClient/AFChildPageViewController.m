@@ -42,7 +42,7 @@
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:s];
     self.pageClient.delegate = self;
 //    self.pageClient.selectedIndex =  0;
-    [self.pageClient reloadData];
+    [self.pageClient reloadPageClient:3];
     
 }
 
@@ -66,10 +66,31 @@
 - (AFPageItem *)pageClient:(AFPageClient *)pageClient itemForPageAtIndex:(NSInteger)index {
     
     AFPageItem *item = AFPageItem.new;
-    item.font = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
+    item.font = [UIFont fontWithName:@"PingFangSC-Thin" size:12];
+    item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
+    item.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
     item.selectedFont = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
-    item.content = [NSString stringWithFormat:@"child %ldd", index + 1];
-    item.childViewController = AFPageViewController.new;
+    item.content = [NSString stringWithFormat:@"child %ldd", index];
+    
+//    {
+//        UILabel *lb = UILabel.new;
+//        lb.frame = CGRectMake(0, 0, 50, 40);
+//        lb.text = [NSString stringWithFormat:@"child %ldd", index];
+//        lb.backgroundColor = UIColor.whiteColor;
+//        lb.textColor = UIColor.blackColor;
+//        item.content = lb;
+//    }
+//    {
+//        UILabel *lb = UILabel.new;
+//        lb.frame = CGRectMake(0, 0, 50, 40);
+//        lb.text = [NSString stringWithFormat:@"child %ldd", index];
+//        lb.backgroundColor = UIColor.redColor;
+//        lb.textColor = UIColor.blackColor;
+//        item.selectedContent = lb;
+//    }
+    AFPageViewController *vc = AFPageViewController.new;
+    vc.index = index;
+    item.childViewController = vc;
     if (index == 0) {
         self.item = item;
     }

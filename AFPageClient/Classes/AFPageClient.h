@@ -4,10 +4,9 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.3.0
-//  修复Bug：切换Item时，可能出现的多个被选中的问题
-//  修复Bug：切换Item时，出现的抖动问题
-//  功能优化：字体渐变的时候，优化了FongWeight的渐变
+//  Version: 1.3.1
+//  修复Bug：自定义样式的item在切换时，没有更新样式的问题
+//  局部功能优化
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"
