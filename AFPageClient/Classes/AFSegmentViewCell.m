@@ -61,9 +61,6 @@
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:imageView];
         _imageView = imageView;
-        [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.offset(0);
-        }];
     }
     return _imageView;
 }
@@ -110,8 +107,10 @@
         self.titleLb.attributedText = content;
     } else if ([content isKindOfClass:UIView.class]) {
         UIView *itemView = (UIView *)content;
-        if (self.itemView != itemView) {
-            [self.itemView removeFromSuperview];
+        if (self.itemView != itemView || !itemView.superview) {
+            if (self.itemView.superview == self.contentView) {
+                [self.itemView removeFromSuperview];
+            }
             self.itemView = itemView;
             [self.contentView addSubview:self.itemView];
             [self.itemView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -121,10 +120,6 @@
             }];
         }
     } else if ([content isKindOfClass:UIImage.class]) {
-        if (self.itemView != self.imageView) {
-            [self.itemView removeFromSuperview];
-            self.itemView = self.imageView;
-        }
         self.imageView.image = content;
     }
 }
@@ -135,37 +130,32 @@
     _item = item;
     self.contentView.backgroundColor = item.backgroundColor;
     if ([item.content isKindOfClass:NSString.class]) {
-        if (self.itemView != self.titleLb) {
-            [self.itemView removeFromSuperview];
+        if (self.itemView != self.titleLb || !self.titleLb.superview) {
+            if (self.itemView.superview == self.contentView) {
+                [self.itemView removeFromSuperview];
+            }
             self.itemView = self.titleLb;
+            [self.contentView addSubview:self.titleLb];
             self.titleLb.lineBreakMode = item.lineBreakMode;
         }
-        self.titleLb.text = item.content;
     } else if ([item.content isKindOfClass:NSAttributedString.class]) {
-        if (self.itemView != self.titleLb) {
-            [self.itemView removeFromSuperview];
+        if (self.itemView != self.titleLb || !self.titleLb.superview) {
+            if (self.itemView.superview == self.contentView) {
+                [self.itemView removeFromSuperview];
+            }
             self.itemView = self.titleLb;
+            [self.contentView addSubview:self.titleLb];
+            self.titleLb.lineBreakMode = item.lineBreakMode;
         }
-        self.titleLb.lineBreakMode = item.lineBreakMode;
-        self.titleLb.attributedText = item.content;
-    } else if ([item.content isKindOfClass:UIView.class]) {
-        UIView *itemView = (UIView *)item.content;
-        if (self.itemView != itemView) {
+    } else if (self.itemView != self.imageView || !self.imageView.superview) {
+        if (self.itemView.superview == self.contentView) {
             [self.itemView removeFromSuperview];
-            self.itemView = (UIView *)item.content;
-            [self.contentView addSubview:self.itemView];
-            [self.itemView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.center.offset(0);
-                make.width.offset(self.itemView.frame.size.width);
-                make.height.offset(self.itemView.frame.size.height);
-            }];
         }
-    } else if ([item.content isKindOfClass:UIImage.class]) {
-        if (self.itemView != self.imageView) {
-            [self.itemView removeFromSuperview];
-            self.itemView = self.imageView;
-        }
-        self.imageView.image = item.content;
+        self.itemView = self.imageView;
+        [self.contentView addSubview:self.imageView];
+        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.offset(0);
+        }];
     }
 }
 

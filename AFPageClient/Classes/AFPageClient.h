@@ -4,9 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.3.1
-//  修复Bug：自定义样式的item在切换时，没有更新样式的问题
-//  局部功能优化
+//  Version: 1.3.2
+//  修复Bug：快速切换Item时，可能出现的页面 自定义标签空白问题
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"

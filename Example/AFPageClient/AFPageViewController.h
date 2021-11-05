@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AFPageViewController : UIViewController
 
+
+/** index */
+@property (nonatomic, assign) NSInteger            superIndex;
+
 /** index */
 @property (nonatomic, assign) NSInteger            index;
 @end

@@ -70,8 +70,23 @@
     item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
     item.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
     item.selectedFont = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
-    item.content = [NSString stringWithFormat:@"child %ldd", index];
-    
+//    item.content = [NSString stringWithFormat:@"child %ldd", index];
+    {
+        UILabel *lb = UILabel.new;
+        lb.frame = CGRectMake(0, 0, 70, 40);
+        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
+        lb.textColor = UIColor.blackColor;
+        lb.font = [UIFont fontWithName:@"PingFangSC-Thin" size:12];
+        item.content = lb;
+    }
+    {
+        UILabel *lb = UILabel.new;
+        lb.frame = CGRectMake(0, 0, 70, 40);
+        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
+        lb.textColor = UIColor.redColor;
+        item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
+        item.selectedContent = lb;
+    }
 //    {
 //        UILabel *lb = UILabel.new;
 //        lb.frame = CGRectMake(0, 0, 50, 40);
@@ -90,6 +105,7 @@
 //    }
     AFPageViewController *vc = AFPageViewController.new;
     vc.index = index;
+    vc.superIndex = self.index;
     item.childViewController = vc;
     if (index == 0) {
         self.item = item;

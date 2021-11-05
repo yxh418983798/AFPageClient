@@ -365,7 +365,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     AFPageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AFPageChildViewControllerCell" forIndexPath:indexPath];
-    if (cell.item) {
+    // 修复Bug：页面空白或重叠，这里必须要判断是自己的子视图才能移除
+    // 不然可能将已经添加到其他Cell上的view给移除了，造成空白
+    if (cell.item.childViewController.view.superview == cell.contentView) {
         [cell.item.childViewController.view removeFromSuperview];
     }
     AFPageItem *item = [self itemAtIndex:indexPath.item];
@@ -380,20 +382,6 @@
 
 
 #pragma mark - 监听滚动事件
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-//    if (scrollView == self.collectionView) {
-//        NSInteger page = (NSInteger)(scrollView.contentOffset.x / self.collectionView.frame.size.width);
-//        if (_selectedIndex != page) {
-//            _selectedIndex = page;
-//            [self.segmentView selectedAtIndex:page];
-//            if ([self.delegate respondsToSelector:@selector(pageClient:didSelectItemAtIndex:)]) {
-//                [self.delegate pageClient:self didSelectItemAtIndex:page];
-//            }
-//        }
-//    }
-//    NSLog(@"-------------------------- 停了：%g --------------------------", self.segmentView.scrollBar.frame.origin.x);
-//}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
      if (scrollView == self.collectionView) {
          [self.segmentView didScrollHorizontal:scrollView];

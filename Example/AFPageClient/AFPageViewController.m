@@ -116,7 +116,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:(UITableViewCellStyleDefault) reuseIdentifier:@"UITableViewCell"];
         cell.contentView.backgroundColor = UIColor.grayColor;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"第%lu个Cell", self.index];
+    cell.textLabel.text = [NSString stringWithFormat:@"super:%ld  self:%ld",(long) (long)self.superIndex,(long) (long)self.index];
     return cell;
 }
 
