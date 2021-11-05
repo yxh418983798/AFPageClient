@@ -37,6 +37,9 @@
 /** tableView容器 */
 @property (strong, nonatomic) UITableView           *tableView;
 
+/** 当前index */
+@property (nonatomic, assign) NSInteger             selectedIndex;
+
 /** frame */
 @property (nonatomic, assign) CGRect                frame;
 
@@ -191,6 +194,17 @@
     return [self.delegate numberOfItemsInPageClient:self];
 }
 
+/// 获取当前控制器
+- (UIViewController *)selectedVc {
+    AFPageItem *item = [self itemAtIndex:self.selectedIndex];
+    return item.childViewController;
+}
+
+/// 获取当前Item
+- (AFPageItem *)selectedItem {
+    return [self itemAtIndex:self.selectedIndex];
+}
+
 /// 获取item
 - (AFPageItem *)itemAtIndex:(NSInteger)index {
     NSString *key = [NSString stringWithFormat:@"AFPageItemIndex_%ld", index];
@@ -204,16 +218,6 @@
     }
     return item;
 }
-
-/// 当前控制器
-- (UIViewController *)currentVc {
-    AFPageItem *item = [self itemAtIndex:self.selectedIndex];
-    return item.childViewController;
-}
-
-//- (NSInteger)index  {
-//    return self.selectedIndex;
-//}
 
 
 #pragma mark - 刷新
@@ -305,22 +309,28 @@
 
 
 #pragma mark -- 手动设置显示的控制器
-///// 设置选中的index
-//- (void)setSelectedIndex:(NSInteger)selectedIndex animated:(BOOL)animated {
-//    [self selectedViewControllerAtIndex:selectedIndex animated:animated];
-//}
-
+/// 设置选中的index
 - (void)setSelectedIndex:(NSInteger)selectedIndex {
     [self selectedViewControllerAtIndex:selectedIndex animated:NO];
+}
+
+- (void)setSelectedIndex:(NSInteger)selectedIndex animated:(BOOL)animated {
+    [self selectedViewControllerAtIndex:selectedIndex animated:animated];
 }
 
 - (void)selectedViewControllerAtIndex:(NSInteger)index animated:(BOOL)animated {
     if ((index >= [self.delegate numberOfItemsInPageClient:self] || (index == _selectedIndex))) {
         return;
     }
-    if (!animated || abs((int)(index - _selectedIndex)) > 1) {
+    
+    BOOL scrollBarAnimated = self.configuration.scrollBarAnimated;
+    self.configuration.scrollBarAnimated = animated;
+    NSInteger lastIndex = _selectedIndex;
+    _selectedIndex = index;
+    // SegmentView需要先更新
+    [self.segmentView selectedAtIndex:index];
+    if (!animated || abs((int)(index - lastIndex)) > 1) {
         // 不做动画
-        
         if ([self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]]) {
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:NO];
         } else {
@@ -333,8 +343,7 @@
     } else {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:YES];
     }
-    _selectedIndex = index;
-    [self.segmentView selectedAtIndex:index];
+    self.configuration.scrollBarAnimated = scrollBarAnimated;
 }
 
 
@@ -448,7 +457,7 @@
 
 #pragma mark - AFScrollViewProxyDelegate
 - (UIScrollView *)childScrollViewForCurrentIndex {
-    UIScrollView *childScrollView = [(UIViewController <AFPageClientChildViewControllerDelegate> *)self.currentVc childScrollViewForPageClient:self];
+    UIScrollView *childScrollView = [(UIViewController <AFPageClientChildViewControllerDelegate> *)self.selectedVc childScrollViewForPageClient:self];
     
     if (childScrollView.panGestureRecognizer != self.scrollProxy.panGestureRecognizer && !objc_getAssociatedObject(childScrollView, "af_scrollProxy")) {
 //        [childScrollView removeGestureRecognizer:childScrollView.panGestureRecognizer];

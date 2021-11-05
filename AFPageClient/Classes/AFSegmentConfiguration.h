@@ -49,6 +49,9 @@ typedef NS_ENUM(NSUInteger, AFPageClientStyle) {
 /** 是否显示滚动条 默认YES */
 @property (nonatomic, assign) BOOL     showScrollBar;
 
+/** 切换Item时，ScrollBar是否动画滚动，默认YES */
+@property (assign, nonatomic) BOOL     scrollBarAnimated;
+
 /** 滚动条 最小宽度，默认6 */
 @property (nonatomic, assign) CGFloat  scrollBar_minW;
 

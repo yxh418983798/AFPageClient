@@ -74,24 +74,24 @@
     item.textColor = UIColor.blackColor;
 //    item.selectedTextColor = UIColor.redColor;
     
-    {
-        UILabel *lb = UILabel.new;
-        lb.frame = CGRectMake(0, 0, 70, 40);
-        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
-        lb.textColor = UIColor.blackColor;
-        lb.font = [UIFont fontWithName:@"PingFangSC-Thin" size:12];
-        item.content = lb;
-    }
-    {
-        UILabel *lb = UILabel.new;
-        lb.frame = CGRectMake(0, 0, 70, 40);
-        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
-        lb.textColor = UIColor.redColor;
-        item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
-        item.selectedContent = lb;
-    }
-    
-//    item.content = [NSString stringWithFormat:@"Item:%ld", (long)index];
+//    {
+//        UILabel *lb = UILabel.new;
+//        lb.frame = CGRectMake(0, 0, 70, 40);
+//        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
+//        lb.textColor = UIColor.blackColor;
+//        lb.font = [UIFont fontWithName:@"PingFangSC-Thin" size:12];
+//        item.content = lb;
+//    }
+//    {
+//        UILabel *lb = UILabel.new;
+//        lb.frame = CGRectMake(0, 0, 70, 40);
+//        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
+//        lb.textColor = UIColor.redColor;
+//        item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
+//        item.selectedContent = lb;
+//    }
+//    
+    item.content = [NSString stringWithFormat:@"Item:%ld", (long)index];
     AFChildPageViewController *vc = AFChildPageViewController.new;
     vc.index = index;
     item.childViewController = vc;

@@ -59,7 +59,7 @@
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 2;
+    return 5;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
@@ -70,23 +70,23 @@
     item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
     item.font = [UIFont systemFontOfSize:10 weight:UIFontWeightThin];
     item.selectedFont = [UIFont systemFontOfSize:18 weight:UIFontWeightSemibold];
-//    item.content = [NSString stringWithFormat:@"child %ldd", index];
-    {
-        UILabel *lb = UILabel.new;
-        lb.frame = CGRectMake(0, 0, 70, 40);
-        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
-        lb.textColor = UIColor.blackColor;
-        lb.font = [UIFont fontWithName:@"PingFangSC-Thin" size:12];
-        item.content = lb;
-    }
-    {
-        UILabel *lb = UILabel.new;
-        lb.frame = CGRectMake(0, 0, 70, 40);
-        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
-        lb.textColor = UIColor.redColor;
-        item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
-        item.selectedContent = lb;
-    }
+    item.content = [NSString stringWithFormat:@"child %ldd", index];
+//    {
+//        UILabel *lb = UILabel.new;
+//        lb.frame = CGRectMake(0, 0, 70, 40);
+//        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
+//        lb.textColor = UIColor.blackColor;
+//        lb.font = [UIFont fontWithName:@"PingFangSC-Thin" size:12];
+//        item.content = lb;
+//    }
+//    {
+//        UILabel *lb = UILabel.new;
+//        lb.frame = CGRectMake(0, 0, 70, 40);
+//        lb.text = [NSString stringWithFormat:@"Item:%ld", (long)index];
+//        lb.textColor = UIColor.redColor;
+//        item.selectedFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:18];
+//        item.selectedContent = lb;
+//    }
 //    {
 //        UILabel *lb = UILabel.new;
 //        lb.frame = CGRectMake(0, 0, 50, 40);
@@ -131,8 +131,8 @@
 
 
 - (void)popAction {
-//    self.pageClient.selectedIndex = 1;
-    [self.navigationController pushViewController:AFChildPageViewController.new animated:YES];
+    [self.pageClient setSelectedIndex:1 animated:YES];
+//    [self.navigationController pushViewController:AFChildPageViewController.new animated:YES];
 }
 
 

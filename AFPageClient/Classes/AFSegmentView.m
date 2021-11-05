@@ -238,6 +238,7 @@
     self.current_index = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:(UICollectionViewScrollPositionCenteredHorizontally)];
+    
 }
 
 
@@ -311,15 +312,21 @@
     if (labs(self.current_index - self.last_index) > 1) {
         AFSegmentViewCell *toCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.current_index inSection:0]];
         AFSegmentViewCell *fromCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.last_index inSection:0]];
-        [toCell updateScrollPercent:1 animated:self.configuration.animatedEnable];
-        [fromCell updateScrollPercent:0 animated:self.configuration.animatedEnable];
+        [toCell updateScrollPercent:1 animated:self.configuration.scrollBarAnimated];
+        [fromCell updateScrollPercent:0 animated:self.configuration.scrollBarAnimated];
         if (self.last_index != self.before_last_index && self.current_index != self.before_last_index) {
             // 防止前一个cell动画未完成就切换，需要对前一个cell进行复原操作
             AFSegmentViewCell *beforeLastCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.before_last_index inSection:0]];
-            [beforeLastCell updateScrollPercent:0 animated:self.configuration.animatedEnable];
+            [beforeLastCell updateScrollPercent:0 animated:self.configuration.scrollBarAnimated];
         }
         if (self.configuration.showScrollBar) {
-            [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2];
+            if (self.configuration.scrollBarAnimated) {
+                [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2];
+            } else {
+                NSInteger previousIndex = MIN(self.current_index, self.last_index);
+                NSInteger nextIndex = MAX(self.current_index, self.last_index);
+                [self updateScrollPercentWithPreviousIndex:previousIndex nextIndex:nextIndex offsetPercent:0];
+            }
         }
 
     } else {
@@ -367,6 +374,27 @@
     }
 }
 
+
+- (void)updateScrollPercentWithPreviousIndex:(NSInteger)previousIndex nextIndex:(NSInteger)nextIndex offsetPercent:(CGFloat)offsetPercent {
+    if (nextIndex >= [self.delegate numberOfItemsInSegmentView:self] || nextIndex == previousIndex) {
+        return;
+    }
+    AFSegmentViewCell *previousCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:previousIndex inSection:0]];
+    CGRect previousFrame = previousCell ? previousCell.frame : [self.delegate segmentView:self itemForSegmentAtIndex:previousIndex].frame;
+
+    AFSegmentViewCell *nextCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:nextIndex inSection:0]];
+    CGRect nextFrame = nextCell ? nextCell.frame : [self.delegate segmentView:self itemForSegmentAtIndex:nextIndex].frame;
+    
+    [self.scrollBar updatePrevious:CGRectGetMidX(previousFrame) - ScrollBar_W/2 next:CGRectGetMidX(nextFrame) - ScrollBar_W/2 offsetPercent:offsetPercent];
+    [previousCell updateScrollPercent:1-offsetPercent animated:NO];
+    [nextCell updateScrollPercent:offsetPercent animated:NO];
+    
+    if (self.last_index != self.before_last_index && self.current_index != self.before_last_index) {
+        // 防止前一个cell动画未完成就切换，需要对前一个cell进行复原操作
+        AFSegmentViewCell *beforeLastCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.before_last_index inSection:0]];
+        [beforeLastCell updateScrollPercent:0 animated:NO];
+    }
+}
 
 @end
 

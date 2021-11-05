@@ -4,8 +4,9 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.3.3
-//  修复Bug：初始化选中Index时，可能出现index为0的控制器的画面闪烁
+//  Version: 1.4.0
+//  修复Bug：代码设置SelectedIndex时，没有正确切换Segment的问题
+//  新增功能：支持动画设置SelectedIndex
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"
@@ -64,36 +65,41 @@
 @interface AFPageClient : NSObject
 
 /** 代理 */
-@property (nonatomic, weak) id <AFPageClientDelegate>    delegate;
-
-/** 当前index */
-@property (assign, nonatomic) NSInteger                  selectedIndex;
+@property (nonatomic, weak) id <AFPageClientDelegate> delegate;
 
 /** 背景颜色 */
-@property (nonatomic, strong) UIColor                    *backgroundColor;
-
-/** 获取外层的TableView */
-- (UITableView *)tableView;
-
-/** 获取scrollProxy，如果有设置嵌套滚动，且需要下拉刷新，需要同步设置下scrollProxy的refresh控件 */
-- (AFScrollViewProxy *)scrollProxy;
-
+@property (nonatomic, strong) UIColor                 *backgroundColor;
 
 /// 构造
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new  NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame parentController:(UIViewController *)viewController configuration:(AFSegmentConfiguration *)configuration;
 
-/// 获取当前Vc
-- (__kindof UIViewController *)currentVc;
-
-/// 获取item
-- (AFPageItem *)itemAtIndex:(NSInteger)index;
+/// 获取外层的TableView
+- (UITableView *)tableView;
 
 /// 获取segmentView
 - (AFSegmentView *)segmentView;
 
-/// 刷新整个PageClient，并选中Index
+/// 获取scrollProxy，如果有设置嵌套滚动，且需要下拉刷新，需要同步设置下scrollProxy的refresh控件
+- (AFScrollViewProxy *)scrollProxy;
+
+/// 当前选中的index
+- (NSInteger)selectedIndex;
+
+/// 获取当前选中的Vc
+- (__kindof UIViewController *)selectedVc;
+
+/// 获取当前选中的Item
+- (AFPageItem *)selectedItem;
+
+/// 获取指定index的item
+- (AFPageItem *)itemAtIndex:(NSInteger)index;
+
+/// 切换Index，如果需要设置默认的初始Index，请使用 <reloadPageClient:> 设置
+- (void)setSelectedIndex:(NSInteger)selectedIndex animated:(BOOL)animated;
+
+/// 刷新整个PageClient，并选中Index，PageClient初始化完成后需要调用该方法
 - (void)reloadPageClient:(NSInteger)selectedIndex;
 
 /// 刷新角标
