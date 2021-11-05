@@ -4,8 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.3.2
-//  修复Bug：快速切换Item时，可能出现的页面 自定义标签空白问题
+//  Version: 1.3.3
+//  修复Bug：初始化选中Index时，可能出现index为0的控制器的画面闪烁
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"

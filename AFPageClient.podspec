@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AFPageClient'
-  s.version          = '1.3.2'
+  s.version          = '1.3.3'
   s.summary          = '分页控制器'
   s.homepage         = 'https://github.com/yxh418983798/AFPageClient'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

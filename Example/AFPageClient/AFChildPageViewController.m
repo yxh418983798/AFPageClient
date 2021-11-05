@@ -42,7 +42,7 @@
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)) parentController:self configuration:s];
     self.pageClient.delegate = self;
 //    self.pageClient.selectedIndex =  0;
-    [self.pageClient reloadPageClient:3];
+    [self.pageClient reloadPageClient:1];
     
 }
 
@@ -59,7 +59,7 @@
 
 /// 返回item的数量
 - (NSInteger)numberOfItemsInPageClient:(AFPageClient *)pageClient {
-    return 10;
+    return 2;
 }
 
 /// 构造item数据源，内部会自动缓存item，避免重复创建，如果需要更新数据源，需要调用reloadData
@@ -131,7 +131,8 @@
 
 
 - (void)popAction {
-    self.pageClient.selectedIndex = 1;
+//    self.pageClient.selectedIndex = 1;
+    [self.navigationController pushViewController:AFChildPageViewController.new animated:YES];
 }
 
 

@@ -14,10 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:AFHAHAViewController.new];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:AFViewController.new];
 //    navi.navigationBar.translucent = NO;
-//    self.window.rootViewController = navi;
-//    [self.window makeKeyAndVisible];
+    self.window.rootViewController = navi;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

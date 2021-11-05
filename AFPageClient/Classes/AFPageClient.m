@@ -320,9 +320,12 @@
     }
     if (!animated || abs((int)(index - _selectedIndex)) > 1) {
         // 不做动画
+        
         if ([self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]]) {
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:NO];
         } else {
+            [self.collectionView layoutIfNeeded];
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:NO];
             dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
                 [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionLeft) animated:NO];
             });
