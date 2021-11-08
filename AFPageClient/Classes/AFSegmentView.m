@@ -17,21 +17,22 @@
 @interface AFSegmentView () <UICollectionViewDelegate, UICollectionViewDataSource, AFFlowLayoutDelegate>
 
 /** collection */
-@property (strong, nonatomic) UICollectionView              *collectionView;
+@property (strong, nonatomic) UICollectionView           *collectionView;
 
 /** 线条 */
-@property (strong, nonatomic) UIView                    *lineView;
+@property (strong, nonatomic) UIView                     *lineView;
 
 /** cellClass */
-@property (strong, nonatomic) NSMutableArray            *cellClass;
+@property (strong, nonatomic) NSMutableArray             *cellClass;
 
 /** 复用标识 */
-@property (strong, nonatomic) NSMutableArray            *reuseIdentifier;
+@property (strong, nonatomic) NSMutableArray             *reuseIdentifier;
 
 /** 布局属性 */
-@property (strong, nonatomic) AFCollectionViewFlowLayout          *flowLayout;
+@property (strong, nonatomic) AFCollectionViewFlowLayout *flowLayout;
 
-@property (assign, nonatomic) NSInteger            before_last_index;
+/** 记录上上个选中的index */
+@property (assign, nonatomic) NSInteger                  before_last_index;
 
 /** 记录自适应宽度的补充宽度 */
 //@property (assign, nonatomic) CGFloat                   supplement_W;
@@ -40,10 +41,6 @@
 
 
 @implementation AFSegmentView
-
-//- (void)dealloc {
-//    NSLog(@"-------------------------- segmentView释放 --------------------------");
-//}
 
 #pragma mark - UI
 - (UICollectionView *)collectionView {
@@ -58,7 +55,9 @@
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator   = NO;
         _collectionView.backgroundColor = [UIColor whiteColor];
-        
+        if (@available(iOS 10.0, *)) {
+            self.collectionView.prefetchingEnabled = YES;
+        }
 //        _collectionView.gestureShouldRecognizer = YES;
         _collectionView.backgroundColor = self.configuration.backgroundColor;
         [_collectionView registerClass:[AFSegmentViewCell class] forCellWithReuseIdentifier:@"AFSegmentViewCell"];
@@ -238,7 +237,6 @@
     self.current_index = index;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:(UICollectionViewScrollPositionCenteredHorizontally)];
-    
 }
 
 
@@ -253,25 +251,20 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AFSegmentViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AFSegmentViewCell" forIndexPath:indexPath];
+    cell.indexPath = indexPath;
     AFPageItem *item = [self.delegate segmentView:self itemForSegmentAtIndex:indexPath.item];
     item.frame = cell.frame;
     cell.item = item;
-    [cell setContentSelected:(indexPath.item == self.current_index)];
     [cell displayBadge:item.badge];
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(AFSegmentViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath API_AVAILABLE(ios(8.0)) {
+    [cell setContentSelected:indexPath.item == self.current_index];
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.current_index == indexPath.item) {
-        return;
-    }
-    self.before_last_index = self.last_index;
-    self.last_index = self.current_index;
-    self.current_index = indexPath.item;
-    
-    if (collectionView.scrollEnabled) {
-        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
-    }
+    [self selectedCellAtIndex:indexPath.item];
     if ([self.delegate respondsToSelector:@selector(segmentView:didSelectItemAtIndex:)]) {
         [self.delegate segmentView:self didSelectItemAtIndex:indexPath.item];
     }
@@ -321,7 +314,11 @@
         }
         if (self.configuration.showScrollBar) {
             if (self.configuration.scrollBarAnimated) {
-                [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:toCell.frame.origin.x + (toCell.frame.size.width - ScrollBar_W)/2];
+                CGRect frame = toCell.frame;
+                if (!toCell) {
+                    frame = [self.delegate segmentView:self itemForSegmentAtIndex:self.current_index].frame;
+                }
+                [self.scrollBar scrollFromValue:self.scrollBar.frame.origin.x toValue:frame.origin.x + (frame.size.width - ScrollBar_W)/2];
             } else {
                 NSInteger previousIndex = MIN(self.current_index, self.last_index);
                 NSInteger nextIndex = MAX(self.current_index, self.last_index);
@@ -393,6 +390,20 @@
         // 防止前一个cell动画未完成就切换，需要对前一个cell进行复原操作
         AFSegmentViewCell *beforeLastCell = (AFSegmentViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:self.before_last_index inSection:0]];
         [beforeLastCell updateScrollPercent:0 animated:NO];
+    }
+}
+
+
+- (void)selectedCellAtIndex:(NSInteger)index {
+    
+    if (self.current_index == index) {
+        return;
+    }
+    self.before_last_index = self.last_index;
+    self.last_index = self.current_index;
+    self.current_index = index;
+    if (self.collectionView.scrollEnabled) {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:YES];
     }
 }
 

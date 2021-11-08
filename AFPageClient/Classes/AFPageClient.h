@@ -4,9 +4,9 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.4.0
-//  修复Bug：代码设置SelectedIndex时，没有正确切换Segment的问题
-//  新增功能：支持动画设置SelectedIndex
+//  Version: 1.4.1
+//  修复Bug：iOS 13系统  样式多选问题
+//  修复Bug：ScrollBar负偏移问题
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"

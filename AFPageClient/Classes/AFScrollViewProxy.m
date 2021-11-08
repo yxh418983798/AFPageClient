@@ -81,7 +81,7 @@
 
 #pragma mark - 监听滚动
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"-------------------------- 滚动：%@  --------------------------", scrollView);
+//    NSLog(@"-------------------------- 滚动：%@  --------------------------", scrollView);
     UIScrollView *currentScrollView = self.proxyDelegate.childScrollViewForCurrentIndex;
     UIScrollView *pullScrollView = self.proxyDelegate.scrollViewForPull;
     CGFloat offY = self.contentOffset.y;

@@ -91,8 +91,8 @@
 //    }
 //}
 - (void)setContentSelected:(BOOL)selected {
+//    NSLog(@"-------------------------- cell:%@ setContentSelected:%d --------------------------", self.indexPath, selected);
     if (!_item) return;
-     
     id content = _item.selectedContent ? (selected ? _item.selectedContent : _item.content) : _item.content;
     if ([content isKindOfClass:NSString.class]) {
         self.titleLb.text = content;
@@ -209,7 +209,8 @@
 
 #pragma mark - 根据手势交互，更新字体大小和颜色
 - (void)updateScrollPercent:(CGFloat)percent animated:(BOOL)animated {
-    
+//    NSLog(@"-------------------------- cell:%d animated : %d, updateScrollPercent:%g --------------------------", self.indexPath.item, animated, percent);
+
     // 如果是不是普通文本类型，不需要做渐变
     if (self.itemView != self.titleLb) {
         [self setContentSelected:(percent > 0.5)];

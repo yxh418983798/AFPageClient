@@ -67,7 +67,6 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 //    NSLog(@"-------------------------- ScrollBar释放 --------------------------");
 //}
 
-
 #pragma mark - 动画
 - (void)scrollFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue {
     if (fabs(fromValue - toValue) < 5 && self.status == AFPageScrollBarStatusNormal) {
@@ -174,6 +173,9 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
                 }
                 frame.size.width = fmin(frame.size.width + distance, Max_W);
                 frame.origin.x = _fromValue - frame.size.width;
+                if (frame.origin.x < _toValue) {
+                    frame.origin.x = _toValue;
+                }
                 if (frame.size.width >= Max_W) {
                     self.status = AFPageScrollBarStatusMove;
                 }
@@ -183,6 +185,7 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
                 frame.origin.x = fmax(frame.origin.x - distance, _toValue);
                 frame.size.width =  Max_W;
                 if (frame.origin.x <= _toValue) {
+                    frame.origin.x = _toValue;
                     self.status = AFPageScrollBarStatusShorten;
                 }
 //                NSLog(@"-------------------------- 左滑移动：%g -- %g --------------------------", frame.origin.x, frame.size.width);
@@ -257,6 +260,7 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
 //        NSLog(@"-----------过滤异常 previous:%f -- next:%f -- percent：%f", previous, next, percent);
         return;
     }
+    [self stop];
     
     CGRect frame = self.frame;
     CGFloat totalDistance = next - previous + Max_W - Min_W; // 移动一个item完整的距离
@@ -264,8 +268,7 @@ typedef NS_ENUM(NSInteger, AFPageScrollBarDirection)  {
     /// 拉伸过程
     if (distance <= Max_W - Min_W) {
         frame.size.width = Min_W + distance;
-        frame
-        .origin.x = previous;
+        frame.origin.x = previous;
         self.frame = frame;
         return;
     }

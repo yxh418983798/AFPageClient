@@ -92,7 +92,8 @@
 //    }
 //    
     item.content = [NSString stringWithFormat:@"Item:%ld", (long)index];
-    AFChildPageViewController *vc = AFChildPageViewController.new;
+//    AFChildPageViewController *vc = AFChildPageViewController.new;
+    AFChildPageViewController *vc = AFPageViewController.new;
     vc.index = index;
     item.childViewController = vc;
     if (index == 0) {
@@ -119,14 +120,14 @@
 //}
 
 
-///// 自定义leftView
-//- (UIView *)leftViewForSegmentInPageClient:(AFPageClient *)pageClient {
-//    UIButton *btn = [UIButton new];
-//    btn.frame = CGRectMake(0, 0, 50, 50);
-//    [btn setTitle:@"返回" forState:(UIControlStateNormal)];
-//    [btn addTarget:self action:@selector(popAction) forControlEvents:(UIControlEventTouchUpInside)];
-//    return btn;
-//}
+/// 自定义leftView
+- (UIView *)leftViewForSegmentInPageClient:(AFPageClient *)pageClient {
+    UIButton *btn = [UIButton new];
+    btn.frame = CGRectMake(0, 0, 50, 50);
+    [btn setTitle:@"返回" forState:(UIControlStateNormal)];
+    [btn addTarget:self action:@selector(popAction) forControlEvents:(UIControlEventTouchUpInside)];
+    return btn;
+}
 
 
 /// 自定义rightView
@@ -138,8 +139,9 @@
 
 
 - (void)popAction {
-    [self.pageClient reloadBadge];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.pageClient setSelectedIndex:1 animated:YES];
+//    [self.pageClient reloadBadge];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
