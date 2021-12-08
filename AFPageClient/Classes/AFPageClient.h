@@ -4,9 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.4.1
-//  修复Bug：iOS 13系统  样式多选问题
-//  修复Bug：ScrollBar负偏移问题
+//  Version: 1.4.2
+//  修复Bug：SegmentView刷新后未选中DefaultIndex的问题
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"

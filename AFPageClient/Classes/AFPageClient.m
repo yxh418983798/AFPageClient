@@ -234,7 +234,6 @@
 
 /// 刷新整个PageClient，并选中Index
 - (void)reloadPageClient:(NSInteger)selectedIndex {
-    [self.segmentView setDefault_index:selectedIndex];
     for (AFPageItem *item in self.pageItems.allValues) {
         item.isInitial = YES;
         [item.childViewController.view removeFromSuperview];
@@ -245,6 +244,7 @@
         [_segmentView removeFromSuperview];
         _segmentView = nil;
     }
+    [self.segmentView setDefault_index:selectedIndex];
     self.selectedIndex = selectedIndex;
     [self update];
 }

@@ -154,9 +154,8 @@
         [_collectionView removeFromSuperview];
         _collectionView = nil;
         _flowLayout = nil;
-        _current_index = _default_index;
     }
-    
+    _current_index = _default_index;
     [self.flowLayout attachAllLinesFixedSize:self.frame.size.height];
     [self insertSubview:self.collectionView atIndex:0];
     
