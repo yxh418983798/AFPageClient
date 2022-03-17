@@ -159,6 +159,7 @@
         _collectionView.dataSource = self;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator   = NO;
+        _collectionView.allowsSelection = NO;
         _collectionView.backgroundColor = self.configuration.backgroundColor;
         _collectionView.contentSize = CGSizeMake(self.frame.size.width * self.numberOfItems, layout.itemSize.height);
         if (self.backgroundColor) _collectionView.backgroundColor = self.backgroundColor;

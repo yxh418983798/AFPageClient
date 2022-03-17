@@ -22,16 +22,22 @@ static NSString * const AFPageItemBadgeRedDot = @"";
  */
 @property (nonatomic, copy) NSString            *content;
 
-/** 角标的背景颜色，默认红色 */
-@property (nonatomic, strong) UIColor           *backgroundColor;
+/** 角标的文字字体，默认10 */
+@property (nonatomic, strong) UIFont            *font;
 
 /** 角标的文字颜色，默认白色 */
 @property (nonatomic, strong) UIColor           *textColor;
 
-/** 角标的文字字体，默认10 */
-@property (nonatomic, strong) UIFont            *font;
+/** 角标的背景颜色，默认红色 */
+@property (nonatomic, strong) UIColor           *backgroundColor;
 
-/** 角标的圆角大小，默认3 */
+/** 角标的外边框颜色 */
+@property (nonatomic, strong) UIColor           *borderColor;
+
+/** 角标的外边框大小，默认0 */
+@property (nonatomic, assign) CGFloat           borderWidth;
+
+/** 角标的圆角大小，默认3，展示小红点时，小红点的大小自适应为圆角的两倍大小 */
 @property (nonatomic, assign) CGFloat           cornerRadius;
 
 /** 角标文本的缩进默认，0，2，0，2 */

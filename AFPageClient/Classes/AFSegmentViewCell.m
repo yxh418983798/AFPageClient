@@ -113,6 +113,7 @@
             }
             self.itemView = itemView;
             [self.contentView addSubview:self.itemView];
+            if (_badgeView) [self.contentView addSubview:_badgeView];
             [self.itemView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.center.offset(0);
                 make.width.offset(self.itemView.frame.size.width);
@@ -157,6 +158,7 @@
             make.center.offset(0);
         }];
     }
+    if (_badgeView) [self.contentView addSubview:_badgeView];
 }
 
 // 显示角标
@@ -172,35 +174,38 @@
         // 显示小红点
         self.badgeView.layer.backgroundColor = badge.backgroundColor.CGColor;
         self.badgeView.layer.cornerRadius = badge.cornerRadius;
+        self.badgeView.layer.borderWidth = badge.borderWidth;
+        self.badgeView.layer.borderColor = badge.borderColor.CGColor;
         self.badgeView.layer.masksToBounds = YES;
-        self.badgeLb.text = badge.content;
-        self.badgeLb.font = badge.font;
-        self.badgeLb.textColor = badge.textColor;
-
         if (badge.content.length) {
             CGSize size = [badge.content boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT)
                                                       options:NSStringDrawingUsesLineFragmentOrigin
                                                    attributes:@{NSFontAttributeName : badge.font}
                                                       context:nil].size;
+            CGFloat min_W = fmax(size.width + badge.contentInsets.left + badge.contentInsets.right + badge.borderWidth*2, badge.cornerRadius * 2);
+            CGFloat min_H = fmax(size.height + badge.contentInsets.top + badge.contentInsets.bottom + badge.borderWidth*2, badge.cornerRadius * 2);
             [self.badgeView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 
                 make.right.offset(badge.offset.x);
                 make.top.offset(badge.offset.y);
-                make.width.offset(size.width + badge.contentInsets.left + badge.contentInsets.right);
-                make.height.offset(size.height + badge.contentInsets.top + badge.contentInsets.bottom);
+                make.width.offset(min_W);
+                make.height.offset(min_H);
             }];
+            
+            self.badgeLb.text = badge.content;
+            self.badgeLb.font = badge.font;
+            self.badgeLb.textColor = badge.textColor;
+            [self.badgeView addSubview:self.badgeLb];
             [self.badgeLb mas_remakeConstraints:^(MASConstraintMaker *make) {
-                
-                make.right.offset(-badge.contentInsets.right);
-                make.left.offset(badge.contentInsets.left);
-                make.centerY.offset(0);
+                make.center.offset(0);
             }];
         } else {
+            _badgeLb.text = @"";
             [self.badgeView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 
                 make.right.offset(badge.offset.x);
                 make.top.offset(badge.offset.y);
-                make.width.height.offset(badge.cornerRadius * 2);
+                make.width.height.offset(badge.cornerRadius * 2 + badge.borderWidth * 2);
             }];
         }
     }
