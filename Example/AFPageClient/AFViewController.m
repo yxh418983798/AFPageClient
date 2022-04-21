@@ -38,11 +38,12 @@
     s.scrollBar_minW = 20;
     s.scrollBar_maxW = 100;
     s.scrollBarColor = UIColor.redColor;
+//    s.showScrollBar = NO;
     
     self.pageClient = [[AFPageClient alloc] initWithFrame:(CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height - 88)) parentController:self configuration:s];
     self.pageClient.delegate = self;
 //    self.pageClient.selectedIndex =  0;
-    [self.pageClient reloadPageClient:7];
+    [self.pageClient reloadPageClient:9];
     
 }
 

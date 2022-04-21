@@ -42,7 +42,8 @@
 
 @implementation AFSegmentView
 
-#pragma mark - UI
+#pragma mark - Getter
+/// collectionView
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         CGFloat collection_W = self.frame.size.width;
@@ -70,6 +71,7 @@
     return _collectionView;
 }
 
+/// scrollBar
 - (AFPageScrollBar *)scrollBar {
     if (!_scrollBar) {
         _scrollBar = [[AFPageScrollBar alloc] initWithConfiguration:self.configuration];
@@ -77,6 +79,7 @@
     return _scrollBar;
 }
 
+/// 底部分割线
 - (UIView *)lineView {
     if (!_lineView) {
         _lineView = [UIView new];
@@ -91,7 +94,7 @@
     return _lineView;
 }
 
-#pragma mark - 数据
+/// 配置
 - (AFSegmentConfiguration *)configuration {
     if (!_configuration) {
         _configuration = AFSegmentConfiguration.new;
@@ -99,6 +102,7 @@
     return _configuration;
 }
 
+/// 流式布局
 - (AFCollectionViewFlowLayout *)flowLayout {
     if (!_flowLayout) {
         _flowLayout= [[AFCollectionViewFlowLayout.new makeLayoutStyle:(AFFlowLayoutStyleWaterfallHorizantal)] makeNumberOfLines:1];
@@ -109,6 +113,22 @@
     return _flowLayout;
 }
 
+/// 获取Cell宽度
+- (CGFloat)getCellWidthAtIndex:(CGFloat)index {
+    CGFloat cell_W = 0.f;
+    AFPageItem *item = [self.delegate segmentView:self itemForSegmentAtIndex:0];
+    if (CGSizeEqualToSize(item.itemSize, CGSizeZero)) {
+        if (self.collectionView.scrollEnabled) {
+            cell_W = [item widthWithItemSpace:self.configuration.itemSpace];
+        } else {
+            cell_W = (self.collectionView.frame.size.width - self.configuration.insets.left - self.configuration.insets.right)/[self.delegate numberOfItemsInSegmentView:self];
+        }
+    } else {
+        cell_W = item.itemSize.width;
+    }
+    return cell_W;
+}
+
 
 #pragma mark - 刷新
 - (void)reloadData {
@@ -116,7 +136,6 @@
 }
 
 - (void)update {
-    
     self.backgroundColor = self.configuration.backgroundColor;
     self.frame = self.configuration.frame;
     
@@ -142,11 +161,6 @@
             make.width.offset(self.rightView.frame.size.width);
             make.height.offset(self.rightView.frame.size.height);
         }];
-    }
-    
-    // 分割线
-    if (self.configuration.showBottomLine) {
-        [self lineView];
     }
     
     // collectionView
@@ -178,42 +192,7 @@
 //        self.collectionView.scrollEnabled = self.configuration.scrollEnable;
 //    }
 
-    //滚动条
-    if (self.configuration.showScrollBar) {
-        CGFloat cell_W = 0.f;
-        AFPageItem *item = [self.delegate segmentView:self itemForSegmentAtIndex:0];
-        if (CGSizeEqualToSize(item.itemSize, CGSizeZero)) {
-            if (self.collectionView.scrollEnabled) {
-                cell_W = [item widthWithItemSpace:self.configuration.itemSpace];
-            } else {
-                cell_W = (self.collectionView.frame.size.width - self.configuration.insets.left - self.configuration.insets.right)/[self.delegate numberOfItemsInSegmentView:self];
-            }
-        } else {
-            cell_W = item.itemSize.width;
-        }
-        if (self.current_index == 0) {
-            self.scrollBar.frame = CGRectMake(self.configuration.insets.left + (cell_W - ScrollBar_W)/2, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
-        } else {
-            dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.current_index inSection:0];
-                [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:NO];
-                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-                if (!cell) {
-                    [self.collectionView layoutIfNeeded];
-                    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-                    self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
-                } else {
-                    self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
-                }
-            });
-        }
-        [self.collectionView addSubview:self.scrollBar];
-        
-    } else if (_lineView) {
-        [_scrollBar removeFromSuperview];
-        _scrollBar = nil;
-    }
-    
+    // 分割线
     if (self.configuration.showBottomLine) {
         [self lineView];
     } else {
@@ -221,10 +200,55 @@
         _lineView = nil;
     }
     
+    //滚动条
+    if (self.configuration.showScrollBar) {
+        [self.collectionView addSubview:self.scrollBar];
+    } else {
+        if (_scrollBar.superview) {
+            [_scrollBar removeFromSuperview];
+            _scrollBar = nil;
+        }
+    }
+    
+    // 滚动到指定位置
+    if (self.current_index == 0) {
+        if (self.configuration.showScrollBar) {
+            CGFloat cell_W = [self getCellWidthAtIndex:0];
+            self.scrollBar.frame = CGRectMake(self.configuration.insets.left + (cell_W - ScrollBar_W)/2, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
+        }
+    } else {
+        CGFloat cell_W = [self getCellWidthAtIndex:0];
+        dispatch_after(DISPATCH_TIME_NOW, dispatch_get_main_queue(), ^{
+            [self scrollCollectionViewToIndex:self.current_index cell_W:cell_W];
+        });
+    }
+    
+    // 选中index
     [self.collectionView reloadData];
     [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:self.current_index inSection:0] animated:NO scrollPosition:(UICollectionViewScrollPositionNone)];
 }
 
+/// 滚动CollectionView到当前选择的位置
+- (void)scrollCollectionViewToIndex:(NSInteger)index cell_W:(CGFloat)cell_W {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:(UICollectionViewScrollPositionCenteredHorizontally) animated:NO];
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+    if (!cell) {
+        [self.collectionView layoutIfNeeded];
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+        if (self.configuration.showScrollBar) {
+            self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
+        }
+    } else {
+        if (self.configuration.showScrollBar) {
+            self.scrollBar.frame = CGRectMake((cell_W - ScrollBar_W)/2 + cell.frame.origin.x, self.collectionView.frame.size.height - self.configuration.scrollBar_H - self.configuration.scrollBar_bottomInset, ScrollBar_W, self.configuration.scrollBar_H);
+        }
+    }
+}
+
+
+#pragma mark - 选中
+/// 选中Index
 - (void)selectedAtIndex:(NSInteger)index  {
     if (!_collectionView) {
         self.current_index = index;

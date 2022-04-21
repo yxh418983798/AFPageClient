@@ -4,8 +4,8 @@
 //
 //  Created by alfie on 2020/8/30.
 //
-//  Version: 1.4.3
-//  修复Bug：角标刷新奔溃的问题，以及角标样式的问题
+//  Version: 1.4.4
+//  1、修复Bug：未展示ScrollBar的情况初始选中的index没有滚动到指定位置
 
 #import <Foundation/Foundation.h>
 #import "AFPageItem.h"
